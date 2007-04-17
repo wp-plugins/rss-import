@@ -12,7 +12,9 @@ List a RSS-Feed in your WP-Blog, only headlines or with description.
 The Plugin works only in templates or with a PHP-Plugin in site and posts.
 
 Use following code with a PHP-Plugin or in a template, example sidebar.php or single.php, for WordPress:
-_Example:_ `<?php RSSImport(10,"http://bueltge.de/feed/",true,false); ?>`
+
+_Example:_
+`<?php RSSImport(10,"http://bueltge.de/feed/",true,false); ?>`
 
 1. How many items
 1. Feed-Adress
