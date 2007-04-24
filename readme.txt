@@ -42,3 +42,7 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 = I love this plugin! How can I show the developer how much I appreciate his work? =
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "JS AntiSpam") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
+
+== Make more with the plugin ==
+
+Please visit [RSSImportTwo tutorial and plugin](http://bueltge.de/wp-rssimporttwo-plugin/165 "RSSImportTwo") for more features and tutorial two import with more HTML.
