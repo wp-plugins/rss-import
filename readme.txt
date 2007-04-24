@@ -45,4 +45,4 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 == Make more with the plugin ==
 
-Please visit [RSSImportTwo tutorial and plugin](http://bueltge.de/wp-rssimporttwo-plugin/165 "RSSImportTwo") for more features and tutorial two import with more HTML.
+Please visit [RSSImportTwo](http://bueltge.de/wp-rssimporttwo-plugin/165 "RSSImportTwo") for more features and tutorial to import with more HTML. It give it a tutorial and a plugin.
