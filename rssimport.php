@@ -5,7 +5,7 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: List a RSS-Feed in your WP-Blog, only headlines or with description.
 Author: Frank Bueltge
-Version: 3.9
+Version: 4.0
 License: GPL
 Author URI: http://bueltge.de
 */ 
@@ -49,18 +49,25 @@ function RSSImport($display=0, $feedurl, $displaydescriptions=false, $truncateti
 	$rss = fetch_rss($feedurl);
 
 	if ($rss && !$rss->ERROR) {
+		// the follow print_r list all items in array
+		// print_r($rss);
 		echo wptexturize('<ul>');
 		foreach ($rss->items as $item) {
 			if ($display == 0) {
 				break;
 			}
-			$href  = $item['link'];
+			
+			$title   = $item['title'];
+			$href    = $item['link'];
+			// view date
+			$pubDate = $item['pubdate'];
+			$pubDate = substr($pubDate, 0, 25);
+			
 			// Edit here:
 			// For import with pure text
-			$desc  = $item['description'];
+			$desc    = $item['description'];
 			// For import with HTML
-			//$desc  = $item['content']['encoded'];
-			$title = $item['title'];
+			//$desc    = $item['content']['encoded'];
 			
 			if (eregi('encoding="ISO-8859-', $a)) {
 				isodec($title);
@@ -78,7 +85,7 @@ function RSSImport($display=0, $feedurl, $displaydescriptions=false, $truncateti
 					$title = substr($title, 0, 30) . " ... ";
 			}
 			echo wptexturize('<li>');
-			echo wptexturize('<a href="' . $href . '" title="'. ereg_replace("[^A-Za-z0-9 ]", "", $item['title']) . '">' . $title . '</a>');
+			echo wptexturize('<a href="' . $href . '" title="'. ereg_replace("[^A-Za-z0-9 ]", "", $item['title']) . '">' . $title . '</a> <small>' . $pubDate . '</small>');
 			if ($displaydescriptions && $desc <> "") { 
 				echo wptexturize('<br />' . "\n" . $desc . "\n");
 			}
