@@ -3,8 +3,6 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: spam, protection, javascript, rss
 Requires at least: 1.5
-Tested up to: 2.1.3
-Stable tag: 3.0
 
 List a RSS-Feed in your WP-Blog, only headlines or with description.
 
@@ -21,7 +19,7 @@ _Example:_
 1. only headlines = true, with description = false
 1. cut the string of headline = true (30 charachters)
 
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "JS AntiSpam") for further details and the latest information on this plugin.
+Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
 == Installation ==
 1. Unpack the download-package
@@ -31,18 +29,21 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 1. Copy the code in site-content or edit templates
    Example: <?php RSSImport(10,"http://bueltge.de/feed/",true,false); ?>
 
-See on [the official website](http://bueltge.de/wp-js-antispam-plugin/418 "RSSImport").
+See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport").
 
 == Frequently Asked Questions ==
 
 = Where can I get more information? =
 
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "JS AntiSpam") for the latest information on this plugin.
+Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for the latest information on this plugin.
 
 = I love this plugin! How can I show the developer how much I appreciate his work? =
 
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "JS AntiSpam") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
+<<<<<<< .mine
+Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.=======
+Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
 
 == Make more with the plugin ==
 
 Please visit [RSSImportTwo](http://bueltge.de/wp-rssimporttwo-plugin/165 "RSSImportTwo") for more features and tutorial to import with more HTML. It give it a tutorial and a plugin.
+>>>>>>> .r13104
