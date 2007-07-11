@@ -27,7 +27,7 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Create a new site in WordPress or edit your template
 1. Copy the code in site-content or edit templates
-   Example: `<?php RSSImport(10,"http://bueltge.de/feed/",true,false); ?>`
+   Example: `&lt;?php RSSImport(10,"http://bueltge.de/feed/",true,false); ?&gt;`
 
 See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport").
 
