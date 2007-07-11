@@ -39,11 +39,8 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 = I love this plugin! How can I show the developer how much I appreciate his work? =
 
-<<<<<<< .mine
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.=======
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
 
 == Make more with the plugin ==
 
 Please visit [RSSImportTwo](http://bueltge.de/wp-rssimporttwo-plugin/165 "RSSImportTwo") for more features and tutorial to import with more HTML. It give it a tutorial and a plugin.
->>>>>>> .r13104
