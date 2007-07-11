@@ -1,7 +1,7 @@
 === RSSImport ===
 Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
-Tags: spam, protection, javascript, rss
+Tags: spam, protection, javascript, rss, post
 Requires at least: 1.5
 
 List a RSS-Feed in your WP-Blog, only headlines or with description.
