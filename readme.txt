@@ -1,7 +1,7 @@
 === RSSImport ===
 Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
-Tags: spam, protection, javascript, rss, post
+Tags: rss, post, content, post, feed
 Requires at least: 1.5
 
 List a RSS-Feed in your WP-Blog, only headlines or with description.
@@ -34,13 +34,10 @@ See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImp
 == Frequently Asked Questions ==
 
 = Where can I get more information? =
-
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for the latest information on this plugin.
 
 = I love this plugin! How can I show the developer how much I appreciate his work? =
-
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
 
 == Make more with the plugin ==
-
 Please visit [RSSImportTwo](http://bueltge.de/wp-rssimporttwo-plugin/165 "RSSImportTwo") for more features and tutorial to import with more HTML. It give it a tutorial and a plugin.
