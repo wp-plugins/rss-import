@@ -61,6 +61,7 @@ function RSSImport($display=0, $feedurl, $displaydescriptions=false, $truncateti
 			$href    = $item['link'];
 			// view date
 			$pubDate = $item['pubdate'];
+			// cut date
 			$pubDate = substr($pubDate, 0, 25);
 			
 			// Edit here:
