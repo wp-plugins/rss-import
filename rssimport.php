@@ -5,7 +5,7 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: List a RSS-Feed in your WP-Blog, only headlines or with description.
 Author: Frank Bueltge
-Version: 4.2
+Version: 4.21
 License: GPL
 Author URI: http://bueltge.de
 */ 
@@ -23,7 +23,7 @@ Example: <?php RSSImport(10, "http://bueltge.de/feed/", true, false); ?>
 */
 
 // For function fetch_rss from wp-core
-if(file_exists(ABSPATH . WPINC . '/rss.php')) {
+if ( file_exists(ABSPATH . WPINC . '/rss.php') ) {
 	@require_once (ABSPATH . WPINC . '/rss.php');
 	// It's Wordpress 2.x. since it has been loaded successfully
 } elseif (file_exists(ABSPATH . WPINC . '/rss-functions.php')) {
@@ -41,11 +41,13 @@ define('MAGPIE_CACHE_AGE', '60*60'); // in sec, one hour
 
 function RSSImport($display=0, $feedurl, $displaydescriptions=false, $truncatetitle=true) {
 
-	// read in file for search charset
-	ini_set('default_socket_timeout', 120);
-	$a = file_get_contents($feedurl);
-	// for better performance, if the server accepts the method 
-	//$a = file_get_contents($feedurl,FALSE,NULL,0,50);
+	if ( file_exists('file_get_contents') ) {
+		// read in file for search charset
+		ini_set('default_socket_timeout', 120);
+			$a = file_get_contents($feedurl);
+		// for better performance, if the server accepts the method 
+		//$a = file_get_contents($feedurl,FALSE,NULL,0,50);
+	}
 	
 	$rss = fetch_rss($feedurl);
 
