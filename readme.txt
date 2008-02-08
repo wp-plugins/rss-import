@@ -12,7 +12,7 @@ The Plugin works only in templates or with a PHP-Plugin in site and posts.
 Use following code with a PHP-Plugin or in a template, example sidebar.php or single.php, for WordPress:
 
 _Example:_
-`<?php RSSImport(10,"http://bueltge.de/feed/",true,false); ?>`
+`&lt;?php RSSImport(10, "http://bueltge.de/feed/", true, false); ?&gt;`
 
 1. How many items
 1. Feed-Adress
