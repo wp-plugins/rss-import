@@ -5,7 +5,7 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: List a RSS-Feed in your WP-Blog, only headlines or with description.
 Author: Frank Bueltge
-Version: 4.2.2
+Version: 4.2.3
 License: GPL
 Author URI: http://bueltge.de
 */ 
@@ -75,6 +75,8 @@ function RSSImport($display=0, $feedurl, $displaydescriptions=false, $truncateti
 			if (eregi('encoding="ISO-8859-', $a)) {
 				isodec($title);
 				isodec($desc);
+				$title = utf8_encode( html_entity_decode( str_replace($umlaute, $htmlcode, $title) ) );
+				$desc  = utf8_encode( html_entity_decode( str_replace($umlaute, $htmlcode, $desc) ) );
 			} else {
 				utf8dec($title);
 				utf8dec($desc);

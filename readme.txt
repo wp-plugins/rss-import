@@ -3,6 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
+Tested up to: 2.8
 
 List a RSS-Feed in your WP-Blog, only headlines or with description.
 
