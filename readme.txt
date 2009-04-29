@@ -30,16 +30,16 @@ _Example for Shortcode:_
 1. `truncatedescstring` - string after truncate description, Default is ` ... `
 1. `truncatetitlechar` - (int) truncate title, number of chars, Default is `empty`, set a integer `50` to the value for truncate
 1. `truncatetitlestring` - string after truncate title, Default is `' ... '`
-1. `before_date` - string before date, Default is ` &lt;small&gt;`
+1. `before_date` - string before date, Default is ` <small>`
 1. `date` - (bool) return the date of the item, Default is `false`
-1. `after_date` - string after the date, Default is `&lt;/small&gt;`
-1. `before_creator` - string before creator of the item, Default is ` &lt;small&gt;`
+1. `after_date` - string after the date, Default is `</small>`
+1. `before_creator` - string before creator of the item, Default is ` <small>`
 1. `creator` - (bool) return the creator of th item, Default is `false`
-1. `after_creator` - string after creator of the item, Default is `&lt;/small&gt;`
-1. `start_items` - string before all items, Default is `&lt;ul&gt;`
-1. `end_items` - string after all items, Default is `&lt;/ul&gt;`
-1. `start_item` - string before the item, Default is `&lt;li&gt;`
-1. `end_item` - string after the items, Default is `&lt;/li&gt;`
+1. `after_creator` - string after creator of the item, Default is `</small>`
+1. `start_items` - string before all items, Default is `<ul>`
+1. `end_items` - string after all items, Default is `</ul>`
+1. `start_item` - string before the item, Default is `<li>`
+1. `end_item` - string after the items, Default is `</li>`
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
