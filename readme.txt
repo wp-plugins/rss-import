@@ -32,7 +32,7 @@ _Example for Shortcode:_
 1. `truncatetitlestring` - string after truncate title, Default is `' ... '`
 1. `before_date` - string before date, Default is ` &lt;small&gt;`
 1. `date` - (bool) return the date of the item, Default is `false`
-1. `after_date` - string after the date, Default is `&lt;/small&gt;
+1. `after_date` - string after the date, Default is `&lt;/small&gt;`
 1. `before_creator` - string before creator of the item, Default is ` &lt;small&gt;`
 1. `creator` - (bool) return the creator of th item, Default is `false`
 1. `after_creator` - string after creator of the item, Default is `&lt;/small&gt;`
