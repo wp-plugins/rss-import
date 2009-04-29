@@ -42,6 +42,7 @@ _Example for Shortcode:_
 1. `end_item` - string after the items, Default is `&lt;/li&gt;`
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
+1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 
 All paramters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
 
