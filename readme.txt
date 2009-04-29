@@ -46,23 +46,25 @@ _Example for Shortcode:_
 
 All paramters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
 
-_Examples:_
+= Examples: =
 
-The function with all paramters:
+_The function with all paramters:_
+
 `RSSImport(
-						$display = 5, $feedurl = 'http://bueltge.de/feed/',
-						$before_desc = '', $displaydescriptions = false, $after_desc = '', $html = false, $truncatedescchar = 200, $truncatedescstring = ' ... ',
-						$truncatetitlechar = '', $truncatetitlestring = ' ... ',
-						$before_date = ' <small>', $date = false, $after_date = '</small>',
-						$before_creator = ' <small>', $creator = false, $after_creator = '</small>',
-						$start_items = '<ul>', $end_items = '</ul>',
-						$start_item = '<li>', $end_item = '</li>'
-					)`
+`						$display = 5, $feedurl = 'http://bueltge.de/feed/',`
+`						$before_desc = '', $displaydescriptions = false, $after_desc = '', $html = false, $truncatedescchar = 200, $truncatedescstring = ' ... ',`
+`						$truncatetitlechar = '', $truncatetitlestring = ' ... ',`
+`						$before_date = ' <small>', $date = false, $after_date = '</small>',`
+`						$before_creator = ' <small>', $creator = false, $after_creator = '</small>',`
+`						$start_items = '<ul>', $end_items = '</ul>',`
+`						$start_item = '<li>', $end_item = '</li>'`
+`					)`
 
-The shortcode with a lot of paramters:
-`[RSSImport display="10", feedurl="http://your_feed_url/", 
-displaydescriptions="true", html="true"
-start_items="<ol>", end_items="</ol>" ]`
+_The shortcode with a lot of paramters:_
+
+`[RSSImport display="10", feedurl="http://your_feed_url/", `
+`displaydescriptions="true", html="true"`
+`start_items="<ol>", end_items="</ol>" ]`
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
