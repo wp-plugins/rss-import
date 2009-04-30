@@ -2,12 +2,12 @@
 /*
 Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
-Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport].
+Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.2.4
+Version: 4.2.5
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 29.04.2009 09:01:43
+Last change: 30.04.2009 02:21:53
 */ 
 
 /*
@@ -47,7 +47,9 @@ if ( function_exists('add_action') ) {
 
 	// plugin definitions
 	define( 'FB_RSSI_BASENAME', plugin_basename(__FILE__) );
-	define( 'FB_RSSI_TEXTDOMAIN', 'custom_breadcrump' );
+	define( 'FB_RSSI_BASEFOLDER', plugin_basename( dirname( __FILE__ ) ) );
+	define( 'FB_RSSI_TEXTDOMAIN', 'rssimport' );
+	define( 'FB_RSSI_QUICKTAG', true );
 }
 
 // For function fetch_rss from wp-core
@@ -339,27 +341,26 @@ function RSSImport_insert_button() {
 	if ( !in_array( $pagenow, $post_page_pages ) )
 		return;
 	
-	echo <<<JS
+	echo '
 	<script type="text/javascript">
-	/* <![CDATA[ */
-	if ( RSSImport_Button = document.getElementById("ed_toolbar") ) {
+		//<![CDATA[
 		var length = edButtons.length;
-		edButtons[length] = new edButton('RSSImport', '$context','[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="true" after_desc=" " html="false" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="false" after_date=" </small>" before_creator=" <small>" creator="false" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" charsetscan="false" debug="false"]', '', '');
-		RSSImport_Button.innerHTML += '<input type="button" value="RSSImport" onclick="RSSImport_tag(this.id);" class="ed_button" title="RSSImport einf&uuml;gen" id="RSSImport_'+length+'"/>';
-	}
-JS;
-	echo <<<JS
-	function RSSImport_tag(id) {
-		id = id.replace(/RSSImport_/, '');
-		edInsertTag(edCanvas, id);
-	}
-	/* ]]> */
-</script>
-JS;
+		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="true" after_desc=" " html="false" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="false" after_date=" </small>" before_creator=" <small>" creator="false" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" charsetscan="false" debug="false"]\', \'\', \'\');
+		function RSSImport_tag(id) {
+			id = id.replace(/RSSImport_/, \'\');
+			edInsertTag(edCanvas, id);
+		}
+		jQuery(document).ready(function() {
+			content = \'<input id="RSSImport_\'+length+\'" class="ed_button" type="button" value="' . __( 'RSSImport', FB_RSSI_TEXTDOMAIN ) . '" title="' . __( 'Import a feed with RSSImport', FB_RSSI_TEXTDOMAIN ) . '" onclick="RSSImport_tag(this.id);" />\';
+			jQuery("#ed_toolbar").append(content);
+		});
+		//]]>
+	</script>';
 }
 
 function RSSImport_update_notice() {
 	$plugin_data = get_plugin_data( __FILE__ );
+	$RSSImport_details_url = admin_url('plugin-install.php?tab=plugin-information&plugin=rssimport&TB_iframe=true&width=600&height=800');
 	if ($plugin_data['Version'] > '4.2.4')
 		return;
 	else
@@ -372,6 +373,7 @@ if ( function_exists('add_shortcode') )
 add_action( 'init', 'RSSImport_textdomain' );
 if ( is_admin() ) {
 	add_action( 'after_plugin_row_'.FB_RSSI_BASENAME, 'RSSImport_update_notice' );
-	add_filter( 'admin_footer', 'RSSImport_insert_button' );
+	if (FB_RSSI_QUICKTAG)
+		add_filter( 'admin_footer', 'RSSImport_insert_button' );
 }
 ?>
