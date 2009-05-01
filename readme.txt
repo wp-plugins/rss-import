@@ -40,6 +40,7 @@ _Example for Shortcode:_
 1. `end_items` - string after all items, Default is `</ul>`
 1. `start_item` - string before the item, Default is `<li>`
 1. `end_item` - string after the items, Default is `</li>`
+1. `target` - string with the target-attribut, Default is `empty`; use `blank`, `self`, `parent`, `top`
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`

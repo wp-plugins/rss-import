@@ -4,10 +4,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.2.6
+Version: 4.2.7
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 30.04.2009 16:24:36
+Last change: 02.05.2009 00:31:47
 */ 
 
 /*
@@ -85,6 +85,7 @@ function RSSImport(
 										$before_creator = ' <small>', $creator = false, $after_creator = '</small>',
 										$start_items = '<ul>', $end_items = '</ul>',
 										$start_item = '<li>', $end_item = '</li>',
+										$target = '',
 										$charsetscan = false, $debug = false,
 										$view = true
 									) {
@@ -182,7 +183,10 @@ function RSSImport(
 				$desc = RSSImport_end_on_word($title) . $truncatedescstring;
 			}
 			
-			$echo .= '<a href="' . $href . '" title="'. ereg_replace("[^A-Za-z0-9 ]", "", $item['title']) . '">' . $title . '</a>';
+			if ( isset($target) && $target != '' )
+				$target = ' target="_' . $target . '"';
+			
+			$echo .= '<a' . $target . ' href="' . $href . '" title="'. ereg_replace("[^A-Za-z0-9 ]", "", $item['title']) . '">' . $title . '</a>';
 			if ( isset($pubDate) && $date && $pubDate != '' )
 				$echo .= $before_date . $pubDate . $after_date;
 			if ( isset($creator) && $creator && $creator != '' )
@@ -312,6 +316,7 @@ function RSSImport_Shortcode($atts) {
 																'end_items' => '</ul>',
 																'start_item' => '<li>',
 																'end_item' => '</li>',
+																'target' = '',
 																'charsetscan' => false,
 																'debug' => false
 																), $atts) );
@@ -324,6 +329,7 @@ function RSSImport_Shortcode($atts) {
 											$before_creator, $creator, $after_creator,
 											$start_items, $end_items,
 											$start_item, $end_item,
+											$target,
 											$charsetscan, $debug,
 											$view = false
 										 );
@@ -345,7 +351,7 @@ function RSSImport_insert_button() {
 	<script type="text/javascript">
 		//<![CDATA[
 		var length = edButtons.length;
-		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="true" after_desc=" " html="false" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="false" after_date=" </small>" before_creator=" <small>" creator="false" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" charsetscan="false" debug="false"]\', \'\', \'\');
+		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="true" after_desc=" " html="false" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="false" after_date=" </small>" before_creator=" <small>" creator="false" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" target="" charsetscan="false" debug="false"]\', \'\', \'\');
 		function RSSImport_tag(id) {
 			id = id.replace(/RSSImport_/, \'\');
 			edInsertTag(edCanvas, id);
@@ -360,7 +366,6 @@ function RSSImport_insert_button() {
 
 function RSSImport_update_notice() {
 	$plugin_data = get_plugin_data( __FILE__ );
-	$RSSImport_details_url = admin_url('plugin-install.php?tab=plugin-information&plugin=rssimport&TB_iframe=true&width=600&height=800');
 	if ($plugin_data['Version'] > '4.2.4')
 		return;
 	else
