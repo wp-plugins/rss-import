@@ -4,10 +4,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.2.8
+Version: 4.2.9
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 02.05.2009 09:21:30
+Last change: 23.05.2009 23:03:28
 */ 
 
 /*
@@ -180,7 +180,7 @@ function RSSImport(
 			
 			if ( isset($desc) && $truncatedescchar && (strlen($desc) > $truncatedescchar) ) {
 				$desc = substr($desc, 0, $truncatedescchar);
-				$desc = RSSImport_end_on_word($title) . $truncatedescstring;
+				$desc = RSSImport_end_on_word($desc) . $truncatedescstring;
 			}
 			
 			if ( isset($target) && $target != '' )
