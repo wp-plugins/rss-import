@@ -44,12 +44,18 @@ _Example for Shortcode:_
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
+1. `before_noitems` - HTML or string before message, when the feed is empty, Default is `<p>`
+1. `noitems`- Message, when the feed is empty, Default is `No items, feed is empty.`
+1. `after_noitems` - HTML or string before message, when the feed is empty, Default is `</p>`
+1. `before_error` - HTML or string before message, when the feed have an error, Default is `<p>`
+1. `error` - Errormessage, Default is `Error: Feed has a error or is not valid`
+1. `after_error` - HTML or string before message, when the feed have an error, Default is `</p>`
 
 All paramters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
 
 = Examples: =
 
-_The function with all paramters:_
+_The function with many paramters:_
 
 `RSSImport(
 `						$display = 5, $feedurl = 'http://bueltge.de/feed/',`

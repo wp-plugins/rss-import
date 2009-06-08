@@ -4,10 +4,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.2.9
+Version: 4.3
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 23.05.2009 23:03:28
+Last change: 08.06.2009 13:05:32
 */ 
 
 /*
@@ -87,7 +87,9 @@ function RSSImport(
 										$start_item = '<li>', $end_item = '</li>',
 										$target = '',
 										$charsetscan = false, $debug = false,
-										$view = true
+										$view = true,
+										$before_noitems = '<p>', $noitems = 'No items, feed is empty.', $after_noitems = '</p>',
+										$before_error = '<p>', $error = 'Error: Feed has a error or is not valid', $after_error = '</p>'
 									) {
 	
 	$display = intval($display);
@@ -198,10 +200,13 @@ function RSSImport(
 			$display--;
 		}
 		
-		$echo = wptexturize($start_items . $echo . $end_items);
+		if ($echo)
+			$echo = wptexturize($start_items . $echo . $end_items);
+		else
+			$echo = wptexturize($before_noitems . $noitems . $after_noitems);
 		
 	} else {
-		$echo = '<p>' . __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN) . $rss->ERROR . '</p>';
+		$echo = wptexturize($before_error . $error . $rss->ERROR . $after_error);
 	}
 	
 	if ($view)
@@ -318,7 +323,13 @@ function RSSImport_Shortcode($atts) {
 																'end_item' => '</li>',
 																'target' => '',
 																'charsetscan' => false,
-																'debug' => false
+																'debug' => false,
+																'before_noitems' => '<p>',
+																'noitems' => 'No items, feed is empty.',
+																'after_noitems' => '</p>',
+																'before_error' => '<p>',
+																'error' => 'Error: Feed has a error or is not valid',
+																'after_error' => '</p>'
 																), $atts) );
 
 	$return = RSSImport(
@@ -331,7 +342,9 @@ function RSSImport_Shortcode($atts) {
 											$start_item, $end_item,
 											$target,
 											$charsetscan, $debug,
-											$view = false
+											$view = false,
+											$before_noitems, $noitems, $after_noitems,
+											$before_error, $error, $after_error
 										 );
 
 	return $return;
@@ -351,7 +364,7 @@ function RSSImport_insert_button() {
 	<script type="text/javascript">
 		//<![CDATA[
 		var length = edButtons.length;
-		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="true" after_desc=" " html="false" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="false" after_date=" </small>" before_creator=" <small>" creator="false" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" target="" charsetscan="false" debug="false"]\', \'\', \'\');
+		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="true" after_desc=" " html="false" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="false" after_date=" </small>" before_creator=" <small>" creator="false" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" target="" charsetscan="false" debug="false" before_noitems="<p>" noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>"]\', \'\', \'\');
 		function RSSImport_tag(id) {
 			id = id.replace(/RSSImport_/, \'\');
 			edInsertTag(edCanvas, id);
