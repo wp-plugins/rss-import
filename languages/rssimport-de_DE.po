@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP-RSSImport v4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-08 13:26+0100\n"
-"PO-Revision-Date: 2009-06-08 13:27+0100\n"
+"POT-Creation-Date: 2009-06-18 10:58+0100\n"
+"PO-Revision-Date: 2009-06-18 10:59+0100\n"
 "Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,24 +17,43 @@ msgstr ""
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: rssimport.php:63
+#: rssimport.php:72
 msgid "Error in file: "
 msgstr "Fehler in Datei:"
 
 #: rssimport.php:373
+msgid "No items, feed is empty."
+msgstr "Keine Einträge, der Feed ist leer."
+
+#: rssimport.php:376
+msgid "Error: Feed has a error or is not valid"
+msgstr "Fehler: der Feed hat einen Fehler oder ist nicht valide."
+
+#: rssimport.php:379
+msgid "&laquo; Previous"
+msgstr "&laquo; zurück"
+
+#: rssimport.php:380
+msgid "Next &raquo;"
+msgstr "nächste &raquo;"
+
+#: rssimport.php:381
+#: rssimport.php:382
+msgid "more items"
+msgstr "mehr Einträge"
+
+#: rssimport.php:424
 msgid "RSSImport"
 msgstr "RSSImport"
 
-#: rssimport.php:373
+#: rssimport.php:424
 msgid "Import a feed with RSSImport"
 msgstr "Importiere einen Feed mit RSSImport"
 
-#: rssimport.php:385
+#: rssimport.php:436
 msgid "New version, however the plugin has been modified with many new parameters. Please see the new <a target=\"_blank\" href=\"http://wordpress.org/extend/plugins/rss-import/\">possibilities</a>."
 msgstr "Neue Version: das Plugin wurde mit vielen Parametern aktualisiert. Bitte beachte die neuen <a target=\"_blank\" href=\"http://wordpress.org/extend/plugins/rss-import/\">Möglichkeiten</a>."
 
-#~ msgid "Error: Feed has a error or is not valid"
-#~ msgstr "Fehler: der Feed hat einen Fehler oder ist nicht valide."
 #~ msgid "RSSImport einf&uuml;gen"
 #~ msgstr "RSSImport einfügen"
 

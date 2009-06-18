@@ -50,11 +50,17 @@ _Example for Shortcode:_
 1. `before_error` - HTML or string before message, when the feed have an error, Default is `<p>`
 1. `error` - Errormessage, Default is `Error: Feed has a error or is not valid`
 1. `after_error` - HTML or string before message, when the feed have an error, Default is `</p>`
+1. `paging` - Pagination on, set `true`, Default is `false`
+1. `prev_paging_link` - Linkname for previous page, Default is `&laquo; Previous`
+1. `next_paging_link` - Linkname for next page, Default is `Next &raquo;`
+1. `prev_paging_title` - Title for the link of previous page, Default is `more items`
+1. `next_paging_title` - Title for the link of next page, Default is `more items`
+
+The pagination function add a div with the class `rsspaging` for design with CSS. Also youcan style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
 
 All paramters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
 
 = Examples: =
-
 _The function with many paramters:_
 
 `RSSImport(
@@ -71,7 +77,7 @@ _The shortcode with a lot of paramters:_
 
 `[RSSImport display="10", feedurl="http://your_feed_url/", `
 `displaydescriptions="true", html="true"`
-`start_items="<ol>", end_items="</ol>" ]`
+`start_items="<ol>", end_items="</ol>", paging="true" ]`
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
@@ -82,11 +88,12 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 1. Create a new site in WordPress or edit your template
 1. Copy the code in site-content or edit templates
 
-See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport").
+= Changelog =
+See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#historie "RSSImport Changelog").
 
 == Other Notes ==
-
 = Acknowledgements =
+Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
 Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
 
 = Licence =
@@ -96,10 +103,13 @@ Good news, this plugin is free for everyone! Since it's released under the GPL, 
 The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the sitemap.pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
 
 
+>>>>>>> .r126948
 == Frequently Asked Questions ==
-
 = Where can I get more information? =
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for the latest information on this plugin.
+
+= Changelog? =
+Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/#historie "RSSImport Changelog") for the latest information on this plugin.
 
 = I love this plugin! How can I show the developer how much I appreciate his work? =
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
