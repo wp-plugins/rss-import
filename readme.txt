@@ -7,6 +7,7 @@ Tested up to: 2.8
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
+
 == Description ==
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -81,6 +82,7 @@ _The shortcode with a lot of paramters:_
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
+
 == Installation ==
 1. Unpack the download-package
 1. Upload all files to the `/wp-content/plugins/` directory
@@ -90,6 +92,7 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 = Changelog =
 See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#historie "RSSImport Changelog").
+
 
 == Other Notes ==
 = Acknowledgements =
@@ -103,7 +106,6 @@ Good news, this plugin is free for everyone! Since it's released under the GPL, 
 The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the sitemap.pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
 
 
->>>>>>> .r126948
 == Frequently Asked Questions ==
 = Where can I get more information? =
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for the latest information on this plugin.
