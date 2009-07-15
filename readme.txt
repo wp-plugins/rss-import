@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 2.8
+Tested up to: 2.9-rare
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -42,6 +42,7 @@ _Example for Shortcode:_
 1. `start_item` - string before the item, Default is `<li>`
 1. `end_item` - string after the items, Default is `</li>`
 1. `target` - string with the target-attribut, Default is `empty`; use `blank`, `self`, `parent`, `top`
+1. `rel`- string with the rel-attribut, Default is `empty`, use string, `nofollow`, `follow`
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
@@ -90,8 +91,18 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 1. Create a new site in WordPress or edit your template
 1. Copy the code in site-content or edit templates
 
-= Changelog =
-See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#historie "RSSImport Changelog").
+
+== Screenshots ==
+1. Widget support
+
+
+== Changelog ==
+= v4.4.1 (14/07/2009) =
+
+* add rel attribut for links
+* add widget support, WP 2.8 and higher
+
+See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#historie "RSSImport Changelog") for older entries on changelog.
 
 
 == Other Notes ==
