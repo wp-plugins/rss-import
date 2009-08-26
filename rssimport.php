@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
