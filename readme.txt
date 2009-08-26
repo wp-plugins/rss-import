@@ -1,4 +1,4 @@
-=== RSSImport ===
+﻿=== RSSImport ===
 Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
