@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.1
+ * @version 4.4.2
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.1
+Version: 4.4.2
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 15.07.2009 16:11:39
+Last change: 07.09.2009 14:57:46
 */ 
 
 /*
@@ -211,7 +211,7 @@ function RSSImport(
 					$desc = wp_html_excerpt($desc, $truncatedescchar) . $truncatedescstring;
 				}
 				
-				$echo .= '<a' . $target . $rel . ' href="' . $href . '" title="'. ereg_replace("[^A-Za-z0-9 ]", "", $item['title']) . '">' . $title . '</a>';
+				$echo .= '<a' . $target . $rel . ' href="' . $href . '" title="'. wp_specialchars( $item['title'] ) . '">' . $title . '</a>';
 				if ( isset($pubDate) && $date && $pubDate != '' )
 					$echo .= $before_date . $pubDate . $after_date;
 				if ( isset($creator) && $creator && $creator != '' )
@@ -370,6 +370,7 @@ function RSSImport_Shortcode($atts) {
 																'rel' => '',
 																'charsetscan' => FALSE,
 																'debug' => FALSE,
+																'view' => FALSE,
 																'before_noitems' => '<p>',
 																'noitems' => __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN ),
 																'after_noitems' => '</p>',
@@ -382,23 +383,22 @@ function RSSImport_Shortcode($atts) {
 																'prev_paging_title' => __( 'more items', FB_RSSI_TEXTDOMAIN ),
 																'next_paging_title'=> __( 'more items', FB_RSSI_TEXTDOMAIN )
 																), $atts) );
-
 	$return = RSSImport(
-											$display, $feedurl,
-											$before_desc, $displaydescriptions, $after_desc, $html, $truncatedescchar, $truncatedescstring,
-											$truncatetitlechar, $truncatetitlestring,
-											$before_date, $date, $after_date,
-											$before_creator, $creator, $after_creator,
-											$start_items, $end_items,
-											$start_item, $end_item,
-											$target,
-											$rel,
-											$charsetscan = FALSE, $debug,
-											$view = FALSE,
-											$before_noitems, $noitems, $after_noitems,
-											$before_error, $error, $after_error,
-											$paging, $prev_paging_link, $next_paging_link, $prev_paging_title, $next_paging_title
-										 );
+								$display, all_convert($feedurl),
+								$before_desc, $displaydescriptions, $after_desc, $html, $truncatedescchar, $truncatedescstring,
+								$truncatetitlechar, $truncatetitlestring,
+								$before_date, $date, $after_date,
+								$before_creator, $creator, $after_creator,
+								$start_items, $end_items,
+								$start_item, $end_item,
+								$target,
+								$rel,
+								$charsetscan, $debug,
+								$view,
+								$before_noitems, $noitems, $after_noitems,
+								$before_error, $error, $after_error,
+								$paging, $prev_paging_link, $next_paging_link, $prev_paging_title, $next_paging_title
+							);
 
 	return $return;
 }
@@ -431,12 +431,26 @@ function RSSImport_insert_button() {
 }
 
 
+/**
+ * inform over update
+ *
+ * @package WP-RSSImport
+ */
+
+function RSSImport_update_notice() {
+	if ( $info = wp_remote_fopen('http://bueltge.de/wp-content/my-plugin-updates/rssimport.txt') )
+		echo '<br />' . strip_tags( $info, '<br><a><b><i><span>' );
+}
+
+
 if ( function_exists('add_shortcode') )
 	add_shortcode('RSSImport', 'RSSImport_Shortcode');
 
 add_action( 'init', 'RSSImport_textdomain' );
-if ( is_admin() && FB_RSSI_QUICKTAG ) {
-	add_filter( 'admin_footer', 'RSSImport_insert_button' );
+if ( is_admin() ) {
+	add_action( 'in_plugin_update_message-' . FB_RSSI_BASENAME, 'RSSImport_update_notice' );
+	if (FB_RSSI_QUICKTAG)
+		add_filter( 'admin_footer', 'RSSImport_insert_button' );
 }
 
 /**
@@ -742,6 +756,7 @@ if ( class_exists('WP_Widget') ) {
 			extract($args, EXTR_SKIP);
 			
 			$title               = empty($instance['title']) ? '&nbsp;' : apply_filters('widget_title', $instance['title']);
+			$titlelink           = empty($instance['titlelink']) ? '' : $instance['titlelink'];
 			$display             = empty($instance['display']) ? '5' : $instance['display'];
 			$feedurl             = empty($instance['feedurl']) ? 'http://bueltge.de/feed/' : $instance['feedurl'];
 			$before_desc         = empty($instance['before_desc']) ? '' : $instance['before_desc'];
@@ -780,6 +795,8 @@ if ( class_exists('WP_Widget') ) {
 			$next_paging_title   = empty($instance['next_paging_title']) ? 'more items' : $instance['next_paging_title'];
 			
 			echo $before_widget;
+			if ( $titlelink != '' )
+				$title = '<a href="' . $titlelink . '">' . $title . '</a>';
 			echo $before_title . $title . $after_title;
 			RSSImport(
 								$display, $feedurl,
@@ -806,6 +823,7 @@ if ( class_exists('WP_Widget') ) {
 		
 		function form($instance) {
 			$instance = wp_parse_args( (array) $instance, array( 'title' => '',
+																														'titlelink' => '',
 																													 'display' => 5,
 																													 'feedurl' => 'http://bueltge.de/feed/',
 																													 'before_desc' => '',
@@ -844,6 +862,7 @@ if ( class_exists('WP_Widget') ) {
 																													 'next_paging_title' => 'more items'
 																													) );
 			$title   = strip_tags($instance['title']);
+			$titlelink = clean_url($instance['titlelink']);
 			$display = (int) $instance['display'];
 			$feedurl = $instance['feedurl'];
 			$before_desc = $instance['before_desc'];
@@ -883,6 +902,9 @@ if ( class_exists('WP_Widget') ) {
 			?>
 				<p>
 					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label>
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('titlelink'); ?>"><?php _e( 'URL for Title (incl. http://):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('titlelink'); ?>" name="<?php echo $this->get_field_name('titlelink'); ?>" type="text" value="<?php echo clean_url($titlelink); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('display'); ?>"><?php _e( 'Display:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('display'); ?>" name="<?php echo $this->get_field_name('display'); ?>" type="text" value="<?php echo attribute_escape($display); ?>" /></label>

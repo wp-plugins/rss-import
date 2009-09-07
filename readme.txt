@@ -97,6 +97,10 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 
 == Changelog ==
+= v4.4.2 (07/09/2009) =
+* Bugfix for utl-value on shortcode
+* change clean the title-attribut an links for multilanguage-support
+
 = v4.4.1 (14/07/2009) =
 
 * add rel attribut for links

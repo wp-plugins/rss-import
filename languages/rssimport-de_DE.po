@@ -19,28 +19,28 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: rssimport.php:374
+#: rssimport.php:375
 #@ rssimport
 msgid "No items, feed is empty."
 msgstr "Keine Einträge, der Feed ist leer."
 
-#: rssimport.php:377
+#: rssimport.php:378
 #@ rssimport
 msgid "Error: Feed has a error or is not valid"
 msgstr "Fehler: der Feed hat einen Fehler oder ist nicht valide."
 
-#: rssimport.php:380
+#: rssimport.php:381
 #@ rssimport
 msgid "&laquo; Previous"
 msgstr "&laquo; zurück"
 
-#: rssimport.php:381
+#: rssimport.php:382
 #@ rssimport
 msgid "Next &raquo;"
 msgstr "nächste &raquo;"
 
-#: rssimport.php:382
 #: rssimport.php:383
+#: rssimport.php:384
 #@ rssimport
 msgid "more items"
 msgstr "mehr Einträge"
@@ -65,212 +65,217 @@ msgstr ""
 msgid "Entries from any RSS or Atom feed"
 msgstr "Einträge vom RSS oder Atom Feed"
 
-#: rssimport.php:899
+#: rssimport.php:904
 #@ rssimport
 msgid "Title:"
 msgstr "Titel:"
 
-#: rssimport.php:902
+#: rssimport.php:910
 #@ rssimport
 msgid "Display:"
 msgstr "Anzahl:"
 
-#: rssimport.php:905
+#: rssimport.php:913
 #@ rssimport
 msgid "FeedURL:"
 msgstr "FeedURL:"
 
-#: rssimport.php:908
+#: rssimport.php:916
 #@ rssimport
 msgid "Before Description:"
 msgstr "vor der Beschreibung:"
 
-#: rssimport.php:911
+#: rssimport.php:919
 #@ rssimport
 msgid "Display Description:"
 msgstr "Zeige Beschreibung:"
 
-#: rssimport.php:913
-#: rssimport.php:924
-#: rssimport.php:947
-#: rssimport.php:961
-#: rssimport.php:990
+#: rssimport.php:921
+#: rssimport.php:932
+#: rssimport.php:955
+#: rssimport.php:969
 #: rssimport.php:998
 #: rssimport.php:1006
-#: rssimport.php:1032
+#: rssimport.php:1014
+#: rssimport.php:1040
 #@ rssimport
 msgid "False"
 msgstr "Nein"
 
-#: rssimport.php:914
-#: rssimport.php:925
-#: rssimport.php:948
-#: rssimport.php:962
-#: rssimport.php:991
+#: rssimport.php:922
+#: rssimport.php:933
+#: rssimport.php:956
+#: rssimport.php:970
 #: rssimport.php:999
 #: rssimport.php:1007
-#: rssimport.php:1033
+#: rssimport.php:1015
+#: rssimport.php:1041
 #@ rssimport
 msgid "True"
 msgstr "Ja"
 
-#: rssimport.php:919
+#: rssimport.php:927
 #@ rssimport
 msgid "After Description:"
 msgstr "Nach der Beschreibung:"
 
-#: rssimport.php:922
+#: rssimport.php:930
 #@ rssimport
 msgid "HTML:"
 msgstr "HTML:"
 
-#: rssimport.php:930
+#: rssimport.php:938
 #@ rssimport
 msgid "Truncate Description Char:"
 msgstr "Anzahl der Zeichen beim Kürzen der Beschreibung:"
 
-#: rssimport.php:933
+#: rssimport.php:941
 #@ rssimport
 msgid "Truncate Description String (HTML):"
 msgstr "Ausgabe für die gekürzten Zeichen (HTML):"
 
-#: rssimport.php:936
+#: rssimport.php:944
 #@ rssimport
 msgid "Truncate Title Char:"
 msgstr "Anzahl der Zeichen beim Kürzen des Titel:"
 
-#: rssimport.php:939
+#: rssimport.php:947
 #@ rssimport
 msgid "Truncate Title String (HTML):"
 msgstr "Ausgabe für die gekürzten Zeichen (HTML):"
 
-#: rssimport.php:942
+#: rssimport.php:950
 #@ rssimport
 msgid "Before Date (HTML):"
 msgstr "vor dem Datum (HTML):"
 
-#: rssimport.php:945
+#: rssimport.php:953
 #@ rssimport
 msgid "Date:"
 msgstr "Datum:"
 
-#: rssimport.php:953
+#: rssimport.php:961
 #@ rssimport
 msgid "After Date (HTML):"
 msgstr "Nach dem Datum (HTML):"
 
-#: rssimport.php:956
+#: rssimport.php:964
 #@ rssimport
 msgid "Before Creator (HTML):"
 msgstr "Vor der Autor (HTML):"
 
-#: rssimport.php:959
+#: rssimport.php:967
 #@ rssimport
 msgid "Creator:"
 msgstr "Autor:"
 
-#: rssimport.php:967
+#: rssimport.php:975
 #@ rssimport
 msgid "After Creator (HTML):"
 msgstr "Nach dem Autor (HTML):"
 
-#: rssimport.php:970
+#: rssimport.php:978
 #@ rssimport
 msgid "Before Items (HTML):"
 msgstr "Vor dem Einträgen (HTML):"
 
-#: rssimport.php:973
+#: rssimport.php:981
 #@ rssimport
 msgid "After Items (HTML):"
 msgstr "Nach dem Einträgen (HTML):"
 
-#: rssimport.php:976
+#: rssimport.php:984
 #@ rssimport
 msgid "Before Item (HTML):"
 msgstr "Bevor dem Eintrag (HTML):"
 
-#: rssimport.php:979
+#: rssimport.php:987
 #@ rssimport
 msgid "After Item (HTML):"
 msgstr "Nach dem Eintrag (HTML):"
 
-#: rssimport.php:982
+#: rssimport.php:990
 #@ rssimport
 msgid "Target Attribut:"
 msgstr "Target Attribut:"
 
-#: rssimport.php:988
+#: rssimport.php:996
 #@ rssimport
 msgid "Charsetscan:"
 msgstr "Charsetprüfung:"
 
-#: rssimport.php:996
+#: rssimport.php:1004
 #@ rssimport
 msgid "Debug mode:"
 msgstr "Debugmodus:"
 
-#: rssimport.php:1004
+#: rssimport.php:1012
 #@ rssimport
 msgid "Echo/Return:"
 msgstr "Ausgabe/Rückgabe:"
 
-#: rssimport.php:1012
+#: rssimport.php:1020
 #@ rssimport
 msgid "Before <em>No</em> Items Message (HTML):"
 msgstr "Vor der <em>Keine</em> Einträge Mitteilung (HTML):"
 
-#: rssimport.php:1015
+#: rssimport.php:1023
 #@ rssimport
 msgid "<em>No</em> Items Message:"
 msgstr "<em>Keine</em> Einträge Mitteilung:"
 
-#: rssimport.php:1018
+#: rssimport.php:1026
 #@ rssimport
 msgid "After <em>No</em> Items Message (HTML):"
 msgstr "Nach der <em>Keine</em> Einträge Mitteilung (HTML):"
 
-#: rssimport.php:1021
+#: rssimport.php:1029
 #@ rssimport
 msgid "Before Error Message (HTML):"
 msgstr "Vor der Fehler Meldung (HTML):"
 
-#: rssimport.php:1024
+#: rssimport.php:1032
 #@ rssimport
 msgid "Error Message:"
 msgstr "Fehler Meldung:"
 
-#: rssimport.php:1027
+#: rssimport.php:1035
 #@ rssimport
 msgid "After Error Message (HTML):"
 msgstr "Nach der Fehler Meldung (HTML):"
 
-#: rssimport.php:1030
+#: rssimport.php:1038
 #@ rssimport
 msgid "Pagination:"
 msgstr "Seitenumbruch:"
 
-#: rssimport.php:1038
+#: rssimport.php:1046
 #@ rssimport
 msgid "Previous Pagination Link String:"
 msgstr "String für die vorhergehende Seite:"
 
-#: rssimport.php:1041
+#: rssimport.php:1049
 #@ rssimport
 msgid "Next Pagination Link String:"
 msgstr "String für die kommende Seite:"
 
-#: rssimport.php:1044
+#: rssimport.php:1052
 #@ rssimport
 msgid "Previous Pagination Title String:"
 msgstr "String für den Title des Link der vorhergehende Seite:"
 
-#: rssimport.php:1047
+#: rssimport.php:1055
 #@ rssimport
 msgid "Next Pagination Title String:"
 msgstr "String für den Title des Link der kommenden Seite:"
 
-#: rssimport.php:985
+#: rssimport.php:993
 #@ rssimport
 msgid "Rel Attribut:"
 msgstr "Rel Attribut:"
+
+#: rssimport.php:907
+#@ rssimport
+msgid "URL for Title (incl. http://):"
+msgstr "URL für den Titel (inkl. http://):"
 
