@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.2
+ * @version 4.4.3
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.2
+Version: 4.4.3
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 07.09.2009 14:57:46
+Last change: 14.09.2009 01:34:03
 */ 
 
 /*
@@ -216,9 +216,13 @@ function RSSImport(
 					$echo .= $before_date . $pubDate . $after_date;
 				if ( isset($creator) && $creator && $creator != '' )
 					$echo .= $before_creator . $creator . $after_creator;
-				if ( isset($desc) && $displaydescriptions && $desc != '' )
+				if ( isset($desc) && $displaydescriptions && $desc != '' ) {
+					$after_desc = stripslashes_deep( $after_desc );
+					$after_desc = str_replace('%title%', $title, $after_desc);
+					$after_desc = str_replace('%href%', $href, $after_desc);
 					$echo .= $before_desc . $desc . $after_desc;
-				$echo .= $end_item;		
+				}
+				$echo .= $end_item;
 			} else {
 				$nextitems = FALSE;
 			}
@@ -818,12 +822,55 @@ if ( class_exists('WP_Widget') ) {
 		}
 		
 		function update($new_instance, $old_instance) {
-			return $new_instance;
+			$instance['instance'] = $old_instance;
+			$instance['title  '] = strip_tags($new_instance['title']);
+			$instance['titlelink'] = clean_url($new_instance['titlelink']);
+			$instance['display'] = (int) $new_instance['display'];
+			$instance['feedurl'] = $new_instance['feedurl'];
+			$instance['before_desc'] = $new_instance['before_desc'];
+			$instance['displaydescriptions'] = $new_instance['displaydescriptions'];
+			$instance['after_desc'] = stripslashes_deep( $new_instance['after_desc'] );
+			$instance['html'] = $new_instance['html'];
+			$instance['truncatedescchar'] = $new_instance['truncatedescchar'];
+			$instance['truncatedescstring'] = $new_instance['truncatedescstring'];
+			$instance['truncatetitlechar'] = $new_instance['truncatetitlechar'];
+			$instance['truncatetitlestring'] = $new_instance['truncatetitlestring'];
+			$instance['before_date'] = $new_instance['before_date'];
+			$instance['date'] = $new_instance['date'];
+			$instance['after_date'] = $new_instance['after_date'];
+			$instance['before_creator'] = $new_instance['before_creator'];
+			$instance['creator'] = $new_instance['creator'];
+			$instance['after_creator'] = $new_instance['after_creator'];
+			$instance['start_items'] = $new_instance['start_items'];
+			$instance['end_items'] = $new_instance['end_items'];
+			$instance['start_item'] = $new_instance['start_item'];
+			$instance['end_item'] = $new_instance['end_item'];
+			$instance['target'] = $new_instance['target'];
+			$instance['rel'] = $instance['rel'];
+			$instance['charsetscan'] = $new_instance['charsetscan'];
+			$instance['debug'] = $new_instance['debug'];
+			$instance['view'] = $new_instance['view'];
+			$instance['before_noitems'] = $new_instance['before_noitems'];
+			$instance['noitems'] = $new_instance['noitems'];
+			$instance['after_noitems'] = $new_instance['after_noitems'];
+			$instance['before_error'] = $new_instance['before_error'];
+			$instance['error'] = $new_instance['error'];
+			$instance['after_error'] = $new_instance['after_error'];
+			$instance['paging'] = $new_instance['paging'];
+			$instance['prev_paging_link'] = $new_instance['prev_paging_link'];
+			$instance['next_paging_link'] = $new_instance['next_paging_link'];
+			$instance['prev_paging_title'] = $new_instance['prev_paging_title'];
+			$instance['next_paging_title'] = $new_instance['next_paging_title'];
+			
+			if ( current_user_can('unfiltered_html') )
+				return $instance;
+			else
+				return stripslashes( strip_tags ( $instance ) );
 		}
 		
 		function form($instance) {
 			$instance = wp_parse_args( (array) $instance, array( 'title' => '',
-																														'titlelink' => '',
+																													 'titlelink' => '',
 																													 'display' => 5,
 																													 'feedurl' => 'http://bueltge.de/feed/',
 																													 'before_desc' => '',
@@ -867,7 +914,7 @@ if ( class_exists('WP_Widget') ) {
 			$feedurl = $instance['feedurl'];
 			$before_desc = $instance['before_desc'];
 			$displaydescriptions = $instance['displaydescriptions'];
-			$after_desc = $instance['after_desc'];
+			$after_desc = format_to_edit( $instance['after_desc'] );
 			$html = $instance['html'];
 			$truncatedescchar = $instance['truncatedescchar'];
 			$truncatedescstring = $instance['truncatedescstring'];
@@ -925,6 +972,8 @@ if ( class_exists('WP_Widget') ) {
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('after_desc'); ?>"><?php _e( 'After Description:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('after_desc'); ?>" name="<?php echo $this->get_field_name('after_desc'); ?>" type="text" value="<?php echo $after_desc; ?>" /></label>
+					<br /><small><?php _e( 'You can use the follow strings for create custom links:', FB_RSSI_TEXTDOMAIN ); ?> <code>%title%</code>, <code>%href%</code>
+					<br /><?php _e( 'Example:', FB_RSSI_TEXTDOMAIN ); ?> <code>&lt;a href="%href%" target="self" rel="follow"&gt;%title%&lt;/a&gt;</code></small>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('html'); ?>"><?php _e( 'HTML:', FB_RSSI_TEXTDOMAIN ) ?>

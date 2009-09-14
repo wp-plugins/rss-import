@@ -25,7 +25,7 @@ _Example for Shortcode:_
 1. `feedurl` - Feed-Adress, Default is `http://bueltge.de/feed/`
 1. `before_desc` - string before description, Default is `empty`
 1. `displaydescriptions` - (bool) true or false for display description of the item, Default is `false`
-1. `after_desc` - string after description, Default is `empty`
+1. `after_desc` - string after description, Default is `empty`; you can use the follow strings for custom html `%title` for title of entry and `%href` for link of entry
 1. `html` - (bool) display description include HTML-tags, Default is `false`
 1. `truncatedescchar` - truncate description, number of chars, Default is `200`, set the value to empty `''` for non truncate
 1. `truncatedescstring` - string after truncate description, Default is ` ... `
@@ -97,6 +97,9 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 
 == Changelog ==
+= v4.4.3 (14/09/2009) =
+* add strings %title% and %href% to replace in after-desc-option
+
 = v4.4.2 (07/09/2009) =
 * Bugfix for utl-value on shortcode
 * change clean the title-attribut an links for multilanguage-support
