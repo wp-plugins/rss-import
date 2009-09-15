@@ -97,6 +97,9 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 
 == Changelog ==
+= v4.4.4 (15/09/2009) =
+* change updatenotice to standard WP
+
 = v4.4.3 (14/09/2009) =
 * add strings %title% and %href% to replace in after-desc-option
 

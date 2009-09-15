@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.3
+ * @version 4.4.4
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.3
+Version: 4.4.4
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 14.09.2009 01:34:03
+Last change: 15.09.2009 09:51:45
 */ 
 
 /*
@@ -435,27 +435,13 @@ function RSSImport_insert_button() {
 }
 
 
-/**
- * inform over update
- *
- * @package WP-RSSImport
- */
-
-function RSSImport_update_notice() {
-	if ( $info = wp_remote_fopen('http://bueltge.de/wp-content/my-plugin-updates/rssimport.txt') )
-		echo '<br />' . strip_tags( $info, '<br><a><b><i><span>' );
-}
-
-
 if ( function_exists('add_shortcode') )
 	add_shortcode('RSSImport', 'RSSImport_Shortcode');
 
 add_action( 'init', 'RSSImport_textdomain' );
-if ( is_admin() ) {
-	add_action( 'in_plugin_update_message-' . FB_RSSI_BASENAME, 'RSSImport_update_notice' );
-	if (FB_RSSI_QUICKTAG)
-		add_filter( 'admin_footer', 'RSSImport_insert_button' );
-}
+if ( is_admin() && FB_RSSI_QUICKTAG )
+	add_filter( 'admin_footer', 'RSSImport_insert_button' );
+
 
 /**
  * code to utf-8 in PHP 4
