@@ -82,7 +82,6 @@ _The shortcode with a lot of paramters:_
 `start_items="<ol>", end_items="</ol>", paging="true" ]`
 
 = Localizations =
-* Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
 * Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 
@@ -123,7 +122,8 @@ See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#histori
 == Other Notes ==
 = Acknowledgements =
 Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
-Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
