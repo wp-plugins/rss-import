@@ -1,0 +1,290 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-RSSImport\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-08 13:26+0100\n"
+"PO-Revision-Date: 2009-09-17 01:03+0200\n"
+"Last-Translator: \n"
+"Language-Team: wpp.pp.ua <wordpress.ua@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Ukraine\n"
+"X-Poedit-Country: UKRAINE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ rssimport
+#: rssimport.php:430
+#: rssimport.php:756
+msgid "RSSImport"
+msgstr "Импорт RSSRSSImport"
+
+#@ rssimport
+#: rssimport.php:430
+msgid "Import a feed with RSSImport"
+msgstr "Імпортуйте живлення з RSSImport"
+
+#: rssimport.php:72
+msgid "Error in file:  on line: .<br />The Wordpress file \"rss-functions.php\" or \"rss.php\" could not be included."
+msgstr "Помилка у файлі:  у лінії: .<br />The Wordpress файл \"rss-functions.php\" або \"rss.php\" не міг включатися."
+
+#@ rssimport
+#: rssimport.php:379
+msgid "No items, feed is empty."
+msgstr "Немає елементів, живлення порожнє."
+
+#@ rssimport
+#: rssimport.php:382
+msgid "Error: Feed has a error or is not valid"
+msgstr "Помилка: Живлення має помилку або не дійсне"
+
+#@ rssimport
+#: rssimport.php:385
+msgid "&laquo; Previous"
+msgstr "&laquo; Попередній"
+
+#@ rssimport
+#: rssimport.php:386
+msgid "Next &raquo;"
+msgstr "Наступний &raquo;"
+
+#@ rssimport
+#: rssimport.php:387
+#: rssimport.php:388
+msgid "more items"
+msgstr "більше елементів"
+
+#@ rssimport
+#: rssimport.php:755
+msgid "Entries from any RSS or Atom feed"
+msgstr "Входи від будь-якого RSS або Атомного живлення"
+
+#@ rssimport
+#: rssimport.php:951
+msgid "Title:"
+msgstr "Заголовок:"
+
+#@ rssimport
+#: rssimport.php:954
+msgid "URL for Title (incl. http://):"
+msgstr "URL для Заголовка (incl. http://):"
+
+#@ rssimport
+#: rssimport.php:957
+msgid "Display:"
+msgstr "Показ:"
+
+#@ rssimport
+#: rssimport.php:960
+msgid "FeedURL:"
+msgstr "FEEDURL:"
+
+#@ rssimport
+#: rssimport.php:963
+msgid "Before Description:"
+msgstr "Перед Описом:"
+
+#@ rssimport
+#: rssimport.php:966
+msgid "Display Description:"
+msgstr "Покажіть Опис:"
+
+#@ rssimport
+#: rssimport.php:968
+#: rssimport.php:981
+#: rssimport.php:1004
+#: rssimport.php:1018
+#: rssimport.php:1047
+#: rssimport.php:1055
+#: rssimport.php:1063
+#: rssimport.php:1089
+msgid "False"
+msgstr "Брехня"
+
+#@ rssimport
+#: rssimport.php:969
+#: rssimport.php:982
+#: rssimport.php:1005
+#: rssimport.php:1019
+#: rssimport.php:1048
+#: rssimport.php:1056
+#: rssimport.php:1064
+#: rssimport.php:1090
+msgid "True"
+msgstr "Істинний"
+
+#@ rssimport
+#: rssimport.php:974
+msgid "After Description:"
+msgstr "Після Опису:"
+
+#@ rssimport
+#: rssimport.php:975
+msgid "You can use the follow strings for create custom links:"
+msgstr "You can use the follow strings for create custom links:"
+
+#@ rssimport
+#: rssimport.php:976
+msgid "Example:"
+msgstr "Приклад:"
+
+#@ rssimport
+#: rssimport.php:979
+msgid "HTML:"
+msgstr "HTML:"
+
+#@ rssimport
+#: rssimport.php:987
+msgid "Truncate Description Char:"
+msgstr "Truncate Символ Опису:"
+
+#@ rssimport
+#: rssimport.php:990
+msgid "Truncate Description String (HTML):"
+msgstr "Truncate Рядок Опису (HTML):"
+
+#@ rssimport
+#: rssimport.php:993
+msgid "Truncate Title Char:"
+msgstr "Truncate Символ Заголовка:"
+
+#@ rssimport
+#: rssimport.php:996
+msgid "Truncate Title String (HTML):"
+msgstr "Truncate Рядок Заголовка (HTML):"
+
+#@ rssimport
+#: rssimport.php:999
+msgid "Before Date (HTML):"
+msgstr "Перед Датою (HTML):"
+
+#@ rssimport
+#: rssimport.php:1002
+msgid "Date:"
+msgstr "Дата:"
+
+#@ rssimport
+#: rssimport.php:1010
+msgid "After Date (HTML):"
+msgstr "Після Дати (HTML):"
+
+#@ rssimport
+#: rssimport.php:1013
+msgid "Before Creator (HTML):"
+msgstr "Перед Творцем (HTML):"
+
+#@ rssimport
+#: rssimport.php:1016
+msgid "Creator:"
+msgstr "Творець:"
+
+#@ rssimport
+#: rssimport.php:1024
+msgid "After Creator (HTML):"
+msgstr "Після Творця (HTML):"
+
+#@ rssimport
+#: rssimport.php:1027
+msgid "Before Items (HTML):"
+msgstr "Перед Елементами (HTML):"
+
+#@ rssimport
+#: rssimport.php:1030
+msgid "After Items (HTML):"
+msgstr "Після Елементів (HTML):"
+
+#@ rssimport
+#: rssimport.php:1033
+msgid "Before Item (HTML):"
+msgstr "Перед Елементом (HTML):"
+
+#@ rssimport
+#: rssimport.php:1036
+msgid "After Item (HTML):"
+msgstr "Після Елементу (HTML):"
+
+#@ rssimport
+#: rssimport.php:1039
+msgid "Target Attribut:"
+msgstr "Цільовий Attribut:"
+
+#@ rssimport
+#: rssimport.php:1042
+msgid "Rel Attribut:"
+msgstr "Rel Attribut:"
+
+#@ rssimport
+#: rssimport.php:1045
+msgid "Charsetscan:"
+msgstr "Charsetscan:"
+
+#@ rssimport
+#: rssimport.php:1053
+msgid "Debug mode:"
+msgstr "Відладьте метод:"
+
+#@ rssimport
+#: rssimport.php:1061
+msgid "Echo/Return:"
+msgstr "Луна/Повернення:"
+
+#@ rssimport
+#: rssimport.php:1069
+msgid "Before <em>No</em> Items Message (HTML):"
+msgstr "Перед <em>No</em> Повідомленням Елементів (HTML):"
+
+#@ rssimport
+#: rssimport.php:1072
+msgid "<em>No</em> Items Message:"
+msgstr "<em>No</em> Повідомлення Елементів:"
+
+#@ rssimport
+#: rssimport.php:1075
+msgid "After <em>No</em> Items Message (HTML):"
+msgstr "Після <em>No</em> Повідомлення Елементів (HTML):"
+
+#@ rssimport
+#: rssimport.php:1078
+msgid "Before Error Message (HTML):"
+msgstr "Перед Повідомленням про Помилку (HTML):"
+
+#@ rssimport
+#: rssimport.php:1081
+msgid "Error Message:"
+msgstr "Повідомлення про Помилку:"
+
+#@ rssimport
+#: rssimport.php:1084
+msgid "After Error Message (HTML):"
+msgstr "Після Повідомлення про Помилку (HTML):"
+
+#@ rssimport
+#: rssimport.php:1087
+msgid "Pagination:"
+msgstr "Нумерація сторінок:"
+
+#@ rssimport
+#: rssimport.php:1095
+msgid "Previous Pagination Link String:"
+msgstr "Попередній Рядок Зв'язку Нумерації сторінок:"
+
+#@ rssimport
+#: rssimport.php:1098
+msgid "Next Pagination Link String:"
+msgstr "Наступний Рядок Зв'язку Нумерації сторінок:"
+
+#@ rssimport
+#: rssimport.php:1101
+msgid "Previous Pagination Title String:"
+msgstr "Попередній Рядок Заголовка Нумерації сторінок:"
+
+#@ rssimport
+#: rssimport.php:1104
+msgid "Next Pagination Title String:"
+msgstr "Наступний Рядок Заголовка Нумерації сторінок:"
+

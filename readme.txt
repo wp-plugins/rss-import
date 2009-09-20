@@ -9,7 +9,7 @@ Import and display Feeds in your blog, use PHP or the Shortcode.
 
 
 == Description ==
-Import and display Feeds in your blog, use PHP or the Shortcode.
+Import and display Feeds in your blog, use PHP, a Widget or the Shortcode.
 
 Use following code with a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
 
@@ -82,9 +82,9 @@ _The shortcode with a lot of paramters:_
 `start_items="<ol>", end_items="</ol>", paging="true" ]`
 
 = Localizations =
-Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
-Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
-
+* Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
+* Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
