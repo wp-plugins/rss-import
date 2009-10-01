@@ -16,10 +16,12 @@ Use following code with a PHP-Plugin or in a template, example `sidebar.php` or 
 _Example:_
 `&lt;?php RSSImport(10, 'http://bueltge.de/feed/'); ?&gt;`
 
-This is smallest code for use the plugin with your own feed-url. The plugin have many paramters for custom import of content form a feed. See the list of paramters. You can also use all paramters with shorcode in posts and pages.
+This is smallest code for use the plugin with your own feed-url. The plugin have many parameters for custom import of content form a feed. See the list of parameters. You can also use all parameters with shorcode in posts and pages.
 
 _Example for Shortcode:_
 [RSSImport display="5" feedurl="http://bueltge.de/feed/"]
+
+For all boolean parameter it is possible to use the string `true` or `false` or the integer value `0` or `1`.
 
 1. `display` - How many items, Default is `5`
 1. `feedurl` - Feed-Adress, Default is `http://bueltge.de/feed/`
@@ -45,7 +47,6 @@ _Example for Shortcode:_
 1. `rel`- string with the rel-attribut, Default is `empty`, use string, `nofollow`, `follow`
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
-1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 1. `before_noitems` - HTML or string before message, when the feed is empty, Default is `<p>`
 1. `noitems`- Message, when the feed is empty, Default is `No items, feed is empty.`
 1. `after_noitems` - HTML or string before message, when the feed is empty, Default is `</p>`
@@ -57,13 +58,15 @@ _Example for Shortcode:_
 1. `next_paging_link` - Linkname for next page, Default is `Next &raquo;`
 1. `prev_paging_title` - Title for the link of previous page, Default is `more items`
 1. `next_paging_title` - Title for the link of next page, Default is `more items`
+1. `use_simplepie`- Use the class SimplePie for parse the feed; SimplePie is include with WordPress 2.8 and can parse RSS and ATOM-Feeds, Default is `false`
+1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 
 The pagination function add a div with the class `rsspaging` for design with CSS. Also youcan style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
 
-All paramters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
+All parameters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
 
 = Examples: =
-_The function with many paramters:_
+_The function with many parameters:_
 
 `RSSImport(
 `						$display = 5, $feedurl = 'http://bueltge.de/feed/',`
@@ -75,7 +78,7 @@ _The function with many paramters:_
 `						$start_item = '<li>', $end_item = '</li>'`
 `					)`
 
-_The shortcode with a lot of paramters:_
+_The shortcode with a lot of parameters:_
 
 `[RSSImport display="10", feedurl="http://your_feed_url/", `
 `displaydescriptions="true", html="true"`
@@ -101,6 +104,12 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 
 == Changelog ==
+= v4.4.5 (30/09/2009) =
+* bugfix Widget-title
+* include class SimpliePie for alternative parse
+* new parameter `$use_simplepie` for active parse with class SimplePie
+* change for boolean type, possible to use `true` or `false` and `1` or `0`
+
 = v4.4.4 (15/09/2009) =
 * change updatenotice to standard WP
 

@@ -2,18 +2,18 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.4
+ * @version 4.4.5
  */
  
 /*
 Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
-Description: Import and display Feeds in your blog, use the function RSSImport() or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
+Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.4
+Version: 4.4.5
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 15.09.2009 09:51:45
+Last change: 30.09.2009 12:35:01
 */ 
 
 /*
@@ -61,18 +61,6 @@ if ( function_exists('add_action') ) {
 	define( 'FB_RSSI_QUICKTAG', TRUE );
 }
 
-// For function fetch_rss from wp-core
-if ( file_exists(ABSPATH . WPINC . '/rss.php') ) {
-	@require_once (ABSPATH . WPINC . '/rss.php');
-	// It's Wordpress 2.x. since it has been loaded successfully
-} elseif (file_exists(ABSPATH . WPINC . '/rss-functions.php')) {
-	@require_once (ABSPATH . WPINC . '/rss-functions.php');
-	// In Wordpress < 2.1
-} else {
-	die (__('Error in file: ' . __FILE__ . ' on line: ' . __LINE__ . '.<br />The Wordpress file "rss-functions.php" or "rss.php" could not be included.'));
-}
-
-
 function RSSImport_textdomain() {
 
 	if ( function_exists('load_plugin_textdomain') )
@@ -88,28 +76,66 @@ define('MAGPIE_CACHE_AGE', '60*60'); // in sec, one hour
 
 function RSSImport(
 										$display = 5, $feedurl = 'http://bueltge.de/feed/',
-										$before_desc = '', $displaydescriptions = FALSE, $after_desc = '', $html = FALSE, $truncatedescchar = 200, $truncatedescstring = ' ... ',
+										$before_desc = '', $displaydescriptions = 0, $after_desc = '', $html = 0, $truncatedescchar = 200, $truncatedescstring = ' ... ',
 										$truncatetitlechar = '', $truncatetitlestring = ' ... ',
-										$before_date = ' <small>', $date = FALSE, $after_date = '</small>',
-										$before_creator = ' <small>', $creator = FALSE, $after_creator = '</small>',
+										$before_date = ' <small>', $date = 0, $after_date = '</small>',
+										$before_creator = ' <small>', $creator = 0, $after_creator = '</small>',
 										$start_items = '<ul>', $end_items = '</ul>',
 										$start_item = '<li>', $end_item = '</li>',
 										$target = '',
 										$rel = '',
-										$charsetscan = FALSE, $debug = FALSE,
-										$view = TRUE,
+										$charsetscan = 0, $debug = 0,
 										$before_noitems = '<p>', $noitems = 'No items, feed is empty.', $after_noitems = '</p>',
 										$before_error = '<p>', $error = 'Error: Feed has a error or is not valid', $after_error = '</p>',
-										$paging = FALSE, $prev_paging_link = '&laquo; Previous', $next_paging_link = 'Next &raquo;', $prev_paging_title = 'more items', $next_paging_title = 'more items'
+										$paging = 0, $prev_paging_link = '&laquo; Previous', $next_paging_link = 'Next &raquo;', $prev_paging_title = 'more items', $next_paging_title = 'more items',
+										$use_simplepie = 0,
+										$view = 1
 									) {
+										
+	$display = (int) $display;
+	$displaydescriptions = (int) $displaydescriptions;
+	$html = (int) $html;
+	$truncatedescchar = (int) $truncatedescchar;
+	$truncatetitlechar = (int) $truncatetitlechar;
+	$date = (int) $date;
+	$creator = (int) $creator;
+	$charsetscan = (int) $charsetscan;
+	$debug = (int) $debug;
+	$paging = (int) $paging;
+	$use_simplepie = (int) $use_simplepie;
+	$view = (int) $view;
+	
+	if ($use_simplepie) {
+		if ( !class_exists('SimplePie') ) {
+			if ( file_exists(ABSPATH . WPINC . '/class-simplepie.php') ) {
+				@require_once (ABSPATH . WPINC . '/class-simplepie.php');
+			} else {
+				die (__('Error in file: ' . __FILE__ . ' on line: ' . __LINE__ . '.<br />The WordPress file "class-simplepie.php" with class SimplePie could not be included.'));
+			}
+		}
+	} else {
+		// For function fetch_rss from wp-core
+		if ( file_exists(ABSPATH . WPINC . '/rss.php') ) {
+			@require_once (ABSPATH . WPINC . '/rss.php');
+			// It's Wordpress 2.x. since it has been loaded successfully
+		} elseif (file_exists(ABSPATH . WPINC . '/rss-functions.php')) {
+			@require_once (ABSPATH . WPINC . '/rss-functions.php');
+			// In Wordpress < 2.1
+		} else {
+			die (__('Error in file: ' . __FILE__ . ' on line: ' . __LINE__ . '.<br />The Wordpress file "rss-functions.php" or "rss.php" could not be included.'));
+		}
+	}
 	
 	$display = intval($display);
 	$page = ( ( !empty( $_GET['rsspage'] ) && intval($_GET['rsspage']) > 0 ) ? intval($_GET['rsspage']) : 1 );
 	$truncatedescchar = intval($truncatedescchar);
 	$truncatetitlechar = intval($truncatetitlechar);
-	$echo = '';
-	
-	if ( $charsetscan ) {
+	if ($use_simplepie)
+		$echo = '<!--via SimplePie with RSSImport-->';
+	else
+		$echo = '<!--via MagpieRSS with RSSImport-->';
+		
+	if ($charsetscan) {
 		// read in file for search charset
 		if ( function_exists('file_get_contents') ) {
 			ini_set('default_socket_timeout', 10);
@@ -119,12 +145,15 @@ function RSSImport(
 		}
 	}
 	
-	$rss = fetch_rss($feedurl);
-
+	if ($use_simplepie)
+		$rss = fetch_feed($feedurl);
+	else
+		$rss = fetch_rss($feedurl);
+		
 	if ($rss) {
 		
 		// the follow print_r list all items in array, for debug purpose
-		if ($debug) {
+		if ( $debug ) {
 			print('<pre>');
 			print_r($rss);
 			print('</pre>');
@@ -145,27 +174,52 @@ function RSSImport(
 			$previousitems = TRUE;
 		
 		while($display < $displaylimit) {
-		
-			if ( array_key_exists( $display, $rss->items ) ) {
 			
-				$item = $rss->items[$display];
+			if ($use_simplepie)
+				$items = $rss->get_items();
+			else
+				$items = $rss->items;
+			
+			if ( array_key_exists( $display, $items ) ) {
+				
+				if ($use_simplepie)
+					$item = $rss->get_item($display);
+				else
+					$item = $rss->items[$display];
 				$echo .= $start_item;
 				// import title
-				if ( isset($item['title']) )
-					$title = wp_specialchars( $item['title'] );
+				if ($use_simplepie)
+					$title = esc_attr( strip_tags( $item->get_title() ) );
+				elseif ( isset($item['title']) )
+					$title = esc_attr( strip_tags( $item['title'] ) );
 				// import link
-				if ( isset($item['link']) )
+				if ($use_simplepie)
+					$href  = wp_filter_kses( $item->get_link() );
+				elseif ( isset($item['link']) )
 					$href  = wp_filter_kses( $item['link'] );
 				// import date
-				if ($date && isset($item['pubdate']) )
+				if ($use_simplepie && $date)
+					$pubDate = date_i18n( get_option('date_format'), strtotime( $item->get_date() ) );
+				elseif ($date && isset($item['pubdate']) )
 					$pubDate = date_i18n( get_option('date_format'), strtotime( $item['pubdate'] ) );
 				// import creator
-				if ($creator && isset($item['dc']['creator']) )
+				if ($use_simplepie && $creator) {
+					$creator = $item->get_author();
+					if ( is_object($creator) ) {
+						$creator = $creator->get_name();
+						$creator = ' <cite>' . esc_html( strip_tags( $creator ) ) . '</cite>';
+					}
+				} elseif ($creator && isset($item['dc']['creator']) ) {
 					$creator = wp_specialchars( $item['dc']['creator'] );
-				elseif ($creator && isset($item['creator']) )
+				} elseif ($creator && isset($item['creator']) ) {
 					$creator = wp_specialchars( $item['creator'] );
+				}
 				// import desc
-				if ( $displaydescriptions && $html && isset($item['content']['encoded']) && $item['content']['encoded'] != 'A' )
+				if ( $use_simplepie && $displaydescriptions && $html )
+					$desc = @html_entity_decode( $item->get_content(), ENT_QUOTES, get_option('blog_charset') ); // For import with HTML
+				elseif ( $use_simplepie && $displaydescriptions && !$html )
+					$desc = str_replace( array("\n", "\r"), ' ', esc_attr( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option('blog_charset') ) ) ) ); // For import without HTML
+				elseif ( $displaydescriptions && $html && isset($item['content']['encoded']) && $item['content']['encoded'] != 'A' )
 					$desc = $item['content']['encoded']; // For import with HTML
 				elseif ( $displaydescriptions && $html && isset($item['content']['atom_content']) && $item['content']['atom_content'] != 'A' )
 					$desc = $item['content']['atom_content']; // For import with HTML
@@ -211,7 +265,7 @@ function RSSImport(
 					$desc = wp_html_excerpt($desc, $truncatedescchar) . $truncatedescstring;
 				}
 				
-				$echo .= '<a' . $target . $rel . ' href="' . $href . '" title="'. wp_specialchars( $item['title'] ) . '">' . $title . '</a>';
+				$echo .= '<a' . $target . $rel . ' href="' . $href . '" title="'. $title . '">' . $title . '</a>';
 				if ( isset($pubDate) && $date && $pubDate != '' )
 					$echo .= $before_date . $pubDate . $after_date;
 				if ( isset($creator) && $creator && $creator != '' )
@@ -350,21 +404,21 @@ function RSSImport_end_on_word($str) {
 
 function RSSImport_Shortcode($atts) {
 	extract( shortcode_atts( array(
-																'display' => '5',
+																'display' => 5,
 																'feedurl' => 'http://bueltge.de/feed/',
 																'before_desc' => '<br />',
-																'displaydescriptions' => FALSE,
+																'displaydescriptions' => 0,
 																'after_desc' => '',
-																'html' => FALSE,
+																'html' => 0,
 																'truncatedescchar' => 200,
 																'truncatedescstring' => ' ... ',
 																'truncatetitlechar' => '',
 																'truncatetitlestring' => ' ... ',
 																'before_date' => ' <small>',
-																'date' => FALSE,
+																'date' => 0,
 																'after_date' => '</small>',
 																'before_creator' => ' <small>',
-																'creator' => FALSE,
+																'creator' => 0,
 																'after_creator' => '</small>',
 																'start_items' => '<ul>',
 																'end_items' => '</ul>',
@@ -372,24 +426,60 @@ function RSSImport_Shortcode($atts) {
 																'end_item' => '</li>',
 																'target' => '',
 																'rel' => '',
-																'charsetscan' => FALSE,
-																'debug' => FALSE,
-																'view' => FALSE,
+																'charsetscan' => 0,
+																'debug' => 0,
 																'before_noitems' => '<p>',
 																'noitems' => __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN ),
 																'after_noitems' => '</p>',
 																'before_error' => '<p>',
 																'error' => __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN ),
 																'after_error' => '</p>',
-																'paging' => FALSE,
+																'paging' => 0,
 																'prev_paging_link' => __( '&laquo; Previous', FB_RSSI_TEXTDOMAIN ),
 																'next_paging_link' => __( 'Next &raquo;', FB_RSSI_TEXTDOMAIN ),
 																'prev_paging_title' => __( 'more items', FB_RSSI_TEXTDOMAIN ),
-																'next_paging_title'=> __( 'more items', FB_RSSI_TEXTDOMAIN )
+																'next_paging_title' => __( 'more items', FB_RSSI_TEXTDOMAIN ),
+																'use_simplepie' => 0,
+																'view' => 0
 																), $atts) );
+	//var_dump($atts);
+	
+	$display = intval($display);
+	if ( strtolower($html) == 'true')
+		$html = 1;
+	$html = intval($html);
+	if ( strtolower($displaydescriptions) == 'true')
+		$displaydescriptions = 1;
+	$displaydescriptions = intval($displaydescriptions);
+	if ( strtolower($truncatedescchar) == 'true')
+		$truncatedescchar = 1;
+	$truncatedescchar = intval($truncatedescchar);
+	if ( strtolower($truncatetitlechar) == 'true')
+		$truncatetitlechar = 1;
+	$truncatetitlechar = intval($truncatetitlechar);
+	if ( strtolower($date) == 'true')
+		$date = 1;
+	$date = intval($date);
+	if ( strtolower($creator) == 'true')
+		$creator = 1;
+	$creator = intval($creator);
+	if ( strtolower($charsetscan) == 'true')
+		$charsetscan = 1;
+	$charsetscan = intval($charsetscan);
+	if ( strtolower($debug) == 'true')
+		$debug = 1;
+	$debug = intval($debug);
+	if ( strtolower($paging) == 'true')
+		$paging = 1;
+	$paging = intval($paging);
+	if ( strtolower($use_simplepie) == 'true')
+		$use_simplepie = 1;
+	$use_simplepie = intval($use_simplepie);
+	
 	$return = RSSImport(
-								$display, all_convert($feedurl),
-								$before_desc, $displaydescriptions, $after_desc, $html, $truncatedescchar, $truncatedescstring,
+								$display, $feedurl,
+								$before_desc, $displaydescriptions, $after_desc, $html,
+								$truncatedescchar, $truncatedescstring,
 								$truncatetitlechar, $truncatetitlestring,
 								$before_date, $date, $after_date,
 								$before_creator, $creator, $after_creator,
@@ -398,12 +488,13 @@ function RSSImport_Shortcode($atts) {
 								$target,
 								$rel,
 								$charsetscan, $debug,
-								$view,
 								$before_noitems, $noitems, $after_noitems,
 								$before_error, $error, $after_error,
-								$paging, $prev_paging_link, $next_paging_link, $prev_paging_title, $next_paging_title
+								$paging, $prev_paging_link, $next_paging_link, $prev_paging_title, $next_paging_title,
+								$use_simplepie,
+								$view
 							);
-
+							
 	return $return;
 }
 
@@ -421,7 +512,7 @@ function RSSImport_insert_button() {
 	<script type="text/javascript">
 		//<![CDATA[
 		var length = edButtons.length;
-		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="TRUE" after_desc=" " html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="FALSE" after_date=" </small>" before_creator=" <small>" creator="FALSE" after_creator=" </small>" start_items=" <ul>" end_items=" </ul>" start_item=" <li>" end_item=" </li>" target="" rel="" before_noitems="<p>" noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>" paging="FALSE"]\', \'\', \'\');
+		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="TRUE" after_desc=" " html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="FALSE" after_date="</small>" before_creator=" <small>" creator="FALSE" after_creator="</small>" start_items="<ul>" end_items="</ul>" start_item="<li>" end_item="</li>" target="" rel="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>" noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>" paging="FALSE" prev_paging_link="&laquo; Previous" next_paging_link="Next &raquo;" prev_paging_title="more items" next_paging_title="more items" use_simplepie="FALSE"]\', \'\', \'\');
 		function RSSImport_tag(id) {
 			id = id.replace(/RSSImport_/, \'\');
 			edInsertTag(edCanvas, id);
@@ -771,7 +862,6 @@ if ( class_exists('WP_Widget') ) {
 			$rel                 = empty($instance['rel']) ? '' : $instance['rel'];
 			$charsetscan         = empty($instance['charsetscan']) ? '0' : $instance['charsetscan'];
 			$debug               = empty($instance['debug']) ? '0' : $instance['debug'];
-			$view                = empty($instance['view']) ? '1' : $instance['view'];
 			$before_noitems      = empty($instance['before_noitems']) ? '<p>' : $instance['before_noitems'];
 			$noitems             = empty($instance['noitems']) ? 'No items, feed is empty.' : $instance['noitems'];
 			$after_noitems       = empty($instance['after_noitems']) ? '</p>' : $instance['after_noitems'];
@@ -783,6 +873,8 @@ if ( class_exists('WP_Widget') ) {
 			$next_paging_link    = empty($instance['next_paging_link']) ? 'Next &raquo;' : $instance['next_paging_link'];
 			$prev_paging_title   = empty($instance['prev_paging_title']) ? 'more items' : $instance['prev_paging_title'];
 			$next_paging_title   = empty($instance['next_paging_title']) ? 'more items' : $instance['next_paging_title'];
+			$use_simplepie       = empty($instance['use_simplepie']) ? '0' : $instance['use_simplepie'];
+			$view                = empty($instance['view']) ? '1' : $instance['view'];
 			
 			echo $before_widget;
 			if ( $titlelink != '' )
@@ -799,33 +891,34 @@ if ( class_exists('WP_Widget') ) {
 								$target,
 								$rel,
 								$charsetscan, $debug,
-								$view,
 								$before_noitems, $noitems, $after_noitems,
 								$before_error, $error, $after_error,
-								$paging, $prev_paging_link, $next_paging_link, $prev_paging_title, $next_paging_title
+								$paging, $prev_paging_link, $next_paging_link, $prev_paging_title, $next_paging_title,
+								$use_simplepie,
+								$view
 							);
 			echo $after_widget;
 		}
 		
 		function update($new_instance, $old_instance) {
 			$instance['instance'] = $old_instance;
-			$instance['title  '] = strip_tags($new_instance['title']);
+			$instance['title'] = strip_tags( $new_instance['title'] );
 			$instance['titlelink'] = clean_url($new_instance['titlelink']);
 			$instance['display'] = (int) $new_instance['display'];
 			$instance['feedurl'] = $new_instance['feedurl'];
 			$instance['before_desc'] = $new_instance['before_desc'];
-			$instance['displaydescriptions'] = $new_instance['displaydescriptions'];
+			$instance['displaydescriptions'] = (int) $new_instance['displaydescriptions'];
 			$instance['after_desc'] = stripslashes_deep( $new_instance['after_desc'] );
-			$instance['html'] = $new_instance['html'];
-			$instance['truncatedescchar'] = $new_instance['truncatedescchar'];
+			$instance['html'] = (int) $new_instance['html'];
+			$instance['truncatedescchar'] = (int) $new_instance['truncatedescchar'];
 			$instance['truncatedescstring'] = $new_instance['truncatedescstring'];
-			$instance['truncatetitlechar'] = $new_instance['truncatetitlechar'];
+			$instance['truncatetitlechar'] = (int) $new_instance['truncatetitlechar'];
 			$instance['truncatetitlestring'] = $new_instance['truncatetitlestring'];
 			$instance['before_date'] = $new_instance['before_date'];
-			$instance['date'] = $new_instance['date'];
+			$instance['date'] = (int) $new_instance['date'];
 			$instance['after_date'] = $new_instance['after_date'];
 			$instance['before_creator'] = $new_instance['before_creator'];
-			$instance['creator'] = $new_instance['creator'];
+			$instance['creator'] = (int) $new_instance['creator'];
 			$instance['after_creator'] = $new_instance['after_creator'];
 			$instance['start_items'] = $new_instance['start_items'];
 			$instance['end_items'] = $new_instance['end_items'];
@@ -833,20 +926,21 @@ if ( class_exists('WP_Widget') ) {
 			$instance['end_item'] = $new_instance['end_item'];
 			$instance['target'] = $new_instance['target'];
 			$instance['rel'] = $instance['rel'];
-			$instance['charsetscan'] = $new_instance['charsetscan'];
-			$instance['debug'] = $new_instance['debug'];
-			$instance['view'] = $new_instance['view'];
+			$instance['charsetscan'] = (int) $new_instance['charsetscan'];
+			$instance['debug'] = (int) $new_instance['debug'];
+			$instance['view'] = (int) $new_instance['view'];
 			$instance['before_noitems'] = $new_instance['before_noitems'];
 			$instance['noitems'] = $new_instance['noitems'];
 			$instance['after_noitems'] = $new_instance['after_noitems'];
 			$instance['before_error'] = $new_instance['before_error'];
 			$instance['error'] = $new_instance['error'];
 			$instance['after_error'] = $new_instance['after_error'];
-			$instance['paging'] = $new_instance['paging'];
+			$instance['paging'] = (int) $new_instance['paging'];
 			$instance['prev_paging_link'] = $new_instance['prev_paging_link'];
 			$instance['next_paging_link'] = $new_instance['next_paging_link'];
 			$instance['prev_paging_title'] = $new_instance['prev_paging_title'];
 			$instance['next_paging_title'] = $new_instance['next_paging_title'];
+			$instance['use_simplepie'] = (int) $new_instance['use_simplepie'];
 			
 			if ( current_user_can('unfiltered_html') )
 				return $instance;
@@ -892,25 +986,26 @@ if ( class_exists('WP_Widget') ) {
 																													 'prev_paging_link' => '&laquo; Previous',
 																													 'next_paging_link' => 'Next &raquo;',
 																													 'prev_paging_title' => 'more items',
-																													 'next_paging_title' => 'more items'
+																													 'next_paging_title' => 'more items',
+																													 'use_simplepie' => 0
 																													) );
 			$title   = strip_tags($instance['title']);
 			$titlelink = clean_url($instance['titlelink']);
 			$display = (int) $instance['display'];
 			$feedurl = $instance['feedurl'];
 			$before_desc = $instance['before_desc'];
-			$displaydescriptions = $instance['displaydescriptions'];
+			$displaydescriptions = (int) $instance['displaydescriptions'];
 			$after_desc = format_to_edit( $instance['after_desc'] );
-			$html = $instance['html'];
-			$truncatedescchar = $instance['truncatedescchar'];
-			$truncatedescstring = $instance['truncatedescstring'];
+			$html = (int) $instance['html'];
+			$truncatedescchar = (int) $instance['truncatedescchar'];
+			$truncatedescstring = (int) $instance['truncatedescstring'];
 			$truncatetitlechar = $instance['truncatetitlechar'];
 			$truncatetitlestring = $instance['truncatetitlestring'];
 			$before_date = $instance['before_date'];
-			$date = $instance['date'];
+			$date = (int) $instance['date'];
 			$after_date = $instance['after_date'];
 			$before_creator = $instance['before_creator'];
-			$creator = $instance['creator'];
+			$creator = (int) $instance['creator'];
 			$after_creator = $instance['after_creator'];
 			$start_items = $instance['start_items'];
 			$end_items = $instance['end_items'];
@@ -918,20 +1013,21 @@ if ( class_exists('WP_Widget') ) {
 			$end_item = $instance['end_item'];
 			$target = $instance['target'];
 			$rel = $instance['rel'];
-			$charsetscan = $instance['charsetscan'];
-			$debug = $instance['debug'];
-			$view = $instance['view'];
+			$charsetscan = (int) $instance['charsetscan'];
+			$debug = (int) $instance['debug'];
 			$before_noitems = $instance['before_noitems'];
 			$noitems = $instance['noitems'];
 			$after_noitems = $instance['after_noitems'];
 			$before_error = $instance['before_error'];
 			$error = $instance['error'];
 			$after_error = $instance['after_error'];
-			$paging = $instance['paging'];
+			$paging = (int) $instance['paging'];
 			$prev_paging_link = $instance['prev_paging_link'];
 			$next_paging_link = $instance['next_paging_link'];
 			$prev_paging_title = $instance['prev_paging_title'];
 			$next_paging_title = $instance['next_paging_title'];
+			$use_simplepie = (int) $instance['use_simplepie'];
+			$view = (int) $instance['view'];
 			?>
 				<p>
 					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label>
@@ -1044,14 +1140,6 @@ if ( class_exists('WP_Widget') ) {
 					</label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('view'); ?>"><?php _e( 'Echo/Return:', FB_RSSI_TEXTDOMAIN ) ?>
-						<select id="<?php echo $this->get_field_id('view'); ?>" name="<?php echo $this->get_field_name('view'); ?>">
-							<option value="0"<?php if ($view == '0') { echo ' selected="selected"'; } ?>><?php _e('False', FB_RSSI_TEXTDOMAIN ); ?></option>
-							<option value="1"<?php if ($view == '1') { echo ' selected="selected"'; } ?>><?php _e('True', FB_RSSI_TEXTDOMAIN ); ?></option>
-						</select>
-					</label>
-				</p>
-				<p>
 					<label for="<?php echo $this->get_field_id('before_noitems'); ?>"><?php _e( 'Before <em>No</em> Items Message (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('before_noitems'); ?>" name="<?php echo $this->get_field_name('before_noitems'); ?>" type="text" value="<?php echo $before_noitems; ?>" /></label>
 				</p>
 				<p>
@@ -1088,6 +1176,22 @@ if ( class_exists('WP_Widget') ) {
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('next_paging_title'); ?>"><?php _e( 'Next Pagination Title String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('next_paging_title'); ?>" name="<?php echo $this->get_field_name('next_paging_title'); ?>" type="text" value="<?php echo attribute_escape($next_paging_title); ?>" /></label>
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('use_simplepie'); ?>"><?php _e( 'Use SimplePie class:', FB_RSSI_TEXTDOMAIN ) ?>
+						<select id="<?php echo $this->get_field_id('use_simplepie'); ?>" name="<?php echo $this->get_field_name('use_simplepie'); ?>">
+							<option value="0"<?php if ($use_simplepie == '0') { echo ' selected="selected"'; } ?>><?php _e('False', FB_RSSI_TEXTDOMAIN ); ?></option>
+							<option value="1"<?php if ($use_simplepie == '1') { echo ' selected="selected"'; } ?>><?php _e('True', FB_RSSI_TEXTDOMAIN ); ?></option>
+						</select>
+					</label>
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('view'); ?>"><?php _e( 'Echo/Return:', FB_RSSI_TEXTDOMAIN ) ?>
+						<select id="<?php echo $this->get_field_id('view'); ?>" name="<?php echo $this->get_field_name('view'); ?>">
+							<option value="0"<?php if ($view == '0') { echo ' selected="selected"'; } ?>><?php _e('False', FB_RSSI_TEXTDOMAIN ); ?></option>
+							<option value="1"<?php if ($view == '1') { echo ' selected="selected"'; } ?>><?php _e('True', FB_RSSI_TEXTDOMAIN ); ?></option>
+						</select>
+					</label>
 				</p>
 			<?php
 			
