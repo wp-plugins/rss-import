@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.5
+ * @version 4.4.6
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.5
+Version: 4.4.6
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 30.09.2009 12:35:01
+Last change: 06.10.2009 19:47:42
 */ 
 
 /*
@@ -67,6 +67,11 @@ function RSSImport_textdomain() {
 	load_plugin_textdomain( FB_RSSI_TEXTDOMAIN, FALSE, dirname( FB_RSSI_BASENAME ) . '/languages');
 }
 
+if ( !function_exists('esc_attr') ) {
+	function esc_attr( $text ) {
+		return attribute_escape( $text );
+	}
+}
 
 // cache and error report
 //define('MAGPIE_CACHE_ON', FALSE); // Cache off
@@ -1030,16 +1035,16 @@ if ( class_exists('WP_Widget') ) {
 			$view = (int) $instance['view'];
 			?>
 				<p>
-					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('titlelink'); ?>"><?php _e( 'URL for Title (incl. http://):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('titlelink'); ?>" name="<?php echo $this->get_field_name('titlelink'); ?>" type="text" value="<?php echo clean_url($titlelink); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('display'); ?>"><?php _e( 'Display:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('display'); ?>" name="<?php echo $this->get_field_name('display'); ?>" type="text" value="<?php echo attribute_escape($display); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('display'); ?>"><?php _e( 'Display:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('display'); ?>" name="<?php echo $this->get_field_name('display'); ?>" type="text" value="<?php echo esc_attr($display); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('feedurl'); ?>"><?php _e( 'FeedURL:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('feedurl'); ?>" name="<?php echo $this->get_field_name('feedurl'); ?>" type="text" value="<?php echo attribute_escape($feedurl); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('feedurl'); ?>"><?php _e( 'FeedURL:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('feedurl'); ?>" name="<?php echo $this->get_field_name('feedurl'); ?>" type="text" value="<?php echo esc_attr($feedurl); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('before_desc'); ?>"><?php _e( 'Before Description:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('before_desc'); ?>" name="<?php echo $this->get_field_name('before_desc'); ?>" type="text" value="<?php echo $before_desc; ?>" /></label>
@@ -1066,13 +1071,13 @@ if ( class_exists('WP_Widget') ) {
 					</label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('truncatedescchar'); ?>"><?php _e( 'Truncate Description Char:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('truncatedescchar'); ?>" name="<?php echo $this->get_field_name('truncatedescchar'); ?>" type="text" value="<?php echo attribute_escape($truncatedescchar); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('truncatedescchar'); ?>"><?php _e( 'Truncate Description Char:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('truncatedescchar'); ?>" name="<?php echo $this->get_field_name('truncatedescchar'); ?>" type="text" value="<?php echo esc_attr($truncatedescchar); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('truncatedescstring'); ?>"><?php _e( 'Truncate Description String (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('truncatedescstring'); ?>" name="<?php echo $this->get_field_name('truncatedescstring'); ?>" type="text" value="<?php echo $truncatedescstring; ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('truncatetitlechar'); ?>"><?php _e( 'Truncate Title Char:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('truncatetitlechar'); ?>" name="<?php echo $this->get_field_name('truncatetitlechar'); ?>" type="text" value="<?php echo attribute_escape($truncatetitlechar); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('truncatetitlechar'); ?>"><?php _e( 'Truncate Title Char:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('truncatetitlechar'); ?>" name="<?php echo $this->get_field_name('truncatetitlechar'); ?>" type="text" value="<?php echo esc_attr($truncatetitlechar); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('truncatetitlestring'); ?>"><?php _e( 'Truncate Title String (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('truncatetitlestring'); ?>" name="<?php echo $this->get_field_name('truncatetitlestring'); ?>" type="text" value="<?php echo $truncatetitlestring; ?>" /></label>
@@ -1118,10 +1123,10 @@ if ( class_exists('WP_Widget') ) {
 					<label for="<?php echo $this->get_field_id('end_item'); ?>"><?php _e( 'After Item (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('end_item'); ?>" name="<?php echo $this->get_field_name('end_item'); ?>" type="text" value="<?php echo $end_item; ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('target'); ?>"><?php _e( 'Target Attribut:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('target'); ?>" name="<?php echo $this->get_field_name('target'); ?>" type="text" value="<?php echo attribute_escape($target); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('target'); ?>"><?php _e( 'Target Attribut:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('target'); ?>" name="<?php echo $this->get_field_name('target'); ?>" type="text" value="<?php echo esc_attr($target); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('rel'); ?>"><?php _e( 'Rel Attribut:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('rel'); ?>" name="<?php echo $this->get_field_name('rel'); ?>" type="text" value="<?php echo attribute_escape($rel); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('rel'); ?>"><?php _e( 'Rel Attribut:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('rel'); ?>" name="<?php echo $this->get_field_name('rel'); ?>" type="text" value="<?php echo esc_attr($rel); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('charsetscan'); ?>"><?php _e( 'Charsetscan:', FB_RSSI_TEXTDOMAIN ) ?>
@@ -1143,7 +1148,7 @@ if ( class_exists('WP_Widget') ) {
 					<label for="<?php echo $this->get_field_id('before_noitems'); ?>"><?php _e( 'Before <em>No</em> Items Message (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('before_noitems'); ?>" name="<?php echo $this->get_field_name('before_noitems'); ?>" type="text" value="<?php echo $before_noitems; ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('noitems'); ?>"><?php _e( '<em>No</em> Items Message:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('noitems'); ?>" name="<?php echo $this->get_field_name('noitems'); ?>" type="text" value="<?php echo attribute_escape($noitems); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('noitems'); ?>"><?php _e( '<em>No</em> Items Message:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('noitems'); ?>" name="<?php echo $this->get_field_name('noitems'); ?>" type="text" value="<?php echo esc_attr($noitems); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('after_noitems'); ?>"><?php _e( 'After <em>No</em> Items Message (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('after_noitems'); ?>" name="<?php echo $this->get_field_name('after_noitems'); ?>" type="text" value="<?php echo $after_noitems; ?>" /></label>
@@ -1152,7 +1157,7 @@ if ( class_exists('WP_Widget') ) {
 					<label for="<?php echo $this->get_field_id('before_error'); ?>"><?php _e( 'Before Error Message (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('before_error'); ?>" name="<?php echo $this->get_field_name('before_error'); ?>" type="text" value="<?php echo $before_error; ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('error'); ?>"><?php _e( 'Error Message:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('error'); ?>" name="<?php echo $this->get_field_name('error'); ?>" type="text" value="<?php echo attribute_escape($error); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('error'); ?>"><?php _e( 'Error Message:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('error'); ?>" name="<?php echo $this->get_field_name('error'); ?>" type="text" value="<?php echo esc_attr($error); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('after_error'); ?>"><?php _e( 'After Error Message (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('after_error'); ?>" name="<?php echo $this->get_field_name('after_error'); ?>" type="text" value="<?php echo $after_error; ?>" /></label>
@@ -1166,16 +1171,16 @@ if ( class_exists('WP_Widget') ) {
 					</label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('prev_paging_link'); ?>"><?php _e( 'Previous Pagination Link String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('prev_paging_link'); ?>" name="<?php echo $this->get_field_name('prev_paging_link'); ?>" type="text" value="<?php echo attribute_escape($prev_paging_link); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('prev_paging_link'); ?>"><?php _e( 'Previous Pagination Link String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('prev_paging_link'); ?>" name="<?php echo $this->get_field_name('prev_paging_link'); ?>" type="text" value="<?php echo esc_attr($prev_paging_link); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('next_paging_link'); ?>"><?php _e( 'Next Pagination Link String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('next_paging_link'); ?>" name="<?php echo $this->get_field_name('next_paging_link'); ?>" type="text" value="<?php echo attribute_escape($next_paging_link); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('next_paging_link'); ?>"><?php _e( 'Next Pagination Link String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('next_paging_link'); ?>" name="<?php echo $this->get_field_name('next_paging_link'); ?>" type="text" value="<?php echo esc_attr($next_paging_link); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('prev_paging_title'); ?>"><?php _e( 'Previous Pagination Title String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('prev_paging_title'); ?>" name="<?php echo $this->get_field_name('prev_paging_title'); ?>" type="text" value="<?php echo attribute_escape($prev_paging_title); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('prev_paging_title'); ?>"><?php _e( 'Previous Pagination Title String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('prev_paging_title'); ?>" name="<?php echo $this->get_field_name('prev_paging_title'); ?>" type="text" value="<?php echo esc_attr($prev_paging_title); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('next_paging_title'); ?>"><?php _e( 'Next Pagination Title String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('next_paging_title'); ?>" name="<?php echo $this->get_field_name('next_paging_title'); ?>" type="text" value="<?php echo attribute_escape($next_paging_title); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('next_paging_title'); ?>"><?php _e( 'Next Pagination Title String:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('next_paging_title'); ?>" name="<?php echo $this->get_field_name('next_paging_title'); ?>" type="text" value="<?php echo esc_attr($next_paging_title); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('use_simplepie'); ?>"><?php _e( 'Use SimplePie class:', FB_RSSI_TEXTDOMAIN ) ?>

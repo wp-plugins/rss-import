@@ -105,6 +105,9 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 
 == Changelog ==
+= v4.4.6 (07/10/2009) =
+* add function for WordPress lower version 2.8
+
 = v4.4.5 (30/09/2009) =
 * bugfix Widget-title
 * include class SimpliePie for alternative parse
