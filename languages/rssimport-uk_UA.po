@@ -19,284 +19,299 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: rssimport.php:521
-#: rssimport.php:833
+#: rssimport.php:529
+#: rssimport.php:841
 #@ rssimport
 msgid "RSSImport"
 msgstr "Импорт RSSRSSImport"
 
-#: rssimport.php:521
+#: rssimport.php:529
 #@ rssimport
 msgid "Import a feed with RSSImport"
 msgstr "Імпортуйте живлення з RSSImport"
 
-#: rssimport.php:125
+#: rssimport.php:132
 msgid "Error in file:  on line: .<br />The Wordpress file \"rss-functions.php\" or \"rss.php\" could not be included."
 msgstr "Помилка у файлі:  у лінії: .<br />The Wordpress файл \"rss-functions.php\" або \"rss.php\" не міг включатися."
 
-#: rssimport.php:432
+#: rssimport.php:440
 #@ rssimport
 msgid "No items, feed is empty."
 msgstr "Немає елементів, живлення порожнє."
 
-#: rssimport.php:435
+#: rssimport.php:443
 #@ rssimport
 msgid "Error: Feed has a error or is not valid"
 msgstr "Помилка: Живлення має помилку або не дійсне"
 
-#: rssimport.php:438
+#: rssimport.php:446
 #@ rssimport
 msgid "&laquo; Previous"
 msgstr "&laquo; Попередній"
 
-#: rssimport.php:439
+#: rssimport.php:447
 #@ rssimport
 msgid "Next &raquo;"
 msgstr "Наступний &raquo;"
 
-#: rssimport.php:440
-#: rssimport.php:441
+#: rssimport.php:448
+#: rssimport.php:449
 #@ rssimport
 msgid "more items"
 msgstr "більше елементів"
 
-#: rssimport.php:832
+#: rssimport.php:840
 #@ rssimport
 msgid "Entries from any RSS or Atom feed"
 msgstr "Входи від будь-якого RSS або Атомного живлення"
 
-#: rssimport.php:1033
+#: rssimport.php:1045
 #@ rssimport
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: rssimport.php:1036
+#: rssimport.php:1048
 #@ rssimport
 msgid "URL for Title (incl. http://):"
 msgstr "URL для Заголовка (incl. http://):"
 
-#: rssimport.php:1039
+#: rssimport.php:1051
 #@ rssimport
 msgid "Display:"
 msgstr "Показ:"
 
-#: rssimport.php:1042
+#: rssimport.php:1054
 #@ rssimport
 msgid "FeedURL:"
 msgstr "FEEDURL:"
 
-#: rssimport.php:1045
+#: rssimport.php:1057
 #@ rssimport
 msgid "Before Description:"
 msgstr "Перед Описом:"
 
-#: rssimport.php:1048
+#: rssimport.php:1060
 #@ rssimport
 msgid "Display Description:"
 msgstr "Покажіть Опис:"
 
-#: rssimport.php:1050
-#: rssimport.php:1063
-#: rssimport.php:1086
-#: rssimport.php:1100
-#: rssimport.php:1129
-#: rssimport.php:1137
-#: rssimport.php:1163
-#: rssimport.php:1183
-#: rssimport.php:1191
+#: rssimport.php:1062
+#: rssimport.php:1075
+#: rssimport.php:1098
+#: rssimport.php:1116
+#: rssimport.php:1145
+#: rssimport.php:1153
+#: rssimport.php:1179
+#: rssimport.php:1199
+#: rssimport.php:1207
 #@ rssimport
 msgid "False"
 msgstr "Брехня"
 
-#: rssimport.php:1051
-#: rssimport.php:1064
-#: rssimport.php:1087
-#: rssimport.php:1101
-#: rssimport.php:1130
-#: rssimport.php:1138
-#: rssimport.php:1164
-#: rssimport.php:1184
-#: rssimport.php:1192
+#: rssimport.php:1063
+#: rssimport.php:1076
+#: rssimport.php:1099
+#: rssimport.php:1117
+#: rssimport.php:1146
+#: rssimport.php:1154
+#: rssimport.php:1180
+#: rssimport.php:1200
+#: rssimport.php:1208
 #@ rssimport
 msgid "True"
 msgstr "Істинний"
 
-#: rssimport.php:1056
+#: rssimport.php:1068
 #@ rssimport
 msgid "After Description:"
 msgstr "Після Опису:"
 
-#: rssimport.php:1057
+#: rssimport.php:1069
 #@ rssimport
 msgid "You can use the follow strings for create custom links:"
 msgstr "You can use the follow strings for create custom links:"
 
-#: rssimport.php:1058
+#: rssimport.php:1070
 #@ rssimport
 msgid "Example:"
 msgstr "Приклад:"
 
-#: rssimport.php:1061
+#: rssimport.php:1073
 #@ rssimport
 msgid "HTML:"
 msgstr "HTML:"
 
-#: rssimport.php:1069
+#: rssimport.php:1081
 #@ rssimport
 msgid "Truncate Description Char:"
 msgstr "Truncate Символ Опису:"
 
-#: rssimport.php:1072
+#: rssimport.php:1084
 #@ rssimport
 msgid "Truncate Description String (HTML):"
 msgstr "Truncate Рядок Опису (HTML):"
 
-#: rssimport.php:1075
+#: rssimport.php:1087
 #@ rssimport
 msgid "Truncate Title Char:"
 msgstr "Truncate Символ Заголовка:"
 
-#: rssimport.php:1078
+#: rssimport.php:1090
 #@ rssimport
 msgid "Truncate Title String (HTML):"
 msgstr "Truncate Рядок Заголовка (HTML):"
 
-#: rssimport.php:1081
+#: rssimport.php:1093
 #@ rssimport
 msgid "Before Date (HTML):"
 msgstr "Перед Датою (HTML):"
 
-#: rssimport.php:1084
+#: rssimport.php:1096
 #@ rssimport
 msgid "Date:"
 msgstr "Дата:"
 
-#: rssimport.php:1092
+#: rssimport.php:1104
 #@ rssimport
 msgid "After Date (HTML):"
 msgstr "Після Дати (HTML):"
 
-#: rssimport.php:1095
+#: rssimport.php:1111
 #@ rssimport
 msgid "Before Creator (HTML):"
 msgstr "Перед Творцем (HTML):"
 
-#: rssimport.php:1098
+#: rssimport.php:1114
 #@ rssimport
 msgid "Creator:"
 msgstr "Творець:"
 
-#: rssimport.php:1106
+#: rssimport.php:1122
 #@ rssimport
 msgid "After Creator (HTML):"
 msgstr "Після Творця (HTML):"
 
-#: rssimport.php:1109
+#: rssimport.php:1125
 #@ rssimport
 msgid "Before Items (HTML):"
 msgstr "Перед Елементами (HTML):"
 
-#: rssimport.php:1112
+#: rssimport.php:1128
 #@ rssimport
 msgid "After Items (HTML):"
 msgstr "Після Елементів (HTML):"
 
-#: rssimport.php:1115
+#: rssimport.php:1131
 #@ rssimport
 msgid "Before Item (HTML):"
 msgstr "Перед Елементом (HTML):"
 
-#: rssimport.php:1118
+#: rssimport.php:1134
 #@ rssimport
 msgid "After Item (HTML):"
 msgstr "Після Елементу (HTML):"
 
-#: rssimport.php:1121
+#: rssimport.php:1137
 #@ rssimport
 msgid "Target Attribut:"
 msgstr "Цільовий Attribut:"
 
-#: rssimport.php:1124
+#: rssimport.php:1140
 #@ rssimport
 msgid "Rel Attribut:"
 msgstr "Rel Attribut:"
 
-#: rssimport.php:1127
+#: rssimport.php:1143
 #@ rssimport
 msgid "Charsetscan:"
 msgstr "Charsetscan:"
 
-#: rssimport.php:1135
+#: rssimport.php:1151
 #@ rssimport
 msgid "Debug mode:"
 msgstr "Відладьте метод:"
 
-#: rssimport.php:1189
+#: rssimport.php:1205
 #@ rssimport
 msgid "Echo/Return:"
 msgstr "Луна/Повернення:"
 
-#: rssimport.php:1143
+#: rssimport.php:1159
 #@ rssimport
 msgid "Before <em>No</em> Items Message (HTML):"
 msgstr "Перед <em>No</em> Повідомленням Елементів (HTML):"
 
-#: rssimport.php:1146
+#: rssimport.php:1162
 #@ rssimport
 msgid "<em>No</em> Items Message:"
 msgstr "<em>No</em> Повідомлення Елементів:"
 
-#: rssimport.php:1149
+#: rssimport.php:1165
 #@ rssimport
 msgid "After <em>No</em> Items Message (HTML):"
 msgstr "Після <em>No</em> Повідомлення Елементів (HTML):"
 
-#: rssimport.php:1152
+#: rssimport.php:1168
 #@ rssimport
 msgid "Before Error Message (HTML):"
 msgstr "Перед Повідомленням про Помилку (HTML):"
 
-#: rssimport.php:1155
+#: rssimport.php:1171
 #@ rssimport
 msgid "Error Message:"
 msgstr "Повідомлення про Помилку:"
 
-#: rssimport.php:1158
+#: rssimport.php:1174
 #@ rssimport
 msgid "After Error Message (HTML):"
 msgstr "Після Повідомлення про Помилку (HTML):"
 
-#: rssimport.php:1161
+#: rssimport.php:1177
 #@ rssimport
 msgid "Pagination:"
 msgstr "Нумерація сторінок:"
 
-#: rssimport.php:1169
+#: rssimport.php:1185
 #@ rssimport
 msgid "Previous Pagination Link String:"
 msgstr "Попередній Рядок Зв'язку Нумерації сторінок:"
 
-#: rssimport.php:1172
+#: rssimport.php:1188
 #@ rssimport
 msgid "Next Pagination Link String:"
 msgstr "Наступний Рядок Зв'язку Нумерації сторінок:"
 
-#: rssimport.php:1175
+#: rssimport.php:1191
 #@ rssimport
 msgid "Previous Pagination Title String:"
 msgstr "Попередній Рядок Заголовка Нумерації сторінок:"
 
-#: rssimport.php:1178
+#: rssimport.php:1194
 #@ rssimport
 msgid "Next Pagination Title String:"
 msgstr "Наступний Рядок Заголовка Нумерації сторінок:"
 
-#: rssimport.php:113
+#: rssimport.php:120
 msgid "Error in file:  on line: .<br />The WordPress file \"class-simplepie.php\" with class SimplePie could not be included."
 msgstr ""
 
-#: rssimport.php:1181
+#: rssimport.php:1197
 #@ rssimport
 msgid "Use SimplePie class:"
+msgstr ""
+
+#: rssimport.php:1107
+#@ rssimport
+msgid "Date Formatting:"
+msgstr ""
+
+#: rssimport.php:1108
+#@ rssimport
+msgid "Leave empty for use the date format of your WordPress settings."
+msgstr ""
+
+#: rssimport.php:1108
+#@ rssimport
+msgid "Documentation on date formatting"
 msgstr ""
 

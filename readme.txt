@@ -36,6 +36,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `before_date` - string before date, Default is ` <small>`
 1. `date` - (bool) return the date of the item, Default is `false`
 1. `after_date` - string after the date, Default is `</small>`
+1. `date_format`- your format for the date, leave empty for use format of your WordPress installation, alternativ give the php date string, Example: `F j, Y`; see also [doku in Codex](http://codex.wordpress.org/Formatting_Date_and_Time)
 1. `before_creator` - string before creator of the item, Default is ` <small>`
 1. `creator` - (bool) return the creator of th item, Default is `false`
 1. `after_creator` - string after creator of the item, Default is `</small>`
@@ -105,6 +106,9 @@ Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "
 
 
 == Changelog ==
+= v4.4.7 (12/10/2009) =
+* add option vor format the date
+
 = v4.4.6 (07/10/2009) =
 * add function for WordPress lower version 2.8
 

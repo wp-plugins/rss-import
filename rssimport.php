@@ -83,7 +83,7 @@ function RSSImport(
 										$display = 5, $feedurl = 'http://bueltge.de/feed/',
 										$before_desc = '', $displaydescriptions = 0, $after_desc = '', $html = 0, $truncatedescchar = 200, $truncatedescstring = ' ... ',
 										$truncatetitlechar = '', $truncatetitlestring = ' ... ',
-										$before_date = ' <small>', $date = 0, $after_date = '</small>',
+										$before_date = ' <small>', $date = 0, $after_date = '</small>', $date_format = '',
 										$before_creator = ' <small>', $creator = 0, $after_creator = '</small>',
 										$start_items = '<ul>', $end_items = '</ul>',
 										$start_item = '<li>', $end_item = '</li>',
@@ -103,6 +103,8 @@ function RSSImport(
 	$truncatedescchar = (int) $truncatedescchar;
 	$truncatetitlechar = (int) $truncatetitlechar;
 	$date = (int) $date;
+	if ( $date_format == '' )
+		$date_format = get_option('date_format');
 	$creator = (int) $creator;
 	$charsetscan = (int) $charsetscan;
 	$debug = (int) $debug;
@@ -204,9 +206,9 @@ function RSSImport(
 					$href  = wp_filter_kses( $item['link'] );
 				// import date
 				if ($use_simplepie && $date)
-					$pubDate = date_i18n( get_option('date_format'), strtotime( $item->get_date() ) );
+					$pubDate = date_i18n( $date_format, strtotime( $item->get_date() ) );
 				elseif ($date && isset($item['pubdate']) )
-					$pubDate = date_i18n( get_option('date_format'), strtotime( $item['pubdate'] ) );
+					$pubDate = date_i18n( $date_format, strtotime( $item['pubdate'] ) );
 				// import creator
 				if ($use_simplepie && $creator) {
 					$creator = $item->get_author();
@@ -422,6 +424,7 @@ function RSSImport_Shortcode($atts) {
 																'before_date' => ' <small>',
 																'date' => 0,
 																'after_date' => '</small>',
+																'date_format' => '',
 																'before_creator' => ' <small>',
 																'creator' => 0,
 																'after_creator' => '</small>',
@@ -486,7 +489,7 @@ function RSSImport_Shortcode($atts) {
 								$before_desc, $displaydescriptions, $after_desc, $html,
 								$truncatedescchar, $truncatedescstring,
 								$truncatetitlechar, $truncatetitlestring,
-								$before_date, $date, $after_date,
+								$before_date, $date, $after_date, $date_format,
 								$before_creator, $creator, $after_creator,
 								$start_items, $end_items,
 								$start_item, $end_item,
@@ -517,7 +520,7 @@ function RSSImport_insert_button() {
 	<script type="text/javascript">
 		//<![CDATA[
 		var length = edButtons.length;
-		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="TRUE" after_desc=" " html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="FALSE" after_date="</small>" before_creator=" <small>" creator="FALSE" after_creator="</small>" start_items="<ul>" end_items="</ul>" start_item="<li>" end_item="</li>" target="" rel="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>" noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>" paging="FALSE" prev_paging_link="&laquo; Previous" next_paging_link="Next &raquo;" prev_paging_title="more items" next_paging_title="more items" use_simplepie="FALSE"]\', \'\', \'\');
+		edButtons[length] = new edButton(\'RSSImport\', \'$context\', \'[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="TRUE" after_desc=" " html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="FALSE" after_date="</small>" date_format="" before_creator=" <small>" creator="FALSE" after_creator="</small>" start_items="<ul>" end_items="</ul>" start_item="<li>" end_item="</li>" target="" rel="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>" noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>" paging="FALSE" prev_paging_link="&laquo; Previous" next_paging_link="Next &raquo;" prev_paging_title="more items" next_paging_title="more items" use_simplepie="FALSE"]\', \'\', \'\');
 		function RSSImport_tag(id) {
 			id = id.replace(/RSSImport_/, \'\');
 			edInsertTag(edCanvas, id);
@@ -856,6 +859,7 @@ if ( class_exists('WP_Widget') ) {
 			$before_date         = empty($instance['before_date']) ? ' <small>' : $instance['before_date'];
 			$date                = empty($instance['date']) ? '0' : $instance['date'];
 			$after_date          = empty($instance['after_date']) ? '</small>' : $instance['after_date'];
+			$date_format         = empty($instance['date_format']) ? '' : $instance['date_format'];
 			$before_creator      = empty($instance['before_creator']) ? ' <small>' : $instance['before_creator'];
 			$creator             = empty($instance['creator']) ? '0' : $instance['creator'];
 			$after_creator       = empty($instance['after_creator']) ? '</small>' : $instance['after_creator'];
@@ -889,7 +893,7 @@ if ( class_exists('WP_Widget') ) {
 								$display, $feedurl,
 								$before_desc, $displaydescriptions, $after_desc, $html, $truncatedescchar, $truncatedescstring,
 								$truncatetitlechar, $truncatetitlestring,
-								$before_date, $date, $after_date,
+								$before_date, $date, $after_date, $date_format,
 								$before_creator, $creator, $after_creator,
 								$start_items, $end_items,
 								$start_item, $end_item,
@@ -922,6 +926,7 @@ if ( class_exists('WP_Widget') ) {
 			$instance['before_date'] = $new_instance['before_date'];
 			$instance['date'] = (int) $new_instance['date'];
 			$instance['after_date'] = $new_instance['after_date'];
+			$instance['date_format'] = $new_instance['date_format'];
 			$instance['before_creator'] = $new_instance['before_creator'];
 			$instance['creator'] = (int) $new_instance['creator'];
 			$instance['after_creator'] = $new_instance['after_creator'];
@@ -969,6 +974,7 @@ if ( class_exists('WP_Widget') ) {
 																													 'before_date' => ' <small>',
 																													 'date' => 0,
 																													 'after_date' => '</small>',
+																													 'date_format' => '',
 																													 'before_creator' => ' <small>',
 																													 'creator' => 0,
 																													 'after_creator' => '</small>',
@@ -1009,6 +1015,7 @@ if ( class_exists('WP_Widget') ) {
 			$before_date = $instance['before_date'];
 			$date = (int) $instance['date'];
 			$after_date = $instance['after_date'];
+			$date_format = $instance['date_format'];
 			$before_creator = $instance['before_creator'];
 			$creator = (int) $instance['creator'];
 			$after_creator = $instance['after_creator'];
@@ -1095,6 +1102,10 @@ if ( class_exists('WP_Widget') ) {
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('after_date'); ?>"><?php _e( 'After Date (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('after_date'); ?>" name="<?php echo $this->get_field_name('after_date'); ?>" type="text" value="<?php echo $after_date; ?>" /></label>
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('date_format'); ?>"><?php _e( 'Date Formatting:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('date_format'); ?>" name="<?php echo $this->get_field_name('date_format'); ?>" type="text" value="<?php echo $date_format; ?>" /></label>
+					<br /><small><?php _e( 'Leave empty for use the date format of your WordPress settings.', FB_RSSI_TEXTDOMAIN ); ?> <a href="http://codex.wordpress.org/Formatting_Date_and_Time"><?php _e( 'Documentation on date formatting', FB_RSSI_TEXTDOMAIN ); ?></a></small>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('before_creator'); ?>"><?php _e( 'Before Creator (HTML):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('before_creator'); ?>" name="<?php echo $this->get_field_name('before_creator'); ?>" type="text" value="<?php echo $before_creator; ?>" /></label>
