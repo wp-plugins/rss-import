@@ -89,8 +89,12 @@ _The shortcode with a lot of parameters:_
 * German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
 * Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
+* French translation by [Martin Korolczuk](http://petitnuage.fr)
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
+
+= Interested in WordPress tips and tricks =
+You may also be interested in WordPress tips and tricks at [WP Enginner](http://wpengineer.com/) or for german people [bueltge.de](http://bueltge.de/) 
 
 
 == Installation ==
@@ -140,8 +144,10 @@ See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#histori
 = Acknowledgements =
 Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
 
+* German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
 * Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
+* French translation by [Martin Korolczuk](http://petitnuage.fr)
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
