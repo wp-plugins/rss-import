@@ -110,11 +110,9 @@ You may also be interested in WordPress tips and tricks at [WP Enginner](http://
 
 
 == Changelog ==
-= v4.4.7 (12/10/2009) =
-* add option vor format the date
-
 = v4.4.6 (07/10/2009) =
 * add function for WordPress lower version 2.8
+* add option for format the date
 
 = v4.4.5 (30/09/2009) =
 * bugfix Widget-title
