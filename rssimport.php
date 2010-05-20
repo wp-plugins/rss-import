@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.6
+ * @version 4.4.7
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.6
+Version: 4.4.7
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 06.10.2009 19:47:42
+Last change: 20.05.2010 18:11:01
 */ 
 
 /*
@@ -173,6 +173,7 @@ function RSSImport(
 		if ( isset($rel) && $rel != '' )
 			$rel = ' rel="' . $rel . '"';
 		
+		$displayitems = $display;
 		$displaylimit = ($page * $display);
 		$display = (($page-1) * $display);
 		$nextitems = TRUE;
@@ -182,8 +183,10 @@ function RSSImport(
 		
 		while($display < $displaylimit) {
 			
-			if ($use_simplepie)
+			if ( $use_simplepie && (1 ==$paging) )
 				$items = $rss->get_items();
+			elseif ($use_simplepie)
+				$items = $rss->get_items(0, $displayitems);
 			else
 				$items = $rss->items;
 			
@@ -853,8 +856,8 @@ if ( class_exists('WP_Widget') ) {
 			$after_desc          = empty($instance['after_desc']) ? '' : $instance['after_desc'];
 			$html                = empty($instance['html']) ? '0' : $instance['html'];
 			$truncatedescchar    = empty($instance['truncatedescchar']) ? '200' : $instance['truncatedescchar'];
-			$truncatedescstring  = empty($instance['before_desc']) ? '' : $instance['before_desc'];
-			$truncatetitlechar   = empty($instance['truncatedescstring']) ? ' ... ' : $instance['truncatedescstring'];
+			$truncatedescstring  = empty($instance['truncatedescstring']) ? '' : $instance['truncatedescstring'];
+			$truncatetitlechar   = empty($instance['truncatetitlechar']) ? ' ... ' : $instance['truncatetitlechar'];
 			$truncatetitlestring = empty($instance['truncatetitlestring']) ? ' ... ' : $instance['truncatetitlestring'];
 			$before_date         = empty($instance['before_date']) ? ' <small>' : $instance['before_date'];
 			$date                = empty($instance['date']) ? '0' : $instance['date'];

@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 2.9-rare
+Tested up to: 3.0-beta2
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -110,6 +110,10 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 
 
 == Changelog ==
+= v4.4.7 (05/20/2010 =
+* bugfix widget parameter for description
+* small changes on source
+
 = v4.4.6 (07/10/2009) =
 * add function for WordPress lower version 2.8
 * add option for format the date
