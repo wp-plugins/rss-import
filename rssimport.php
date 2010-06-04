@@ -2,18 +2,20 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.7
+ * @version 4.4.8
  */
  
 /*
 Plugin Name: WP-RSSImport
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
+Text Domain: rssimport
+Domain Path: /languages
 Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.7
+Version: 4.4.8
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 20.05.2010 18:11:01
+Last change: 04.06.2010 09:12:48
 */ 
 
 /*
@@ -64,7 +66,7 @@ if ( function_exists('add_action') ) {
 function RSSImport_textdomain() {
 
 	if ( function_exists('load_plugin_textdomain') )
-	load_plugin_textdomain( FB_RSSI_TEXTDOMAIN, FALSE, dirname( FB_RSSI_BASENAME ) . '/languages');
+		load_plugin_textdomain( FB_RSSI_TEXTDOMAIN, FALSE, dirname( FB_RSSI_BASENAME ) . '/languages');
 }
 
 if ( !function_exists('esc_attr') ) {
@@ -73,9 +75,16 @@ if ( !function_exists('esc_attr') ) {
 	}
 }
 
+if ( !function_exists('esc_url') ) {
+	function esc_url($text ) {
+		return clean_url($text);
+	}
+}
+
 // cache and error report
 //define('MAGPIE_CACHE_ON', FALSE); // Cache off
-define('MAGPIE_CACHE_AGE', '60*60'); // in sec, one hour
+if ( !defined('MAGPIE_CACHE_AGE') )
+	define('MAGPIE_CACHE_AGE', '60*60'); // in sec, one hour
 // error reporting
 //error_reporting(E_ALL);
 
@@ -157,14 +166,16 @@ function RSSImport(
 	else
 		$rss = fetch_rss($feedurl);
 		
-	if ($rss) {
+	if ( $rss && !is_wp_error($rss) ) {
 		
 		// the follow print_r list all items in array, for debug purpose
 		if ( $debug ) {
+			print('FeedURL: ' . $feedurl);
 			print('<pre>');
 			print_r($rss);
 			print('</pre>');
-			define('MAGPIE_CACHE_ON', FALSE);
+			if ( !defined('MAGPIE_CACHE_ON') )
+				define('MAGPIE_CACHE_ON', FALSE);
 		}
 		
 		if ( isset($target) && $target != '' )
@@ -338,8 +349,8 @@ function isodec($s_String) {
 function all_convert($s_String) {
 
 	// Array for entities
-	$umlaute  = array('â€ž','â€œ','â€“',' \&#34;','&#8211;','&#8212;','&#8216;','&#8217;','&#8220;','&#8221;','&#8222;','&#8226;','&#8230;' ,'€'     ,'‚'      ,'ƒ'     ,'„'      ,'…'       ,'†'       ,'‡'       ,'ˆ'     ,'‰'       ,'Š'       ,'‹'       ,'Œ'      ,'Ž'       ,'‘'      ,'’'      ,'“'      ,'”'      ,'•'     ,'–'      ,'—'      ,'˜'      ,'™'      ,'š'       ,'›','œ','ž','Ÿ','¡','¢','£','¤','¥','¦','§','¨','©','ª','«','¬','®','¯','°','±','²','³','´','µ','¶','·','¸','¹','º','»','¼','½','¾','¿','À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ð','Ñ','Ò','Ó','Ô','Õ','Ö','×','Ø','Ù','Ú','Û','Ü','Ý','Þ','ß','à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î','ï','ð','ñ','ò','ó','ô','õ','ö','÷','ø','ù','ú','û','ü','ý','þ','ÿ',utf8_encode('€'),utf8_encode('‚'),utf8_encode('ƒ'),utf8_encode('„'),utf8_encode('…'),utf8_encode('†'),utf8_encode('‡'),utf8_encode('ˆ'),utf8_encode('‰'),utf8_encode('Š'),utf8_encode('‹'),utf8_encode('Œ'),utf8_encode('Ž'),utf8_encode('‘'),utf8_encode('’'),utf8_encode('“'),utf8_encode('”'),utf8_encode('•'),utf8_encode('–'),utf8_encode('—'),utf8_encode('˜'),utf8_encode('™'),utf8_encode('š'),utf8_encode('›'),utf8_encode('œ'),utf8_encode('ž'),utf8_encode('Ÿ'),utf8_encode('¡'),utf8_encode('¢'),utf8_encode('£'),utf8_encode('¤'),utf8_encode('¥'),utf8_encode('¦'),utf8_encode('§'),utf8_encode('¨'),utf8_encode('©'),utf8_encode('ª'),utf8_encode('«'),utf8_encode('¬'),utf8_encode('®'),utf8_encode('¯'),utf8_encode('°'),utf8_encode('±'),utf8_encode('²'),utf8_encode('³'),utf8_encode('´'),utf8_encode('µ'),utf8_encode('¶'),utf8_encode('·'),utf8_encode('¸'),utf8_encode('¹'),utf8_encode('º'),utf8_encode('»'),utf8_encode('¼'),utf8_encode('½'),utf8_encode('¾'),utf8_encode('¿'),utf8_encode('À'),utf8_encode('Á'),utf8_encode('Â'),utf8_encode('Ã'),utf8_encode('Ä'),utf8_encode('Å'),utf8_encode('Æ'),utf8_encode('Ç'),utf8_encode('È'),utf8_encode('É'),utf8_encode('Ê'),utf8_encode('Ë'),utf8_encode('Ì'),utf8_encode('Í'),utf8_encode('Î'),utf8_encode('Ï'),utf8_encode('Ð'),utf8_encode('Ñ'),utf8_encode('Ò'),utf8_encode('Ó'),utf8_encode('Ô'),utf8_encode('Õ'),utf8_encode('Ö'),utf8_encode('×'),utf8_encode('Ø'),utf8_encode('Ù'),utf8_encode('Ú'),utf8_encode('Û'),utf8_encode('Ü'),utf8_encode('Ý'),utf8_encode('Þ'),utf8_encode('ß'),utf8_encode('à'),utf8_encode('á'),utf8_encode('â'),utf8_encode('ã'),utf8_encode('ä'),utf8_encode('å'),utf8_encode('æ'),utf8_encode('ç'),utf8_encode('è'),utf8_encode('é'),utf8_encode('ê'),utf8_encode('ë'),utf8_encode('ì'),utf8_encode('í'),utf8_encode('î'),utf8_encode('ï'),utf8_encode('ð'),utf8_encode('ñ'),utf8_encode('ò'),utf8_encode('ó'),utf8_encode('ô'),utf8_encode('õ'),utf8_encode('ö'),utf8_encode('÷'),utf8_encode('ø'),utf8_encode('ù'),utf8_encode('ú'),utf8_encode('û'),utf8_encode('ü'),utf8_encode('ý'),utf8_encode('þ'),utf8_encode('ÿ'),chr(128),chr(129),chr(130),chr(131),chr(132),chr(133),chr(134),chr(135),chr(136),chr(137),chr(138),chr(139),chr(140),chr(141),chr(142),chr(143),chr(144),chr(145),chr(146),chr(147),chr(148),chr(149),chr(150),chr(151),chr(152),chr(153),chr(154),chr(155),chr(156),chr(157),chr(158),chr(159),chr(160),chr(161),chr(162),chr(163),chr(164),chr(165),chr(166),chr(167),chr(168),chr(169),chr(170),chr(171),chr(172),chr(173),chr(174),chr(175),chr(176),chr(177),chr(178),chr(179),chr(180),chr(181),chr(182),chr(183),chr(184),chr(185),chr(186),chr(187),chr(188),chr(189),chr(190),chr(191),chr(192),chr(193),chr(194),chr(195),chr(196),chr(197),chr(198),chr(199),chr(200),chr(201),chr(202),chr(203),chr(204),chr(205),chr(206),chr(207),chr(208),chr(209),chr(210),chr(211),chr(212),chr(213),chr(214),chr(215),chr(216),chr(217),chr(218),chr(219),chr(220),chr(221),chr(222),chr(223),chr(224),chr(225),chr(226),chr(227),chr(228),chr(229),chr(230),chr(231),chr(232),chr(233),chr(234),chr(235),chr(236),chr(237),chr(238),chr(239),chr(240),chr(241),chr(242),chr(243),chr(244),chr(245),chr(246),chr(247),chr(248),chr(249),chr(250),chr(251),chr(252),chr(253),chr(254),chr(255),chr(256));
-	$htmlcode = array('&bdquo;','&ldquo;','&ndash;',' &#34;','&ndash;','&mdash;','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bdquo;','&bull;' ,'&hellip;','&euro;','&sbquo;','&fnof;','&bdquo;','&hellip;','&dagger;','&Dagger;','&circ;','&permil;','&Scaron;','&lsaquo;','&OElig;','&#x017D;','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bull;','&ndash;','&mdash;','&tilde;','&trade;','&scaron;','&rsaquo;','&oelig;','&#x017E;','&Yuml;','&iexcl;','&cent;','&pound;','&curren;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&supl;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&Agrave;','&Aacute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&times;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&THORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;','&euro;','&sbquo;','&fnof;','&bdquo;','&hellip;','&dagger;','&Dagger;','&circ;','&permil;','&Scaron;','&lsaquo;','&OElig;','&#x017D;','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bull;','&ndash;','&mdash;','&tilde;','&trade;','&scaron;','&rsaquo;','&oelig;','&#x017E;','&Yuml;','&iexcl;','&cent;','&pound;','&curren;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&supl;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&Agrave;','&Aacute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&times;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&THORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;','&euro;','','&sbquo;','&fnof;','&bdquo;','&hellip;','&dagger;','&Dagger;','&circ;','&permil;','&Scaron;','&lsaquo;','&OElig;','','&#x017D;','','','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bull;','&ndash;','&mdash;','&tilde;','&trade;','&scaron;','&rsaquo;','&oelig;','','&#x017E;','&Yuml;','&nbsp;','&iexcl;','&iexcl;','&iexcl;','&iexcl;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','­&shy;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&supl;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&Agrave;','&Aacute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&times;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&THORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;');
+	$umlaute  = array('â€ž','â€œ','â€“',' \&#34;','&#8211;','&#8212;','&#8216;','&#8217;','&#8220;','&#8221;','&#8222;','&#8226;','&#8230;' ,'ï¿½'     ,'ï¿½'      ,'ï¿½'     ,'ï¿½'      ,'ï¿½'       ,'ï¿½'       ,'ï¿½'       ,'ï¿½'     ,'ï¿½'       ,'ï¿½'       ,'ï¿½'       ,'ï¿½'      ,'ï¿½'       ,'ï¿½'      ,'ï¿½'      ,'ï¿½'      ,'ï¿½'      ,'ï¿½'     ,'ï¿½'      ,'ï¿½'      ,'ï¿½'      ,'ï¿½'      ,'ï¿½'       ,'ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½',utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),utf8_encode('ï¿½'),chr(128),chr(129),chr(130),chr(131),chr(132),chr(133),chr(134),chr(135),chr(136),chr(137),chr(138),chr(139),chr(140),chr(141),chr(142),chr(143),chr(144),chr(145),chr(146),chr(147),chr(148),chr(149),chr(150),chr(151),chr(152),chr(153),chr(154),chr(155),chr(156),chr(157),chr(158),chr(159),chr(160),chr(161),chr(162),chr(163),chr(164),chr(165),chr(166),chr(167),chr(168),chr(169),chr(170),chr(171),chr(172),chr(173),chr(174),chr(175),chr(176),chr(177),chr(178),chr(179),chr(180),chr(181),chr(182),chr(183),chr(184),chr(185),chr(186),chr(187),chr(188),chr(189),chr(190),chr(191),chr(192),chr(193),chr(194),chr(195),chr(196),chr(197),chr(198),chr(199),chr(200),chr(201),chr(202),chr(203),chr(204),chr(205),chr(206),chr(207),chr(208),chr(209),chr(210),chr(211),chr(212),chr(213),chr(214),chr(215),chr(216),chr(217),chr(218),chr(219),chr(220),chr(221),chr(222),chr(223),chr(224),chr(225),chr(226),chr(227),chr(228),chr(229),chr(230),chr(231),chr(232),chr(233),chr(234),chr(235),chr(236),chr(237),chr(238),chr(239),chr(240),chr(241),chr(242),chr(243),chr(244),chr(245),chr(246),chr(247),chr(248),chr(249),chr(250),chr(251),chr(252),chr(253),chr(254),chr(255),chr(256));
+	$htmlcode = array('&bdquo;','&ldquo;','&ndash;',' &#34;','&ndash;','&mdash;','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bdquo;','&bull;' ,'&hellip;','&euro;','&sbquo;','&fnof;','&bdquo;','&hellip;','&dagger;','&Dagger;','&circ;','&permil;','&Scaron;','&lsaquo;','&OElig;','&#x017D;','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bull;','&ndash;','&mdash;','&tilde;','&trade;','&scaron;','&rsaquo;','&oelig;','&#x017E;','&Yuml;','&iexcl;','&cent;','&pound;','&curren;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&supl;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&Agrave;','&Aacute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&times;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&THORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;','&euro;','&sbquo;','&fnof;','&bdquo;','&hellip;','&dagger;','&Dagger;','&circ;','&permil;','&Scaron;','&lsaquo;','&OElig;','&#x017D;','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bull;','&ndash;','&mdash;','&tilde;','&trade;','&scaron;','&rsaquo;','&oelig;','&#x017E;','&Yuml;','&iexcl;','&cent;','&pound;','&curren;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&supl;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&Agrave;','&Aacute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&times;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&THORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;','&euro;','','&sbquo;','&fnof;','&bdquo;','&hellip;','&dagger;','&Dagger;','&circ;','&permil;','&Scaron;','&lsaquo;','&OElig;','','&#x017D;','','','&lsquo;','&rsquo;','&ldquo;','&rdquo;','&bull;','&ndash;','&mdash;','&tilde;','&trade;','&scaron;','&rsaquo;','&oelig;','','&#x017E;','&Yuml;','&nbsp;','&iexcl;','&iexcl;','&iexcl;','&iexcl;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','ï¿½&shy;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&supl;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&Agrave;','&Aacute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&times;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&THORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;');
 	//$s_String = str_replace($umlaute, $htmlcode, $s_String);
 	if ( version_compare(phpversion(), '5.0.0', '>=') )
 		$s_String = utf8_encode( html_entity_decode( str_replace($umlaute, $htmlcode, $s_String) ) );
@@ -508,6 +519,19 @@ function RSSImport_Shortcode($atts) {
 							
 	return $return;
 }
+
+function RSSImport_shortcode_quot($pee) {
+	global $shortcode_tags;
+	
+	if ( !empty($shortcode_tags) && is_array($shortcode_tags) ) {
+		$tagnames = array_keys($shortcode_tags);
+		$tagregexp = join( '|', array_map('preg_quote', $tagnames) );
+		$pee = preg_replace('/\\s*?(\\[(' . $tagregexp . ')\\b.*?\\/?\\](?:.+?\\[\\/\\2\\])?)\\s*/s', '$1', $pee);
+	}
+
+	return $pee;
+}
+
 
 /**
  * add quicktag-button to editor
@@ -915,7 +939,7 @@ if ( class_exists('WP_Widget') ) {
 		function update($new_instance, $old_instance) {
 			$instance['instance'] = $old_instance;
 			$instance['title'] = strip_tags( $new_instance['title'] );
-			$instance['titlelink'] = clean_url($new_instance['titlelink']);
+			$instance['titlelink'] = esc_url($new_instance['titlelink']);
 			$instance['display'] = (int) $new_instance['display'];
 			$instance['feedurl'] = $new_instance['feedurl'];
 			$instance['before_desc'] = $new_instance['before_desc'];
@@ -1004,7 +1028,7 @@ if ( class_exists('WP_Widget') ) {
 																													 'use_simplepie' => 0
 																													) );
 			$title   = strip_tags($instance['title']);
-			$titlelink = clean_url($instance['titlelink']);
+			$titlelink = esc_url($instance['titlelink']);
 			$display = (int) $instance['display'];
 			$feedurl = $instance['feedurl'];
 			$before_desc = $instance['before_desc'];
@@ -1048,13 +1072,13 @@ if ( class_exists('WP_Widget') ) {
 					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('titlelink'); ?>"><?php _e( 'URL for Title (incl. http://):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('titlelink'); ?>" name="<?php echo $this->get_field_name('titlelink'); ?>" type="text" value="<?php echo clean_url($titlelink); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('titlelink'); ?>"><?php _e( 'URL for Title (incl. http://):', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('titlelink'); ?>" name="<?php echo $this->get_field_name('titlelink'); ?>" type="text" value="<?php echo esc_url($titlelink); ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('display'); ?>"><?php _e( 'Display:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('display'); ?>" name="<?php echo $this->get_field_name('display'); ?>" type="text" value="<?php echo esc_attr($display); ?>" /></label>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id('feedurl'); ?>"><?php _e( 'FeedURL:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('feedurl'); ?>" name="<?php echo $this->get_field_name('feedurl'); ?>" type="text" value="<?php echo esc_attr($feedurl); ?>" /></label>
+					<label for="<?php echo $this->get_field_id('feedurl'); ?>"><?php _e( 'FeedURL:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('feedurl'); ?>" name="<?php echo $this->get_field_name('feedurl'); ?>" type="text" value="<?php echo $feedurl; ?>" /></label>
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('before_desc'); ?>"><?php _e( 'Before Description:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat" id="<?php echo $this->get_field_id('before_desc'); ?>" name="<?php echo $this->get_field_name('before_desc'); ?>" type="text" value="<?php echo $before_desc; ?>" /></label>
