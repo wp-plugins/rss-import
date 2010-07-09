@@ -90,6 +90,7 @@ _The shortcode with a lot of parameters:_
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 * French translation by [Martin Korolczuk](http://petitnuage.fr)
 * Hungarian translation by [Feriman](http://feriman.com)
+* Hindi translation by [Ashish Jha](http://outshinesolutions.com)
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
@@ -157,6 +158,7 @@ Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Th
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 * French translation by [Martin Korolczuk](http://petitnuage.fr)
 * Hungarian translation by [Feriman](http://feriman.com)
+* Hindi translation by [Ashish Jha](http://outshinesolutions.com)
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
