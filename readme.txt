@@ -45,6 +45,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `end_item` - string after the items, Default is `</li>`
 1. `target` - string with the target-attribut, Default is `empty`; use `blank`, `self`, `parent`, `top`
 1. `rel`- string with the rel-attribut, Default is `empty`, use string, `nofollow`, `follow`
+1. `desc4title` = Use description for the title-attribut on the title-link, Default is `false`
 1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
 1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
 1. `before_noitems` - HTML or string before message, when the feed is empty, Default is `<p>`
@@ -111,6 +112,12 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 
 
 == Changelog ==
+= v4.4.9 (09/16/2010) =
+* Feature: add new param `desc4title` to add the description to title-attribut on title-links
+* Bugfix: target parameter in widget
+* Maintenance: rescan/rewrite de_DE language file
+* Maintenance: rescan .pot
+
 = v4.4.8 (06/04/2010) =
 * small changes for better debugging
 * change metadata for WordPress
