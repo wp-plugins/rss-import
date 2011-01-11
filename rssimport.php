@@ -930,16 +930,16 @@ if ( class_exists('WP_Widget') ) {
 			$charsetscan         = empty($instance['charsetscan']) ? '0' : $instance['charsetscan'];
 			$debug               = empty($instance['debug']) ? '0' : $instance['debug'];
 			$before_noitems      = empty($instance['before_noitems']) ? '<p>' : $instance['before_noitems'];
-			$noitems             = empty($instance['noitems']) ? 'No items, feed is empty.' : $instance['noitems'];
+			$noitems             = empty($instance['noitems']) ? __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN) : $instance['noitems'];
 			$after_noitems       = empty($instance['after_noitems']) ? '</p>' : $instance['after_noitems'];
 			$before_error        = empty($instance['before_error']) ? '<p>' : $instance['before_error'];
-			$error               = empty($instance['error']) ? 'Error: Feed has a error or is not valid' : $instance['error'];
+			$error               = empty($instance['error']) ? __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN) : $instance['error'];
 			$after_error         = empty($instance['after_error']) ? '</p>' : $instance['after_error'];
 			$paging              = empty($instance['paging']) ? '0' : $instance['paging'];
-			$prev_paging_link    = empty($instance['prev_paging_link']) ? '&laquo; Previous' : $instance['prev_paging_link'];
-			$next_paging_link    = empty($instance['next_paging_link']) ? 'Next &raquo;' : $instance['next_paging_link'];
-			$prev_paging_title   = empty($instance['prev_paging_title']) ? 'more items' : $instance['prev_paging_title'];
-			$next_paging_title   = empty($instance['next_paging_title']) ? 'more items' : $instance['next_paging_title'];
+			$prev_paging_link    = empty($instance['prev_paging_link']) ? __('&laquo; Previous', FB_RSSI_TEXTDOMAIN) : $instance['prev_paging_link'];
+			$next_paging_link    = empty($instance['next_paging_link']) ? __('Next &raquo;', FB_RSSI_TEXTDOMAIN) : $instance['next_paging_link'];
+			$prev_paging_title   = empty($instance['prev_paging_title']) ? __('more items', FB_RSSI_TEXTDOMAIN) : $instance['prev_paging_title'];
+			$next_paging_title   = empty($instance['next_paging_title']) ? __('more items', FB_RSSI_TEXTDOMAIN) : $instance['next_paging_title'];
 			$use_simplepie       = empty($instance['use_simplepie']) ? '0' : $instance['use_simplepie'];
 			$view                = empty($instance['view']) ? '1' : $instance['view'];
 			
@@ -1051,16 +1051,16 @@ if ( class_exists('WP_Widget') ) {
 													 'debug' => 0,
 													 'view' => 1,
 													 'before_noitems' => '<p>',
-													 'noitems' => 'No items, feed is empty.',
+													 'noitems' => __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN),
 													 'after_noitems' => '</p>',
 													 'before_error' => '<p>',
-													 'error' => 'Error: Feed has a error or is not valid',
+													 'error' => __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN),
 													 'after_error' => '</p>',
 													 'paging' => 0,
-													 'prev_paging_link' => '&laquo; Previous',
-													 'next_paging_link' => 'Next &raquo;',
-													 'prev_paging_title' => 'more items',
-													 'next_paging_title' => 'more items',
+													 'prev_paging_link' => __('&laquo; Previous', FB_RSSI_TEXTDOMAIN),
+													 'next_paging_link' => __('Next &raquo;', FB_RSSI_TEXTDOMAIN),
+													 'prev_paging_title' => __('more items', FB_RSSI_TEXTDOMAIN),
+													 'next_paging_title' => __('more items', FB_RSSI_TEXTDOMAIN),
 													 'use_simplepie' => 0
 											)
 			);
