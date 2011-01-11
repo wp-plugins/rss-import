@@ -116,6 +116,10 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 
 
 == Changelog ==
+= v4.4.10 (01/12/2011) =
+* Bugfix: add param desc4title on shortcodes
+* Filter Feed-Url vor masked `&`; now works Yahoo Pipes feeds
+
 = v4.4.9 (09/16/2010) =
 * Feature: add new param `desc4title` to add the description to title-attribut on title-links
 * Bugfix: target parameter in widget
