@@ -81,6 +81,7 @@ if ( !function_exists('esc_url') ) {
 	}
 }
 
+
 // cache and error report
 //define('MAGPIE_CACHE_ON', FALSE); // Cache off
 if ( !defined('MAGPIE_CACHE_AGE') )
