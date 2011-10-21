@@ -91,7 +91,7 @@ _The shortcode with a lot of parameters:_
 
 = Localizations =
 * German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
-* Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Russian translation by Fat Cow
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 * French translation by [Martin Korolczuk](http://petitnuage.fr)
 * Hungarian translation by [Feriman](http://feriman.com)
@@ -171,7 +171,7 @@ See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#histori
 Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
 
 * German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
-* Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Russian translation by Fat Cow
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 * French translation by [Martin Korolczuk](http://petitnuage.fr)
 * Hungarian translation by [Feriman](http://feriman.com)
