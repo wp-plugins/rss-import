@@ -1,13 +1,20 @@
 ﻿=== RSSImport ===
 Contributors: Bueltge
+Plugin URI: http://bueltge.de/wp-wartungsmodus-plugin/101/
+Author: Frank B&uuml;ltge
+Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.0
+Tested up to: 3.1-RC2
+Stable tag: 4.9.9
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
 == Description ==
+
+= This Project was discontinued. If an coder will develop this plugin, please send me an mail. =
+
 Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin use the standards of WordPress, non extra library; use [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) for parse feeds.
 
 Use following code with a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
@@ -87,11 +94,12 @@ _The shortcode with a lot of parameters:_
 
 = Localizations =
 * German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
-* Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Russian translation by Fat Cow
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 * French translation by [Martin Korolczuk](http://petitnuage.fr)
 * Hungarian translation by [Feriman](http://feriman.com)
 * Hindi translation by [Ashish Jha](http://outshinesolutions.com)
+* Italian translation by [Gianni Diurno](http://gidibao.net/)
 
 Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for further details and the latest information on this plugin.
 
@@ -112,6 +120,11 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 
 
 == Changelog ==
+= v4.4.10 (01/12/2011) =
+* Bugfix: add param desc4title on shortcodes
+* Filter Feed-Url vor masked `&`; now works Yahoo Pipes feeds
+* Maintenance: Translate strings from options
+
 = v4.4.9 (09/16/2010) =
 * Feature: add new param `desc4title` to add the description to title-attribut on title-links
 * Bugfix: target parameter in widget
@@ -161,11 +174,12 @@ See on [the official website](http://bueltge.de/wp-rss-import-plugin/55/#histori
 Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Thomas Fischer](http://www.securityfocus.de "Thomas Fischer") and [Gunnar Tillmann](http://www.gunnart.de "Gunnar Tillmann") for better code and Ilya Shindyapin, http://skookum.com for the idea and solution of pagination.
 
 * German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
-* Russian translation by [Fat Cow](http://www.fatcow.com "Fat Cow")
+* Russian translation by Fat Cow
 * Ukrainian translation by [WordPress Ukraine](http://wpp.pp.ua/)
 * French translation by [Martin Korolczuk](http://petitnuage.fr)
 * Hungarian translation by [Feriman](http://feriman.com)
 * Hindi translation by [Ashish Jha](http://outshinesolutions.com)
+* Italian translation by [Gianni Diurno](http://gidibao.net/)
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
