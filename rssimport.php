@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.11n1
+ * @version 4.4.11
  */
  
 /*
@@ -12,7 +12,7 @@ Text Domain: rssimport
 Domain Path: /languages
 Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.11n1
+Version: 4.4.11
 License: GPL
 Author URI: http://bueltge.de/
 Last change: 13.12.2011

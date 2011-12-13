@@ -6,8 +6,8 @@ Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.1-RC2
-Stable tag: 4.9.9
+Tested up to: 3.1.1
+Stable tag: 4.4.11
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -88,7 +88,7 @@ _The function with many parameters:_
 
 _The shortcode with a lot of parameters:_
 
-`[RSSImport display="10", feedurl="http://your_feed_url/" `
+`[RSSImport display="10" feedurl="http://your_feed_url/" `
 `displaydescriptions="true" html="true"`
 `start_items="<ol>" end_items="</ol>" paging="true" ]`
 
