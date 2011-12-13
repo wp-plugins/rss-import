@@ -88,9 +88,9 @@ _The function with many parameters:_
 
 _The shortcode with a lot of parameters:_
 
-`[RSSImport display="10", feedurl="http://your_feed_url/", `
-`displaydescriptions="true", html="true"`
-`start_items="<ol>", end_items="</ol>", paging="true" ]`
+`[RSSImport display="10", feedurl="http://your_feed_url/" `
+`displaydescriptions="true" html="true"`
+`start_items="<ol>" end_items="</ol>" paging="true" ]`
 
 = Localizations =
 * German language files by me [Frank B&uuml;ltge](http://bueltge.de/) ;-) 
@@ -120,6 +120,10 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 
 
 == Changelog ==
+= v4.4.11 (13/12/2011) =
+* Bugfix: noitems string display is back
+* Improvement: html_entity_decode feedurl when using shortcodes
+
 = v4.4.10 (01/12/2011) =
 * Bugfix: add param desc4title on shortcodes
 * Filter Feed-Url vor masked `&`; now works Yahoo Pipes feeds

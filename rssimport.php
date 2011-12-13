@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge
- * @version 4.4.10
+ * @version 4.4.11n1
  */
  
 /*
@@ -12,10 +12,10 @@ Text Domain: rssimport
 Domain Path: /languages
 Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
 Author: Frank B&uuml;ltge
-Version: 4.4.10
+Version: 4.4.11n1
 License: GPL
 Author URI: http://bueltge.de/
-Last change: 11.01.2011
+Last change: 13.12.2011
 */ 
 
 /*
@@ -329,9 +329,9 @@ function RSSImport(
 			$display++;
 		}
 		
-		if ($echo)
+		if (strip_tags($echo)) { // novaclic: needed to filter out false content madeof tags alone (html comments, html tags, ...)
 			$echo = wptexturize($start_items . $echo . $end_items);
-		else
+		} else
 			$echo = wptexturize($before_noitems . $noitems . $after_noitems);
 		
 	} else {
@@ -526,6 +526,7 @@ function RSSImport_Shortcode($atts) {
 	if ( strtolower($use_simplepie) == 'true')
 		$use_simplepie = 1;
 	$use_simplepie = intval($use_simplepie);
+	$feedurl = html_entity_decode( $feedurl ); // novaclic: undo encoding due to wordpress WYSIWYG editor
 	
 	$return = RSSImport(
 		$display, $feedurl,
