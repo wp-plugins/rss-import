@@ -1,12 +1,12 @@
 ﻿=== RSSImport ===
-Contributors: Bueltge
+Contributors: Bueltge, novaclic
 Plugin URI: http://bueltge.de/wp-wartungsmodus-plugin/101/
 Author: Frank B&uuml;ltge
 Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.1.1
+Tested up to: 3.3
 Stable tag: 4.4.11
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
