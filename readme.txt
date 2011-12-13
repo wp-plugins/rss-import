@@ -13,8 +13,6 @@ Import and display Feeds in your blog, use PHP or the Shortcode.
 
 == Description ==
 
-= This Project was discontinued. If an coder will develop this plugin, please send me an mail. =
-
 Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin use the standards of WordPress, non extra library; use [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) for parse feeds.
 
 Use following code with a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
