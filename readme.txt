@@ -6,7 +6,7 @@ Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.3
+Tested up to: 3.4
 Stable tag: 4.4.11
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
@@ -110,6 +110,7 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 = v4.4.11 (13/12/2011) =
 * Bugfix: noitems string display is back
 * Improvement: html_entity_decode feedurl when using shortcodes
+* Maintenance: Add romanian language files
 
 = v4.4.10 (01/12/2011) =
 * Bugfix: add param desc4title on shortcodes
@@ -172,6 +173,7 @@ Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Th
 * Hungarian translation by [Feriman](http://feriman.com)
 * Hindi translation by [Ashish Jha](http://outshinesolutions.com)
 * Italian translation by [Gianni Diurno](http://gidibao.net/)
+* Romanian language files, thanks to [Alexander Ovsov](http://webhostinggeeks.com/)
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
