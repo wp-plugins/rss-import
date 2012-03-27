@@ -31,7 +31,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `feedurl` - Feed-Adress, Default is `http://bueltge.de/feed/`
 1. `before_desc` - string before description, Default is `empty`
 1. `displaydescriptions` - (bool) true or false for display description of the item, Default is `false`
-1. `after_desc` - string after description, Default is `empty`; you can use the follow strings for custom html `%title` for title of entry and `%href` for link of entry
+1. `after_desc` - string after description, Default is `empty`; you can use the follow strings for custom html `%title%` for title of entry and `%href%` for link of entry
 1. `html` - (bool) display description include HTML-tags, Default is `false`
 1. `truncatedescchar` - truncate description, number of chars, Default is `200`, set the value to empty `''` for non truncate
 1. `truncatedescstring` - string after truncate description, Default is ` ... `
