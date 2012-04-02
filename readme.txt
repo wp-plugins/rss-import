@@ -104,6 +104,9 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 == Screenshots ==
 1. Widget support
 
+== Upgrade Notice ==
+See the Changelog for information about the changes on the different version. 
+Normaly is an update usefull.
 
 == Changelog ==
 = v4.4.12 (04/02/2012) =
@@ -186,17 +189,3 @@ Good news, this plugin is free for everyone! Since it's released under the GPL, 
 
 = Translations =
 The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the sitemap.pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
-
-
-== Frequently Asked Questions ==
-= Where can I get more information? =
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") for the latest information on this plugin.
-
-= Changelog? =
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/#historie "RSSImport Changelog") for the latest information on this plugin.
-
-= I love this plugin! How can I show the developer how much I appreciate his work? =
-Please visit [the official website](http://bueltge.de/wp-rss-import-plugin/55/ "RSSImport") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.
-
-== Make more with the plugin ==
-Please visit [RSSImportTwo](http://bueltge.de/wp-rssimporttwo-plugin/165/ "RSSImportTwo") for more features and tutorial to import with more HTML. It give it a tutorial and a plugin.
