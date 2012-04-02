@@ -58,7 +58,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `before_error` - HTML or string before message, when the feed have an error, Default is `<p>`
 1. `error` - Errormessage, Default is `Error: Feed has a error or is not valid`
 1. `after_error` - HTML or string before message, when the feed have an error, Default is `</p>`
-1. `paging` - Pagination on, set `true`, Default is `false`
+1. `paging` - Pagination on, set `TRUE`, Default is `FALSE`
 1. `prev_paging_link` - Linkname for previous page, Default is `&laquo; Previous`
 1. `next_paging_link` - Linkname for next page, Default is `Next &raquo;`
 1. `prev_paging_title` - Title for the link of previous page, Default is `more items`
@@ -73,21 +73,21 @@ All parameters it is possible to use in the function, only in templates with PHP
 = Examples: =
 _The function with many parameters:_
 
-`	RSSImport(
-`		$display = 5, $feedurl = 'http://bueltge.de/feed/',`
-`		$before_desc = '', $displaydescriptions = false, $after_desc = '', $html = false, $truncatedescchar = 200, $truncatedescstring = ' ... ',`
-`		$truncatetitlechar = '', $truncatetitlestring = ' ... ',`
-`		$before_date = ' <small>', $date = false, $after_date = '</small>',`
-`		$before_creator = ' <small>', $creator = false, $after_creator = '</small>',`
-`		$start_items = '<ul>', $end_items = '</ul>',`
-`		$start_item = '<li>', $end_item = '</li>'`
-`	)`
+	RSSImport(
+		$display = 5, $feedurl = 'http://bueltge.de/feed/', 
+		$before_desc = '', $displaydescriptions = false, $after_desc = '', $html = false, $truncatedescchar = 200, $truncatedescstring = ' ... ', 
+		$truncatetitlechar = '', $truncatetitlestring = ' ... ', 
+		$before_date = ' <small>', $date = false, $after_date = '</small>', 
+		$before_creator = ' <small>', $creator = false, $after_creator = '</small>', 
+		$start_items = '<ul>', $end_items = '</ul>', 
+		$start_item = '<li>', $end_item = '</li>' 
+	)
 
 _The shortcode with a lot of parameters:_
 
-	`[RSSImport display="10" feedurl="http://your_feed_url/" `
-	`displaydescriptions="true" html="true"`
-	`start_items="<ol>" end_items="</ol>" paging="true" ]`
+	[RSSImport display="10" feedurl="http://your_feed_url/" 
+	displaydescriptions="true" html="true" 
+	start_items="<ol>" end_items="</ol>" paging="true" ]
 
 = Interested in WordPress tips and tricks =
 You may also be interested in WordPress tips and tricks at [WP Engineer](http://wpengineer.com/) or for german people [bueltge.de](http://bueltge.de/) 
