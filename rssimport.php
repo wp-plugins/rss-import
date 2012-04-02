@@ -5,18 +5,17 @@
  * @version 4.4.12
  */
  
-/*
-Plugin Name: WP-RSSImport
-Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
-Text Domain: rssimport
-Domain Path: /languages
-Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
-Author: Frank B&uuml;ltge &amp; Novaclic
-Version: 4.4.12
-License: GPL
-Author URI: http://bueltge.de/
-Last change: 26.03.2012
-*/ 
+/**
+ * Plugin Name: WP-RSSImport
+ * Plugin URI:  http://bueltge.de/wp-rss-import-plugin/55/
+ * Text Domain: rssimport
+ * Domain Path: /languages
+ * Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
+ * Author:      Frank B&uuml;ltge, novaclic
+ * Version:     4.4.12
+ * License:     GPLv3
+ * Last change: 04/04/2012
+ */ 
 
 /*
 ------------------------------------------------------------
@@ -35,7 +34,7 @@ Example: <?php RSSImport(10, "http://bueltge.de/feed/"); ?>
 */
 
 //avoid direct calls to this file, because now WP core and framework has been used
-if ( !function_exists('add_action') ) {
+if ( ! function_exists('add_action') ) {
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit();
@@ -69,13 +68,13 @@ function RSSImport_textdomain() {
 		load_plugin_textdomain( FB_RSSI_TEXTDOMAIN, FALSE, dirname( FB_RSSI_BASENAME ) . '/languages');
 }
 
-if ( !function_exists('esc_attr') ) {
+if ( ! function_exists('esc_attr') ) {
 	function esc_attr( $text ) {
 		return attribute_escape( $text );
 	}
 }
 
-if ( !function_exists('esc_url') ) {
+if ( ! function_exists('esc_url') ) {
 	function esc_url($text ) {
 		return clean_url($text);
 	}
@@ -84,7 +83,7 @@ if ( !function_exists('esc_url') ) {
 
 // cache and error report
 //define('MAGPIE_CACHE_ON', FALSE); // Cache off
-if ( !defined('MAGPIE_CACHE_AGE') )
+if ( ! defined('MAGPIE_CACHE_AGE') )
 	define('MAGPIE_CACHE_AGE', '60*60'); // in sec, one hour
 // error reporting
 //error_reporting(E_ALL);
@@ -136,7 +135,7 @@ function RSSImport(
 	$view = (int) $view;
 	
 	if ($use_simplepie) {
-		if ( !class_exists('SimplePie') ) {
+		if ( ! class_exists('SimplePie') ) {
 			if ( file_exists(ABSPATH . WPINC . '/class-simplepie.php') ) {
 				@require_once (ABSPATH . WPINC . '/class-simplepie.php');
 			} else {
@@ -180,7 +179,7 @@ function RSSImport(
 	else
 		$rss = fetch_rss($feedurl);
 		
-	if ( $rss && !is_wp_error($rss) ) {
+	if ( $rss && ! is_wp_error($rss) ) {
 		
 		// the follow print_r list all items in array, for debug purpose
 		if ( $debug ) {
@@ -188,7 +187,7 @@ function RSSImport(
 			print('<pre>');
 			print_r($rss);
 			print('</pre>');
-			if ( !defined('MAGPIE_CACHE_ON') )
+			if ( ! defined('MAGPIE_CACHE_ON') )
 				define('MAGPIE_CACHE_ON', FALSE);
 		}
 		

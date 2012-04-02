@@ -1,4 +1,4 @@
-﻿=== RSSImport ===
+﻿﻿=== RSSImport ===
 Contributors: Bueltge, novaclic
 Plugin URI: http://bueltge.de/wp-wartungsmodus-plugin/101/
 Author: Frank B&uuml;ltge
@@ -7,7 +7,7 @@ Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
 Tested up to: 3.4
-Stable tag: 4.4.11
+Stable tag: 4.4.12
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -107,6 +107,13 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 
 
 == Changelog ==
+= v4.4.12 (04/02/2012) =
+* Bugfix: restored RSSImport QuickTag for Wordpress 3.3 and later
+* Improvement: avoid PHP-notice when description is missing for an item
+* TODO: add parameter to allow prefix of url (see http://wordpress.org/support/topic/plugin-rssimport-fix-for-headline-links-without-full-paths)
+* TODO: check documentation of call to function (PHP), see http://wordpress.org/support/topic/plugin-rssimport-change-feed-display
+* Documentation: corrected 'after_desc' (thanks to elricky for reporting)
+
 = v4.4.11 (13/12/2011) =
 * Bugfix: noitems string display is back
 * Improvement: html_entity_decode feedurl when using shortcodes
