@@ -104,10 +104,6 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 == Screenshots ==
 1. Widget support
 
-== Upgrade Notice ==
-See the Changelog for information about the changes on the different version. 
-Normaly is an update usefull.
-
 == Changelog ==
 = v4.4.12 (04/02/2012) =
 * Bugfix: restored RSSImport QuickTag for Wordpress 3.3 and later
