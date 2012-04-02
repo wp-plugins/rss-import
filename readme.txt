@@ -12,7 +12,6 @@ Stable tag: 4.4.12
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
 == Description ==
-
 Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin use the standards of WordPress, non extra library; use [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) for parse feeds.
 
 Use following code with a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
@@ -74,21 +73,21 @@ All parameters it is possible to use in the function, only in templates with PHP
 = Examples: =
 _The function with many parameters:_
 
-`RSSImport(
-`						$display = 5, $feedurl = 'http://bueltge.de/feed/',`
-`						$before_desc = '', $displaydescriptions = false, $after_desc = '', $html = false, $truncatedescchar = 200, $truncatedescstring = ' ... ',`
-`						$truncatetitlechar = '', $truncatetitlestring = ' ... ',`
-`						$before_date = ' <small>', $date = false, $after_date = '</small>',`
-`						$before_creator = ' <small>', $creator = false, $after_creator = '</small>',`
-`						$start_items = '<ul>', $end_items = '</ul>',`
-`						$start_item = '<li>', $end_item = '</li>'`
-`					)`
+`	RSSImport(
+`		$display = 5, $feedurl = 'http://bueltge.de/feed/',`
+`		$before_desc = '', $displaydescriptions = false, $after_desc = '', $html = false, $truncatedescchar = 200, $truncatedescstring = ' ... ',`
+`		$truncatetitlechar = '', $truncatetitlestring = ' ... ',`
+`		$before_date = ' <small>', $date = false, $after_date = '</small>',`
+`		$before_creator = ' <small>', $creator = false, $after_creator = '</small>',`
+`		$start_items = '<ul>', $end_items = '</ul>',`
+`		$start_item = '<li>', $end_item = '</li>'`
+`	)`
 
 _The shortcode with a lot of parameters:_
 
-`[RSSImport display="10" feedurl="http://your_feed_url/" `
-`displaydescriptions="true" html="true"`
-`start_items="<ol>" end_items="</ol>" paging="true" ]`
+	`[RSSImport display="10" feedurl="http://your_feed_url/" `
+	`displaydescriptions="true" html="true"`
+	`start_items="<ol>" end_items="</ol>" paging="true" ]`
 
 = Interested in WordPress tips and tricks =
 You may also be interested in WordPress tips and tricks at [WP Engineer](http://wpengineer.com/) or for german people [bueltge.de](http://bueltge.de/) 
