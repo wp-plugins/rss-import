@@ -1,4 +1,4 @@
-﻿﻿=== RSSImport ===
+﻿=== RSSImport ===
 Contributors: Bueltge, novaclic
 Plugin URI: http://bueltge.de/wp-wartungsmodus-plugin/101/
 Author: Frank B&uuml;ltge
