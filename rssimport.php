@@ -12,7 +12,7 @@
  * Domain Path: /languages
  * Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
  * Author:      Frank B&uuml;ltge, novaclic
- * Version:     4.4.12
+ * Version:     4.4.13
  * License:     GPLv3
  * Last change: 04/04/2012
  */ 
@@ -490,7 +490,7 @@ function RSSImport_Shortcode($atts) {
 			'next_paging_link' => __( 'Next &raquo;', FB_RSSI_TEXTDOMAIN ),
 			'prev_paging_title' => __( 'more items', FB_RSSI_TEXTDOMAIN ),
 			'next_paging_title' => __( 'more items', FB_RSSI_TEXTDOMAIN ),
-			'use_simplepie' => 0,
+			'use_simplepie' => 1,
 			'view' => 0
 		), $atts)
 	);
@@ -573,9 +573,39 @@ function RSSImport_insert_button() {
 	global $pagenow;
 	
 	$post_page_pages = array('post-new.php', 'post.php', 'page-new.php', 'page.php');
-	if ( !in_array( $pagenow, $post_page_pages ) )
+	if ( ! in_array( $pagenow, $post_page_pages ) )
 		return;
 	
+	?>
+	<script type="text/javascript" charset="utf-8">
+	/* Adding Quicktag buttons to the editor WordPress ver. 3.3 and above
+	* - Button HTML ID (required)
+	* - Button display, value="" attribute (required)
+	* - Opening Tag (required)
+	* - Closing Tag (required)
+	* - Access key, accesskey="" attribute for the button (optional)
+	* - Title, title="" attribute (optional)
+	* - Priority/position on bar, 1-9 = first, 11-19 = second, 21-29 = third, etc. (optional)
+	*/
+	var id = 'rssimport',
+	    text = '<?php _e( 'RSSImport', FB_RSSI_TEXTDOMAIN ); ?>',
+	    start = '[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="TRUE" after_desc=" " html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="FALSE" after_date="</small>" date_format="" before_creator=" <small>" creator="FALSE" after_creator="</small>" start_items="<ul>" end_items="</ul>" start_item="<li>" end_item="</li>" target="" rel="" desc4title="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>" noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>" paging="FALSE" prev_paging_link="&laquo; Previous" next_paging_link="Next &raquo;" prev_paging_title="more items" next_paging_title="more items" use_simplepie="FALSE"]',
+	    end = '',
+	    access = 'r',
+	    title = '<?php _e( 'Import a feed with RSSImport', FB_RSSI_TEXTDOMAIN ); ?>';
+	
+	QTags.addButton( id, text, start, end, access );
+	</script>
+	<?php
+}
+
+function RSSImport_insert_button_old() {
+	global $pagenow;
+	
+	$post_page_pages = array('post-new.php', 'post.php', 'page-new.php', 'page.php');
+	if ( ! in_array( $pagenow, $post_page_pages ) )
+		return;
+		
 	echo '
 	<script type="text/javascript">
 		//<![CDATA[
@@ -594,22 +624,13 @@ function RSSImport_insert_button() {
 		//]]>
 	</script>';
 }
-if ( is_admin() && FB_RSSI_QUICKTAG ) {
-	if ( version_compare( $GLOBALS['wp_version'], '3.3alpha', '>=' ) ) {
-		$post_page_pages = array('post-new.php', 'post.php', 'page-new.php', 'page.php');
-		if ( in_array( $pagenow, $post_page_pages ) ) {
-			wp_enqueue_script(
-				'rssimport_insert_button',
-				plugin_dir_url( __FILE__) . '/js/quicktag.js', 
-				array( 'quicktags' )
-			);
-			add_action( 'admin_print_scripts', 'rssimport_insert_button' );
-		}
-	} else {
-		add_action( 'admin_footer', 'RSSImport_insert_button' );
-	}
-}
 
+if ( is_admin() && FB_RSSI_QUICKTAG ) {
+	if ( version_compare( $GLOBALS['wp_version'], '3.3alpha', '>=' ) )
+		add_action( 'admin_print_footer_scripts', 'RSSImport_insert_button' );
+	else
+		add_action( 'admin_footer', 'RSSImport_insert_button_old' );
+}
 
 if ( function_exists('add_shortcode') )
 	add_shortcode('RSSImport', 'RSSImport_Shortcode');
@@ -959,7 +980,7 @@ if ( class_exists('WP_Widget') ) {
 			$next_paging_link    = empty($instance['next_paging_link']) ? __('Next &raquo;', FB_RSSI_TEXTDOMAIN) : $instance['next_paging_link'];
 			$prev_paging_title   = empty($instance['prev_paging_title']) ? __('more items', FB_RSSI_TEXTDOMAIN) : $instance['prev_paging_title'];
 			$next_paging_title   = empty($instance['next_paging_title']) ? __('more items', FB_RSSI_TEXTDOMAIN) : $instance['next_paging_title'];
-			$use_simplepie       = empty($instance['use_simplepie']) ? '0' : $instance['use_simplepie'];
+			$use_simplepie       = empty($instance['use_simplepie']) ? '1' : $instance['use_simplepie'];
 			$view                = empty($instance['view']) ? '1' : $instance['view'];
 			
 			echo $before_widget;
@@ -1080,7 +1101,7 @@ if ( class_exists('WP_Widget') ) {
 													 'next_paging_link' => __('Next &raquo;', FB_RSSI_TEXTDOMAIN),
 													 'prev_paging_title' => __('more items', FB_RSSI_TEXTDOMAIN),
 													 'next_paging_title' => __('more items', FB_RSSI_TEXTDOMAIN),
-													 'use_simplepie' => 0
+													 'use_simplepie' => 1
 											)
 			);
 			
