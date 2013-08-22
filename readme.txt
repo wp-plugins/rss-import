@@ -6,8 +6,8 @@ Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.4
-Stable tag: 4.4.12
+Tested up to: 3.7-alpha
+Stable tag: 4.4.13
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -89,9 +89,6 @@ _The shortcode with a lot of parameters:_
 	displaydescriptions="true" html="true" 
 	start_items="<ol>" end_items="</ol>" paging="true" ]
 
-= Interested in WordPress tips and tricks =
-You may also be interested in WordPress tips and tricks at [WP Engineer](http://wpengineer.com/) or for german people [bueltge.de](http://bueltge.de/) 
-
 
 == Installation ==
 1. Unpack the download-package
@@ -105,6 +102,10 @@ You may also be interested in WordPress tips and tricks at [WP Engineer](http://
 1. Widget support
 
 == Changelog ==
+= v4.4.13 (08/22/2013) =
+* Set simplepie to default settings; is the default way of WP since lot of versions
+* Fix for Quicktag on Post/Page Editor; use now the core functions, there we have since WP 3.3
+
 = v4.4.12 (04/02/2012) =
 * Bugfix: restored RSSImport QuickTag for Wordpress 3.3 and later
 * Improvement: avoid PHP-notice when description is missing for an item
