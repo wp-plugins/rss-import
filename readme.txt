@@ -19,10 +19,10 @@ Use following code with a PHP-Plugin or in a template, example `sidebar.php` or 
 _Example:_
 `&lt;?php RSSImport(10, 'http://bueltge.de/feed/'); ?&gt;`
 
-This is smallest code for use the plugin with your own feed-url. The plugin have many parameters for custom import of content form a feed. See the list of parameters. You can also use all parameters with shorcode in posts and pages.
+This is smallest code for use the plugin with your own feed-url. The plugin have many parameters for custom import of content form a feed. See the list of parameters. You can also use all parameters with shortcode in posts and pages.
 
 _Example for Shortcode:_
-[RSSImport display="5" feedurl="http://bueltge.de/feed/"]
+`[RSSImport display="5" feedurl="http://bueltge.de/feed/"]`
 
 For all boolean parameter it is possible to use the string `true` or `false` or the integer value `0` or `1`.
 
