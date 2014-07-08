@@ -87,7 +87,7 @@ _The shortcode with a lot of parameters:_
 
 	[RSSImport display="10" feedurl="http://your_feed_url/" 
 	displaydescriptions="true" html="true" 
-	start_items="<ol>" end_items="</ol>" paging="true" ]
+	start_items="<ol>" end_items="</ol>" paging="true"]
 
 
 == Installation ==
