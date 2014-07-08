@@ -2,7 +2,7 @@
 /**
  * @package WP-RSSImport
  * @author Frank B&uuml;ltge &amp; Novaclic
- * @version 4.4.12
+ * @version 4.4.14
  */
  
 /**
@@ -12,9 +12,9 @@
  * Domain Path: /languages
  * Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
  * Author:      Frank B&uuml;ltge, novaclic
- * Version:     4.4.13
+ * Version:     4.4.14
  * License:     GPLv3
- * Last change: 04/04/2012
+ * Last change: 08/07/2014
  */ 
 
 /*
