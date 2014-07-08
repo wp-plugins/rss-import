@@ -7,7 +7,7 @@ Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
 Tested up to: 3.7-alpha
-Stable tag: 4.4.13
+Stable tag: 4.4.14
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
 
@@ -24,7 +24,7 @@ This is smallest code for use the plugin with your own feed-url. The plugin have
 _Example for Shortcode:_
 `[RSSImport display="5" feedurl="http://bueltge.de/feed/"]`
 
-For all boolean parameter it is possible to use the string `true` or `false` or the integer value `0` or `1`.
+For all boolean parameter it is possible to use the string `true` or `false` or the integer value `1` or `0`.
 
 1. `display` - How many items, Default is `5`
 1. `feedurl` - Feed-Adress, Default is `http://bueltge.de/feed/`
@@ -102,6 +102,11 @@ _The shortcode with a lot of parameters:_
 1. Widget support
 
 == Changelog ==
+= v4.4.14 (08/07/2014) =
+* Fix typo in readme
+* Fix a bug where with `%href%` and `%title%` in after_desc
+* Shortened some over-long lines in the code
+
 = v4.4.13 (08/22/2013) =
 * Set simplepie to default settings; is the default way of WP since lot of versions
 * Fix for Quicktag on Post/Page Editor; use now the core functions, there we have since WP 3.3
