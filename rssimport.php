@@ -317,10 +317,10 @@ function RSSImport(
 				if ( isset($creator) && $creator && $creator != '' )
 					$echo .= $before_creator . $creator . $after_creator;
 				if ( isset($desc) && $displaydescriptions && $desc != '' ) {
-					$after_desc = stripslashes_deep( $after_desc );
-					$after_desc = str_replace('%title%', $title, $after_desc);
-					$after_desc = str_replace('%href%', $href, $after_desc);
-					$echo .= $before_desc . $desc . $after_desc;
+					$after_desc_temp = stripslashes_deep( $after_desc );
+					$after_desc_temp = str_replace('%title%', $title, $after_desc_temp);
+					$after_desc_temp = str_replace('%href%', $href, $after_desc_temp);
+					$echo .= $before_desc . $desc . $after_desc_temp;
 				}
 				$echo .= $end_item;
 			} else {
