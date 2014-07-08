@@ -104,7 +104,7 @@ _The shortcode with a lot of parameters:_
 == Changelog ==
 = v4.4.14 (08/07/2014) =
 * Fix typo in readme
-* Fix a bug where with `%href%` and `%title%` in after_desc
+* Fix a bug with `%href%` and `%title%` in after_desc
 * Shortened some over-long lines in the code
 
 = v4.4.13 (08/22/2013) =
