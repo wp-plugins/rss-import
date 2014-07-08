@@ -102,7 +102,7 @@ _The shortcode with a lot of parameters:_
 1. Widget support
 
 == Changelog ==
-= v4.4.14 (08/07/2014) =
+= v4.4.14 (07/08/2014) =
 * Fix typo in readme
 * Fix a bug with `%href%` and `%title%` in after_desc
 * Shortened some over-long lines in the code
