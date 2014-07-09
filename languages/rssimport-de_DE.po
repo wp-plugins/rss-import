@@ -314,7 +314,7 @@ msgstr "Ausgabe/Rückgabe:"
 #: rssimport.php:0
 #@ rssimport
 msgid "Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href=\"http://wordpress.org/extend/plugins/rss-import/\">possibilities</a>."
-msgstr "Importiert und stellt eine Feed in deinem Blog dar, nnutze die Funktion RSSImport(), ein Widget oder den Shortcode [RSSImport]. Bitte schaue dir die <a href=\"http://wordpress.org/extend/plugins/rss-import/\">Möglichkeiten</a> an."
+msgstr "Importiert und stellt eine Feed in deinem Blog dar, nutze die Funktion RSSImport(), ein Widget oder den Shortcode [RSSImport]. Bitte schaue dir die <a href=\"http://wordpress.org/extend/plugins/rss-import/\">Möglichkeiten</a> an."
 
 #. translators: plugin header field 'Name'
 #: rssimport.php:0
