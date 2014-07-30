@@ -6,7 +6,7 @@ Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.7-alpha
+Tested up to: 3.9.1
 Stable tag: 4.4.14
 
 Import and display Feeds in your blog, use PHP or the Shortcode.
