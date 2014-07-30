@@ -119,7 +119,7 @@ function RSSImport(
 		$noitems = 'No items, feed is empty.',
 		$after_noitems = '</p>',
 		$before_error = '<p>',
-		$error = 'Error: Feed has a error or is not valid',
+		$error = 'Error: Feed has an error or is not valid',
 		$after_error = '</p>',
 		$paging = 0,
 		$prev_paging_link = '&laquo; Previous',

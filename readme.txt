@@ -56,7 +56,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `noitems`- Message, when the feed is empty, Default is `No items, feed is empty.`
 1. `after_noitems` - HTML or string before message, when the feed is empty, Default is `</p>`
 1. `before_error` - HTML or string before message, when the feed have an error, Default is `<p>`
-1. `error` - Errormessage, Default is `Error: Feed has a error or is not valid`
+1. `error` - Errormessage, Default is `Error: Feed has an error or is not valid`
 1. `after_error` - HTML or string before message, when the feed have an error, Default is `</p>`
 1. `paging` - Pagination on, set `TRUE`, Default is `FALSE`
 1. `prev_paging_link` - Linkname for previous page, Default is `&laquo; Previous`
@@ -66,9 +66,9 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `use_simplepie`- Use the class SimplePie for parse the feed; SimplePie is include with WordPress 2.8 and can parse RSS and ATOM-Feeds, Default is `false`
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 
-The pagination function add a div with the class `rsspaging` for design with CSS. Also youcan style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
+The pagination function add a div with the class `rsspaging` for design with CSS. Also you can style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
 
-All parameters it is possible to use in the function, only in templates with PHP, and also with the Shortcode in posts and pges.
+You can use all parameters in the php function `RSSImport()` in your templates or with the Shortcode `[RSSImport]` in posts and pages.
 
 = Examples: =
 _The function with many parameters:_
@@ -82,6 +82,8 @@ _The function with many parameters:_
 		$start_items = '<ul>', $end_items = '</ul>', 
 		$start_item = '<li>', $end_item = '</li>' 
 	)
+
+Please not, that the parameters are expected in the order they are defined in the function header. Thus if you skip one parameter, you will also have to skip all the following parameters. 
 
 _The shortcode with a lot of parameters:_
 
