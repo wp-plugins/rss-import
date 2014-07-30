@@ -1,6 +1,6 @@
 ﻿=== RSSImport ===
 Contributors: Bueltge, inpsyde, novaclic
-Plugin URI: http://bueltge.de/wp-wartungsmodus-plugin/101/
+Plugin URI: hhttp://bueltge.de/wp-rss-import-plugin/55/
 Author: Frank B&uuml;ltge
 Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
