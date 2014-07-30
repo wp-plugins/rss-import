@@ -83,7 +83,7 @@ _The function with many parameters:_
 		$start_item = '<li>', $end_item = '</li>' 
 	)
 
-Please not, that the parameters are expected in the order they are defined in the function header. Thus if you skip one parameter, you will also have to skip all the following parameters. 
+Please note, that the parameters are expected in the order they are defined in the function header. Thus if you skip one parameter, you will also have to skip all the following parameters. 
 
 _The shortcode with a lot of parameters:_
 
