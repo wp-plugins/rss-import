@@ -145,7 +145,7 @@ msgstr "बाद विवरण"
 
 # @ rssimport
 #: rssimport.php:1261
-msgid "You can use the follow strings to create custom links:"
+msgid "You can use the following strings to create custom links:"
 msgstr "आप कस्टम लिंक बनाने के तार का उपयोग कर सकते हैं:"
 
 # @ rssimport

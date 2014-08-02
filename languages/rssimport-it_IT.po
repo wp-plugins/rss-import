@@ -146,7 +146,7 @@ msgstr "Segue descrizione:"
 
 # @ rssimport
 #: rssimport.php:1261
-msgid "You can use the follow strings to create custom links:"
+msgid "You can use the following strings to create custom links:"
 msgstr "Utilizza le seguenti stringhe per creare i link personalizzati:"
 
 # @ rssimport

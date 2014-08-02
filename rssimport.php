@@ -1258,7 +1258,7 @@ if ( class_exists('WP_Widget') ) {
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('after_desc'); ?>"><?php _e( 'After Description:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('after_desc'); ?>" name="<?php echo $this->get_field_name('after_desc'); ?>" type="text" value="<?php echo $after_desc; ?>" /></label>
-					<br /><small><?php _e( 'You can use the follow strings to create custom links:', FB_RSSI_TEXTDOMAIN ); ?> <code>%title%</code>, <code>%href%</code>
+					<br /><small><?php _e( 'You can use the following strings to create custom links:', FB_RSSI_TEXTDOMAIN ); ?> <code>%title%</code>, <code>%href%</code>
 					<br /><?php _e( 'Example:', FB_RSSI_TEXTDOMAIN ); ?> <code>&lt;a href="%href%" target="self" rel="follow"&gt;%title%&lt;/a&gt;</code></small>
 				</p>
 				<p>

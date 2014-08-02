@@ -146,7 +146,7 @@ msgstr "Po Aprašymo:"
 
 # @ rssimport
 #: rssimport.php:1261
-msgid "You can use the follow strings to create custom links:"
+msgid "You can use the following strings to create custom links:"
 msgstr "Jūs galite naudoti šiuos saitus, individualių nuorodų kūrimui:"
 
 # @ rssimport

@@ -127,7 +127,7 @@ msgstr "Suffixe la description&nbsp;:"
 
 #: /Volumes/Disque
 #: Dur/Users/martin/PROJECTS/www/petitnuage.fr/sd/www1/www/wordpress/wp-content/plugins/rss-import/rssimport.php:1069
-msgid "You can use the follow strings to create custom links:"
+msgid "You can use the following strings to create custom links:"
 msgstr "Vous pouvez utiliser les chaînes de caractères suivantes pour créer des liens personnalisés&nbsp;:"
 
 #: /Volumes/Disque
