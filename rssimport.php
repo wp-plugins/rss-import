@@ -554,7 +554,7 @@ function RSSImport_Shortcode($atts) {
 			'noitems' => __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN ),
 			'after_noitems' => '</p>',
 			'before_error' => '<p>',
-			'error' => __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN ),
+			'error' => __('Error: Feed has an error or is not valid', FB_RSSI_TEXTDOMAIN ),
 			'after_error' => '</p>',
 			'paging' => 0,
 			'prev_paging_link' => __( '&laquo; Previous', FB_RSSI_TEXTDOMAIN ),
@@ -665,7 +665,7 @@ function RSSImport_insert_button() {
 	    		'before_date=" <small>" date="FALSE" after_date="</small>" date_format="" before_creator=" <small>" creator="FALSE" ' +
 	    		'after_creator="</small>" start_items="<ul>" end_items="</ul>" start_item="<li>" end_item="</li>" target="" rel="" ' +
 	    		'desc4title="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>" noitems="No items, feed is empty." ' +
-	    		'after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid" after_error="</p>" ' +
+	    		'after_noitems="</p>" before_error="<p>" error="Error: Feed has an error or is not valid" after_error="</p>" ' +
 	    		'paging="FALSE" prev_paging_link="&laquo; Previous" next_paging_link="Next &raquo;" prev_paging_title="more items" ' +
 	    		'next_paging_title="more items" use_simplepie="FALSE"]',
 	    end = '',
@@ -694,7 +694,7 @@ function RSSImport_insert_button_old() {
 	    		' truncatetitlechar=" " truncatetitlestring=" ... " before_date=" <small>" date="FALSE" after_date="</small>"'.
 	    		' date_format="" before_creator=" <small>" creator="FALSE" after_creator="</small>" start_items="<ul>" end_items="</ul>"'.
 	    		' start_item="<li>" end_item="</li>" target="" rel="" desc4title="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>"'.
-	    		' noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has a error or is not valid"'.
+	    		' noitems="No items, feed is empty." after_noitems="</p>" before_error="<p>" error="Error: Feed has an error or is not valid"'.
 	    		' after_error="</p>" paging="FALSE" prev_paging_link="&laquo; Previous" next_paging_link="Next &raquo;"'.
 	    		' prev_paging_title="more items" next_paging_title="more items" use_simplepie="FALSE"]\', \'\', \'\');
 			function RSSImport_tag(id) {
@@ -1059,7 +1059,7 @@ if ( class_exists('WP_Widget') ) {
 			$noitems             = empty($instance['noitems']) ? __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN) : $instance['noitems'];
 			$after_noitems       = empty($instance['after_noitems']) ? '</p>' : $instance['after_noitems'];
 			$before_error        = empty($instance['before_error']) ? '<p>' : $instance['before_error'];
-			$error               = empty($instance['error']) ? __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN) : $instance['error'];
+			$error               = empty($instance['error']) ? __('Error: Feed has an error or is not valid', FB_RSSI_TEXTDOMAIN) : $instance['error'];
 			$after_error         = empty($instance['after_error']) ? '</p>' : $instance['after_error'];
 			$paging              = empty($instance['paging']) ? '0' : $instance['paging'];
 			$prev_paging_link    = empty($instance['prev_paging_link']) ? __('&laquo; Previous', FB_RSSI_TEXTDOMAIN) : $instance['prev_paging_link'];
@@ -1180,7 +1180,7 @@ if ( class_exists('WP_Widget') ) {
 													 'noitems' => __('No items, feed is empty.', FB_RSSI_TEXTDOMAIN),
 													 'after_noitems' => '</p>',
 													 'before_error' => '<p>',
-													 'error' => __('Error: Feed has a error or is not valid', FB_RSSI_TEXTDOMAIN),
+													 'error' => __('Error: Feed has an error or is not valid', FB_RSSI_TEXTDOMAIN),
 													 'after_error' => '</p>',
 													 'paging' => 0,
 													 'prev_paging_link' => __('&laquo; Previous', FB_RSSI_TEXTDOMAIN),
@@ -1258,7 +1258,7 @@ if ( class_exists('WP_Widget') ) {
 				</p>
 				<p>
 					<label for="<?php echo $this->get_field_id('after_desc'); ?>"><?php _e( 'After Description:', FB_RSSI_TEXTDOMAIN ) ?> <input class="widefat code" id="<?php echo $this->get_field_id('after_desc'); ?>" name="<?php echo $this->get_field_name('after_desc'); ?>" type="text" value="<?php echo $after_desc; ?>" /></label>
-					<br /><small><?php _e( 'You can use the follow strings for create custom links:', FB_RSSI_TEXTDOMAIN ); ?> <code>%title%</code>, <code>%href%</code>
+					<br /><small><?php _e( 'You can use the follow strings to create custom links:', FB_RSSI_TEXTDOMAIN ); ?> <code>%title%</code>, <code>%href%</code>
 					<br /><?php _e( 'Example:', FB_RSSI_TEXTDOMAIN ); ?> <code>&lt;a href="%href%" target="self" rel="follow"&gt;%title%&lt;/a&gt;</code></small>
 				</p>
 				<p>

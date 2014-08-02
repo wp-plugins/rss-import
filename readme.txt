@@ -12,7 +12,7 @@ Stable tag: 4.4.14
 Import and display Feeds in your blog, use PHP in your templates or the Shortcode in posts and pages.
 
 == Description ==
-Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin uses the standards of WordPress, non extra library is used; uses [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) (both part of standart wordpress) to parse feeds.
+Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin uses the standards of WordPress, non extra library is used; Uses [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) (both part of wordpress) to parse feeds.
 
 Use following code within a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
 
@@ -63,7 +63,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `next_paging_link` - Linkname for next page, Default is `Next &raquo;`
 1. `prev_paging_title` - Title for the link of previous page, Default is `more items`
 1. `next_paging_title` - Title for the link of next page, Default is `more items`
-1. `use_simplepie`- Use the class SimplePie for parse the feed; SimplePie is include with WordPress 2.8 and can parse RSS and ATOM-Feeds, Default is `false`
+1. `use_simplepie`- Use the class SimplePie for parse the feed; SimplePie is include since WordPress 2.8 and can parse RSS and ATOM-Feeds, Default is `false`
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 
 The pagination function adds an div with the class `rsspaging` for design with CSS. Also you can style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
