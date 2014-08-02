@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: RSSImport v4.2.4\n"
+"Project-Id-Version: WP-RSSImport v4.4.15\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-12 21:15+0100\n"
 "PO-Revision-Date: \n"
@@ -29,7 +29,7 @@ msgstr "Aucune entrée dans le flux."
 
 #: /Volumes/Disque
 #: Dur/Users/martin/PROJECTS/www/petitnuage.fr/sd/www1/www/wordpress/wp-content/plugins/rss-import/rssimport.php:443
-msgid "Error: Feed has a error or is not valid"
+msgid "Error: Feed has an error or is not valid"
 msgstr "Erreur : Le flux comprend des erreurs."
 
 #: /Volumes/Disque
@@ -127,7 +127,7 @@ msgstr "Suffixe la description&nbsp;:"
 
 #: /Volumes/Disque
 #: Dur/Users/martin/PROJECTS/www/petitnuage.fr/sd/www1/www/wordpress/wp-content/plugins/rss-import/rssimport.php:1069
-msgid "You can use the follow strings for create custom links:"
+msgid "You can use the follow strings to create custom links:"
 msgstr "Vous pouvez utiliser les chaînes de caractères suivantes pour créer des liens personnalisés&nbsp;:"
 
 #: /Volumes/Disque
