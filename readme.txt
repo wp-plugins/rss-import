@@ -1,6 +1,6 @@
 ﻿=== RSSImport ===
-Contributors: Bueltge, inpsyde, novaclic
-Plugin URI: hhttp://bueltge.de/wp-rss-import-plugin/55/
+Contributors: Bueltge, inpsyde, novaclic, took77
+Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Author: Frank B&uuml;ltge
 Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
@@ -9,17 +9,17 @@ Requires at least: 1.5
 Tested up to: 3.9.1
 Stable tag: 4.4.14
 
-Import and display Feeds in your blog, use PHP or the Shortcode.
+Import and display Feeds in your blog, use PHP in your templates or the Shortcode in posts and pages.
 
 == Description ==
-Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin use the standards of WordPress, non extra library; use [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) for parse feeds.
+Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin uses the standards of WordPress, non extra library is used; uses [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) (both part of standart wordpress) to parse feeds.
 
-Use following code with a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
+Use following code within a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
 
 _Example:_
 `&lt;?php RSSImport(10, 'http://bueltge.de/feed/'); ?&gt;`
 
-This is smallest code for use the plugin with your own feed-url. The plugin have many parameters for custom import of content form a feed. See the list of parameters. You can also use all parameters with shortcode in posts and pages.
+This is smallest code to use the plugin with your own feed-url. The plugin has many parameters for custom import of content form a feed. See the list of parameters. You can also use all parameters with shortcode in posts and pages.
 
 _Example for Shortcode:_
 `[RSSImport display="5" feedurl="http://bueltge.de/feed/"]`
@@ -66,7 +66,7 @@ For all boolean parameter it is possible to use the string `true` or `false` or 
 1. `use_simplepie`- Use the class SimplePie for parse the feed; SimplePie is include with WordPress 2.8 and can parse RSS and ATOM-Feeds, Default is `false`
 1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 
-The pagination function add a div with the class `rsspaging` for design with CSS. Also you can style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
+The pagination function adds an div with the class `rsspaging` for design with CSS. Also you can style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
 
 You can use all parameters in the php function `RSSImport()` in your templates or with the Shortcode `[RSSImport]` in posts and pages.
 
