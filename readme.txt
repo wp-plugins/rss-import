@@ -65,7 +65,7 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 1. `next_paging_link` - The name next page link. Default is `Next &raquo;`.
 1. `prev_paging_title` - The title attribute of the previous page link. Default is `more items`.
 1. `next_paging_title` - The title attribute of the next page link. Default is `more items`.
-1. `use_simplepie`- (bool) If true, use SimplePie to parse the feed. SimplePie is included in WordPress 2.8 and newer and can parse both RSS and ATOM feeds. Default is `false`.
+1. `use_simplepie` - (bool) If true, use SimplePie to parse the feed. SimplePie is included in WordPress 2.8 and newer and can parse both RSS and ATOM feeds. Default is `false`.
 1. `view` - (bool) If true, calling the `RSSImport()` function will print the rendered HTML directly to the output. If false, the rendered HTML will be returned by the function as a string value and nothing will be output. Default when using PHP code is `true`. Default when using Shortcode is `false`.
 
 If pagination is enabled, it adds a `div` with the class `rsspaging` to enable easier styling with CSS. You can also style the previous and next links, which have the classes: `rsspaging_prev` and `rsspaging_next`.
@@ -82,7 +82,7 @@ _Using the PHP function with many parameters:_
 		$before_date = ' <small>', $date = false, $after_date = '</small>', 
 		$before_creator = ' <small>', $creator = false, $after_creator = '</small>', 
 		$start_items = '<ul>', $end_items = '</ul>', 
-		$start_item = '<li>', $end_item = '</li>' 
+		$start_item = '<li>', $end_item = '</li>'
 	)
 
 Please note that the parameters are expected in the order in which they are defined in the above list. Thus if you skip one parameter, you will also have to skip all of the subsequent parameters.
