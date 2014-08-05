@@ -9,69 +9,71 @@ Requires at least: 1.5
 Tested up to: 3.9.1
 Stable tag: 4.4.14
 
-Import and display Feeds in your blog, use PHP in your templates or the Shortcode in posts and pages.
+Import and display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
 
 == Description ==
-Import and display Feeds in your blog, use PHP, a Widget or the Shortcode. The plugin uses the standards of WordPress, non extra library is used; Uses [MagpieRSS](http://magpierss.sourceforge.net/) or [SimplePie](http://simplepie.org/) (both part of wordpress) to parse feeds.
+Import and display feeds in your blog, using PHP, a Widget or Shortcode. The plugin uses only standard WordPress functionality, so no external libraries are required. For older versions of Wordpress, the built-in [MagpieRSS library](http://magpierss.sourceforge.net/) is used. For WordPress 2.8 and newer, there is a setting available to enable the built-in [SimplePie library](http://simplepie.org/) for parsing feeds.
 
-Use following code within a PHP-Plugin or in a template, example `sidebar.php` or `single.php`, for WordPress:
+You can insert the following code into a PHP plugin or in a template, for example `sidebar.php` or `single.php`:
+
 
 _Example:_
 `&lt;?php RSSImport(10, 'http://bueltge.de/feed/'); ?&gt;`
 
-This is smallest code to use the plugin with your own feed-url. The plugin has many parameters for custom import of content form a feed. See the list of parameters. You can also use all parameters with shortcode in posts and pages.
+This is the minimal code needed for using the plugin. The plugin accepts a number of parameters for customizing the feed content import. See below for the full list of available parameters. You can also use any of the parameters with Shortcode in posts and pages.
 
-_Example for Shortcode:_
+_Example Shortcode:_
 `[RSSImport display="5" feedurl="http://bueltge.de/feed/"]`
 
-For all boolean parameter it is possible to use the string `true` or `false` or the integer value `1` or `0`.
+For all (bool) parameters you can either use the strings `true` and `false` or the integer values `1` and `0`.
 
-1. `display` - How many items, Default is `5`
-1. `feedurl` - Feed-Adress, Default is `http://bueltge.de/feed/`
-1. `before_desc` - string before description, Default is `empty`
-1. `displaydescriptions` - (bool) true or false for display description of the item, Default is `false`
-1. `after_desc` - string after description, Default is `empty`; you can use the follow strings for custom html `%title%` for title of entry and `%href%` for link of entry
-1. `html` - (bool) display description include HTML-tags, Default is `false`
-1. `truncatedescchar` - truncate description, number of chars, Default is `200`, set the value to empty `''` for non truncate
-1. `truncatedescstring` - string after truncate description, Default is ` ... `
-1. `truncatetitlechar` - (int) truncate title, number of chars, Default is `empty`, set a integer `50` to the value for truncate
-1. `truncatetitlestring` - string after truncate title, Default is `' ... '`
-1. `before_date` - string before date, Default is ` <small>`
-1. `date` - (bool) return the date of the item, Default is `false`
-1. `after_date` - string after the date, Default is `</small>`
-1. `date_format`- your format for the date, leave empty for use format of your WordPress installation, alternativ give the php date string, Example: `F j, Y`; see also [doku in Codex](http://codex.wordpress.org/Formatting_Date_and_Time)
-1. `before_creator` - string before creator of the item, Default is ` <small>`
-1. `creator` - (bool) return the creator of th item, Default is `false`
-1. `after_creator` - string after creator of the item, Default is `</small>`
-1. `start_items` - string before all items, Default is `<ul>`
-1. `end_items` - string after all items, Default is `</ul>`
-1. `start_item` - string before the item, Default is `<li>`
-1. `end_item` - string after the items, Default is `</li>`
-1. `target` - string with the target-attribut, Default is `empty`; use `blank`, `self`, `parent`, `top`
-1. `rel` - string with the rel-attribut, Default is `empty`, use string, `nofollow`, `follow`
-1. `desc4title` - Use description for the title-attribut on the title-link, Default is `false`
-1. `charsetscan` - Scan for charset-type, load slowly; use this for problems with strings on the return content, Default is `false`
-1. `debug` - activate debug-mode, echo the array of Magpie-Object; Default is `false`, Use only for debug purpose
-1. `before_noitems` - HTML or string before message, when the feed is empty, Default is `<p>`
-1. `noitems`- Message, when the feed is empty, Default is `No items, feed is empty.`
-1. `after_noitems` - HTML or string before message, when the feed is empty, Default is `</p>`
-1. `before_error` - HTML or string before message, when the feed have an error, Default is `<p>`
-1. `error` - Errormessage, Default is `Error: Feed has an error or is not valid`
-1. `after_error` - HTML or string before message, when the feed have an error, Default is `</p>`
-1. `paging` - Pagination on, set `TRUE`, Default is `FALSE`
-1. `prev_paging_link` - Linkname for previous page, Default is `&laquo; Previous`
-1. `next_paging_link` - Linkname for next page, Default is `Next &raquo;`
-1. `prev_paging_title` - Title for the link of previous page, Default is `more items`
-1. `next_paging_title` - Title for the link of next page, Default is `more items`
-1. `use_simplepie`- Use the class SimplePie for parse the feed; SimplePie is include since WordPress 2.8 and can parse RSS and ATOM-Feeds, Default is `false`
-1. `view` - echo or return the content of the function `RSSImport`, Default is `true`; Shortcode Default is `false`
 
-The pagination function adds an div with the class `rsspaging` for design with CSS. Also you can style the previous and next link with the classes: `rsspaging_prev` and `rsspaging_next`.
+1. `display` - The number of items to display. Default is `5`.
+1. `feedurl` - The feed address. Default is `http://bueltge.de/feed/`.
+1. `before_desc` - The HTML or string to insert before the description. Default is `empty`.
+1. `displaydescriptions` - (bool) When set to true, the description for each entry will be displayed. Default is `false`.
+1. `after_desc` - The HTML or string to insert after the description. Default is `empty`. You can use the following variables which will be replaced: `%title%` for the title of the entry and `%href%` for the entry's URL.
+1. `html` - (bool) When set to true, the description can include HTML tags. Default is `false`.
+1. `truncatedescchar` - The maximum number of characters allowed in descriptions. If the description is longer than this length, it will be truncated to the given length. Default is `200`, set the value to empty quotes `''` to never truncate descriptions.
+1. `truncatedescstring` - The HTML or string to insert at the end of a description after it has been truncated. Default is ` ... `
+1. `truncatetitlechar` - The maximum number of characters allowed in titles. If the title is longer than this value, it will be truncated to the given length. Default is `''`, which means never truncate titles.
+1. `truncatetitlestring` - The HTML or string to insert at the end of a title after it has been truncated. Default is `' ... '`.
+1. `before_date` - The HTML or string to insert before the date. Default is ` <small>`.
+1. `date` - (bool) If true, display the date of the item. Default is `false`.
+1. `after_date` - The HTML or string to insert after the date. Default is `</small>`.
+1. `date_format`- The date format string. Leave empty to use the format of your WordPress installation. If a different date format is desired, specify a PHP date string, for example: `F j, Y`. See also [the date and time formatting page in the WordPress Codex](http://codex.wordpress.org/Formatting_Date_and_Time).
+1. `before_creator` - The HTML or string to insert before the creator of the item. Default is ` <small>`.
+1. `creator` - (bool) If true, display the creator of the item. Default is `false`.
+1. `after_creator` - The HTML or string to insert after creator of the item. Default is `</small>`.
+1. `start_items` - The HTML or string to insert before the list of items. Default is `<ul>`.
+1. `end_items` - The HTML or string to insert after the list of items. Default is `</ul>`.
+1. `start_item` - The HTML or string to insert before each item. Default is `<li>`.
+1. `end_item` - The HTML or string to insert after each item. Default is `</li>`.
+1. `target` - The string to use for the `target` attribute on links. Default is `empty`. Valid options are `blank`, `self`, `parent`, `top`.
+1. `rel` - The string to use for the `rel` attribute on links. Default is `empty`. Valid options are `nofollow` and `follow`.
+1. `desc4title` - The description to use in the `title` attribute on item title links. Default is `false`.
+1. `charsetscan` - (bool) If true, scan the feed content for the correct character set. This may cause the content to load more slowly. Use this option if you're having problems with feed content being displayed with stranged characters. Default is `false`.
+1. `debug` - (bool) If true, activate debug-mode, which will echo the Magpie object as an array. Default is `false`. Only use this option for debugging.
+1. `before_noitems` - The HTML or string to insert before the no items message. Default is `<p>`.
+1. `noitems`- The message to display when the feed is empty. Default is `No items, feed is empty.`.
+1. `after_noitems` - The HTML or string to insert before the no items message. Default is `</p>`.
+1. `before_error` - The HTML or string to insert before the error message. Default is `<p>`.
+1. `error` - Error message displayed when there is an error loading or displaying the feed. Default is `Error: Feed has an error or is not valid`.
+1. `after_error` - The HTML or string to insert before the error message. Default is `</p>`.
+1. `paging` - (bool) If true, enable pagination. Default is `false`.
+1. `prev_paging_link` - The name of the previous page link. Default is `&laquo; Previous`.
+1. `next_paging_link` - The name next page link. Default is `Next &raquo;`.
+1. `prev_paging_title` - The title attribute of the previous page link. Default is `more items`.
+1. `next_paging_title` - The title attribute of the next page link. Default is `more items`.
+1. `use_simplepie`- (bool) If true, use SimplePie to parse the feed. SimplePie is included in WordPress 2.8 and newer and can parse both RSS and ATOM feeds. Default is `false`.
+1. `view` - (bool) If true, calling the `RSSImport()` function will print the rendered HTML directly to the output. If false, the rendered HTML will be returned by the function as a string value and nothing will be output. Default when using PHP code is `true`. Default when using Shortcode is `false`.
 
-You can use all parameters in the php function `RSSImport()` in your templates or with the Shortcode `[RSSImport]` in posts and pages.
+If pagination is enabled, it adds a `div` with the class `rsspaging` to enable easier styling with CSS. You can also style the previous and next links, which have the classes: `rsspaging_prev` and `rsspaging_next`.
+
+You can use any of the parameters in the php function `RSSImport()` in your templates or with the Shortcode `[RSSImport]` in posts and pages.
 
 = Examples: =
-_The function with many parameters:_
+_Using the PHP function with many parameters:_
 
 	RSSImport(
 		$display = 5, $feedurl = 'http://bueltge.de/feed/', 
@@ -83,9 +85,9 @@ _The function with many parameters:_
 		$start_item = '<li>', $end_item = '</li>' 
 	)
 
-Please note, that the parameters are expected in the order they are defined in the function header. Thus if you skip one parameter, you will also have to skip all the following parameters. 
+Please note that the parameters are expected in the order in which they are defined in the above list. Thus if you skip one parameter, you will also have to skip all of the subsequent parameters.
 
-_The shortcode with a lot of parameters:_
+_Using Shortcode with several parameters:_
 
 	[RSSImport display="10" feedurl="http://your_feed_url/" 
 	displaydescriptions="true" html="true" 
@@ -93,11 +95,11 @@ _The shortcode with a lot of parameters:_
 
 
 == Installation ==
-1. Unpack the download-package
-1. Upload all files to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Create a new site in WordPress or edit your template
-1. Copy the code in site-content or edit templates
+1. Unpack the download package.
+1. Upload all files to the `/wp-content/plugins/` directory.
+1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Create a new site in WordPress or edit your template.
+1. Copy the code into the site content or add it to your templates.
 
 
 == Screenshots ==
@@ -190,8 +192,8 @@ Thanks to [Dave Wolf](http://www.davewolf.net, "Dave Wolf") for the idea, to [Th
 * Lithuanian translation files by [Vincent G](http://www.host1plus.com)
 * Portuguese translation files by [Miguel Patricio Angelo](http://www.miguelpatricio.com/)
 
-= Licence =
-Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
+= License =
+Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me by leaving a [small donation](http://bueltge.de/wunschliste/ "Wish lists and donations") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
 = Translations =
 The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the sitemap.pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
