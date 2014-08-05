@@ -661,7 +661,7 @@ function RSSImport_insert_button() {
 	var id = 'rssimport',
 	    text = '<?php _e( 'RSSImport', FB_RSSI_TEXTDOMAIN ); ?>',
 	    start = '[RSSImport display="5" feedurl="http://feedurl.com/" before_desc="<br />" displaydescriptions="TRUE" after_desc=" " ' +
-	    		'html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar=" " truncatetitlestring=" ... " ' +
+	    		'html="FALSE" truncatedescchar="200" truncatedescstring=" ... " truncatetitlechar="" truncatetitlestring=" ... " ' +
 	    		'before_date=" <small>" date="FALSE" after_date="</small>" date_format="" before_creator=" <small>" creator="FALSE" ' +
 	    		'after_creator="</small>" start_items="<ul>" end_items="</ul>" start_item="<li>" end_item="</li>" target="" rel="" ' +
 	    		'desc4title="" charsetscan="FALSE" debug="FALSE" before_noitems="<p>" noitems="No items, feed is empty." ' +
@@ -1037,7 +1037,7 @@ if ( class_exists('WP_Widget') ) {
 			$html                = empty($instance['html']) ? '0' : $instance['html'];
 			$truncatedescchar    = empty($instance['truncatedescchar']) ? '200' : $instance['truncatedescchar'];
 			$truncatedescstring  = empty($instance['truncatedescstring']) ? '' : $instance['truncatedescstring'];
-			$truncatetitlechar   = empty($instance['truncatetitlechar']) ? ' ... ' : $instance['truncatetitlechar'];
+			$truncatetitlechar   = empty($instance['truncatetitlechar']) ? '' : $instance['truncatetitlechar'];
 			$truncatetitlestring = empty($instance['truncatetitlestring']) ? ' ... ' : $instance['truncatetitlestring'];
 			$before_date         = empty($instance['before_date']) ? ' <small>' : $instance['before_date'];
 			$date                = empty($instance['date']) ? '0' : $instance['date'];
