@@ -234,7 +234,6 @@ function RSSImport(
 					$item = $rss->get_item($display);
 				else
 					$item = $rss->items[$display];
-				$echo .= $start_item;
 				// import title
 				if ($use_simplepie)
 					$title = esc_attr( strip_tags( $item->get_title() ) );
@@ -245,6 +244,19 @@ function RSSImport(
 					$href  = wp_filter_kses( $item->get_link() );
 				elseif ( isset($item['link']) )
 					$href  = wp_filter_kses( $item['link'] );
+				// import picture_url
+				$picture_url  = '';
+				if ($use_simplepie) {
+					if ( $enclosure = $item->get_enclosure() ) {
+						$picture_url  = wp_filter_kses( $enclosure->get_thumbnail() );
+					}
+				}
+				
+				$start_item_temp = str_replace('%title%', $title, $start_item);
+				$start_item_temp = str_replace('%href%', $href, $start_item_temp);
+				$start_item_temp = str_replace('%picture_url%', $picture_url, $start_item_temp);
+				$echo .= $start_item_temp;
+				
 				// import date
 				if ($use_simplepie && $date)
 					$pubDate = date_i18n( $date_format, strtotime( $item->get_date() ) );
@@ -334,9 +346,16 @@ function RSSImport(
 					$after_desc_temp = stripslashes_deep( $after_desc );
 					$after_desc_temp = str_replace('%title%', $title, $after_desc_temp);
 					$after_desc_temp = str_replace('%href%', $href, $after_desc_temp);
-					$echo .= $before_desc . $desc . $after_desc_temp;
+					$after_desc_temp = str_replace('%picture_url%', $picture_url, $after_desc_temp);
+					$before_desc_temp = str_replace('%title%', $title, $before_desc);
+					$before_desc_temp = str_replace('%href%', $href, $before_desc_temp);
+					$before_desc_temp = str_replace('%picture_url%', $picture_url, $before_desc_temp);
+					$echo .= $before_desc_temp . $desc . $after_desc_temp;
 				}
-				$echo .= $end_item;
+				$end_item_temp = str_replace('%title%', $title, $end_item);
+				$end_item_temp = str_replace('%href%', $href, $end_item_temp);
+				$end_item_temp = str_replace('%picture_url%', $picture_url, $end_item_temp);
+				$echo .= $end_item_temp;
 			} else {
 				$nextitems = FALSE;
 			}

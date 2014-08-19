@@ -6,13 +6,15 @@ Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: 4.4.14
 
 Import and display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
 
 == Description ==
 Import and display feeds in your blog, using PHP, a Widget or Shortcode. The plugin uses only standard WordPress functionality, so no external libraries are required. For older versions of Wordpress, the built-in [MagpieRSS library](http://magpierss.sourceforge.net/) is used. For WordPress 2.8 and newer, there is a setting available to enable the built-in [SimplePie library](http://simplepie.org/) for parsing feeds.
+
+As with all other content you publish, make sure you are allowed to (re-)publish the content of the feeds you are about to import!
 
 You can insert the following code into a PHP plugin or in a template, for example `sidebar.php` or `single.php`:
 
@@ -30,9 +32,9 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 
 1. `display` - The number of items to display. Default is `5`.
 1. `feedurl` - The feed address. Default is `http://bueltge.de/feed/`.
-1. `before_desc` - The HTML or string to insert before the description. Default is `empty`.
+1. `before_desc` - The HTML or string to insert before the description. Default is `empty`. You can use some variables which will be replaced, see below.
 1. `displaydescriptions` - (bool) When set to true, the description for each entry will be displayed. Default is `false`.
-1. `after_desc` - The HTML or string to insert after the description. Default is `empty`. You can use the following variables which will be replaced: `%title%` for the title of the entry and `%href%` for the entry's URL.
+1. `after_desc` - The HTML or string to insert after the description. Default is `empty`. You can use some variables which will be replaced, see below.
 1. `html` - (bool) When set to true, the description can include HTML tags. Default is `false`.
 1. `truncatedescchar` - The maximum number of characters allowed in descriptions. If the description is longer than this length, it will be truncated to the given length. Default is `200`, set the value to empty quotes `''` to never truncate descriptions.
 1. `truncatedescstring` - The HTML or string to insert at the end of a description after it has been truncated. Default is ` ... `
@@ -47,8 +49,8 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 1. `after_creator` - The HTML or string to insert after creator of the item. Default is `</small>`.
 1. `start_items` - The HTML or string to insert before the list of items. Default is `<ul>`.
 1. `end_items` - The HTML or string to insert after the list of items. Default is `</ul>`.
-1. `start_item` - The HTML or string to insert before each item. Default is `<li>`.
-1. `end_item` - The HTML or string to insert after each item. Default is `</li>`.
+1. `start_item` - The HTML or string to insert before each item. Default is `<li>`. You can use some variables which will be replaced, see below.
+1. `end_item` - The HTML or string to insert after each item. Default is `</li>`. You can use some variables which will be replaced, see below.
 1. `target` - The string to use for the `target` attribute on links. Default is `empty`. Valid options are `blank`, `self`, `parent`, `top`.
 1. `rel` - The string to use for the `rel` attribute on links. Default is `empty`. Valid options are `nofollow` and `follow`.
 1. `desc4title` - The description to use in the `title` attribute on item title links. Default is `false`.
@@ -65,14 +67,20 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 1. `next_paging_link` - The name next page link. Default is `Next &raquo;`.
 1. `prev_paging_title` - The title attribute of the previous page link. Default is `more items`.
 1. `next_paging_title` - The title attribute of the next page link. Default is `more items`.
-1. `use_simplepie` - (bool) If true, use SimplePie to parse the feed. SimplePie is included in WordPress 2.8 and newer and can parse both RSS and ATOM feeds. Default is `false`.
+1. `use_simplepie` - (bool) If true, use SimplePie to parse the feed. SimplePie is included in WordPress 2.8 and newer and can parse both RSS and ATOM feeds. Default is `false` if used with Shortcode, `true` if used with the PHP function.
 1. `view` - (bool) If true, calling the `RSSImport()` function will print the rendered HTML directly to the output. If false, the rendered HTML will be returned by the function as a string value and nothing will be output. Default when using PHP code is `true`. Default when using Shortcode is `false`.
+
+The parameters `before_desc`, `after_desc`, `start_item` and `end_item` accepts the following variables which will be replaced:
+1. `%title%` for the title of the entry
+1. `%href%` for the entry's URL
+1. `%picture_url%` for the URL of a thumbnail-image for the entry if available; Make sure to enable SimplePie (`use_simplepie="true"`)
+
 
 If pagination is enabled, it adds a `div` with the class `rsspaging` to enable easier styling with CSS. You can also style the previous and next links, which have the classes: `rsspaging_prev` and `rsspaging_next`.
 
 You can use any of the parameters in the php function `RSSImport()` in your templates or with the Shortcode `[RSSImport]` in posts and pages.
 
-= Examples: =
+= Examples =
 _Using the PHP function with many parameters:_
 
 	RSSImport(
@@ -83,9 +91,9 @@ _Using the PHP function with many parameters:_
 		$before_creator = ' <small>', $creator = false, $after_creator = '</small>', 
 		$start_items = '<ul>', $end_items = '</ul>', 
 		$start_item = '<li>', $end_item = '</li>'
-	)
+	);
 
-Please note that the parameters are expected in the order in which they are defined in the above list. Thus if you skip one parameter, you will also have to skip all of the subsequent parameters.
+Please note that for the PHP function the parameters are expected in the order in which they are defined in the above list. Thus if you skip one parameter, you will also have to skip all of the subsequent parameters.
 
 _Using Shortcode with several parameters:_
 
@@ -93,6 +101,32 @@ _Using Shortcode with several parameters:_
 	displaydescriptions="true" html="true" 
 	start_items="<ol>" end_items="</ol>" paging="true"]
 
+_Add a "more"-link to the output:_
+
+	RSSImport(
+		$display = 5,
+		$feedurl = 'http://bueltge.de/feed/', 
+		$before_desc = '',
+		$displaydescriptions = true,
+		$after_desc = ' <a href="%href%" target="_blank">show more</a>'
+	);
+
+or
+
+	[RSSImport feedurl="http://www.ichdruck3d.de/feed/" after_desc=" <a href='%href%' target='_blank'>show more</a>" displaydescriptions="true"]
+
+_Enable Thumbnail-Pictures:_
+
+	RSSImport(
+		$display = 5,
+		$feedurl = 'http://www.thestage.co.uk/opinion/shenton/feed/',
+		$before_desc = '<img src="%picture_url%" alt="">',
+		$displaydescriptions = true
+	);
+
+or
+
+	[RSSImport feedurl="http://www.thestage.co.uk/opinion/shenton/feed/" displaydescriptions="true" before_desc="<div><img src='%picture_url%' width='50px' alt='' style='float:left;' />" after_desc="</div>" use_simplepie="true"]
 
 == Installation ==
 1. Unpack the download package.
