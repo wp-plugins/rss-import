@@ -73,7 +73,7 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 The parameters `before_desc`, `after_desc`, `start_item` and `end_item` accepts the following variables which will be replaced:
 1. `%title%` for the title of the entry
 1. `%href%` for the entry's URL
-1. `%picture_url%` for the URL of a thumbnail-image for the entry if available; Make sure to enable SimplePie (`use_simplepie="true"`)
+1. `%picture_url%` for the URL of a thumbnail image for the entry if available. To use this variable, SimplePie is required to be enabled (`use_simplepie="true"`)
 
 
 If pagination is enabled, it adds a `div` with the class `rsspaging` to enable easier styling with CSS. You can also style the previous and next links, which have the classes: `rsspaging_prev` and `rsspaging_next`.
@@ -101,7 +101,7 @@ _Using Shortcode with several parameters:_
 	displaydescriptions="true" html="true" 
 	start_items="<ol>" end_items="</ol>" paging="true"]
 
-_Add a "more"-link to the output:_
+_Add a "more" link to the output:_
 
 	RSSImport(
 		$display = 5,
@@ -115,7 +115,7 @@ or
 
 	[RSSImport feedurl="http://www.ichdruck3d.de/feed/" after_desc=" <a href='%href%' target='_blank'>show more</a>" displaydescriptions="true"]
 
-_Enable Thumbnail-Pictures:_
+_Enable Thumbnail Pictures:_
 
 	RSSImport(
 		$display = 5,
