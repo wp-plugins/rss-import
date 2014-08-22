@@ -12,9 +12,9 @@
  * Domain Path: /languages
  * Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
  * Author:      Frank B&uuml;ltge, novaclic, took77
- * Version:     4.4.14
+ * Version:     4.4.15
  * License:     GPLv3
- * Last change: 08/07/2014
+ * Last change: 08/22/2014
  */ 
 
 /*

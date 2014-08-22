@@ -7,7 +7,7 @@ Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
 Tested up to: 3.9.2
-Stable tag: 4.4.14
+Stable tag: 4.4.15
 
 Import and display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
 
@@ -140,6 +140,9 @@ or
 1. Widget support
 
 == Changelog ==
+= v4.4.15 (08/22/2014) =
+* Added `%picture_url%` for `before_desc`, `after_desc`, `start_item` and `end_item`
+
 = v4.4.14 (07/08/2014) =
 * Fix typo in readme
 * Fix a bug with `%href%` and `%title%` in after_desc
