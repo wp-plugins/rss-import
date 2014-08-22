@@ -71,6 +71,7 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 1. `view` - (bool) If true, calling the `RSSImport()` function will print the rendered HTML directly to the output. If false, the rendered HTML will be returned by the function as a string value and nothing will be output. Default when using PHP code is `true`. Default when using Shortcode is `false`.
 
 The parameters `before_desc`, `after_desc`, `start_item` and `end_item` accepts the following variables which will be replaced:
+
 1. `%title%` for the title of the entry
 1. `%href%` for the entry's URL
 1. `%picture_url%` for the URL of a thumbnail image for the entry if available. To use this variable, SimplePie is required to be enabled (`use_simplepie="true"`)
