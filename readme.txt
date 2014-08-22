@@ -72,6 +72,7 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 
 The parameters `before_desc`, `after_desc`, `start_item` and `end_item` accepts the following variables which will be replaced:
 
+
 1. `%title%` for the title of the entry
 1. `%href%` for the entry's URL
 1. `%picture_url%` for the URL of a thumbnail image for the entry if available. To use this variable, SimplePie is required to be enabled (`use_simplepie="true"`)
