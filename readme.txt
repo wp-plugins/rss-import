@@ -1,12 +1,12 @@
 ﻿=== RSSImport ===
-Contributors: Bueltge, inpsyde, novaclic, took77
+Contributors: Bueltge, inpsyde, took77
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
 Author: Frank B&uuml;ltge
 Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: 4.4.15
 
 Import and display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
